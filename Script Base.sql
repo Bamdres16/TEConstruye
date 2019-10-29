@@ -1,0 +1,125 @@
+ create table Cliente(
+	 nombre varchar(40),
+	 apellido1 varchar(40),	
+	 apellido2 varchar(40),
+	 cedula int,
+	 numero_telefono int,
+	 id int GENERATED ALWAYS AS IDENTITY,
+	 PRIMARY KEY (id),
+	 UNIQUE(cedula)
+ );
+ 
+  create table Obra(
+	 nombre_obra varchar(80),
+	 ubicacion int,	
+	 cantidad_habitaciones int,
+	 cantidad_banos int,
+	 cantidad_pisos int,
+	 area_construccion float,
+	 area_lote int,
+	 id int GENERATED ALWAYS AS IDENTITY,
+	 PRIMARY KEY (id)
+ );
+ 
+ CREATE TABLE Ubicacion(
+	 provincia varchar(50) NOT NULL,
+  	 canton varchar(50) NOT NULL,
+	 distrito varchar(50) NOT NULL,
+	 id int GENERATED ALWAYS AS IDENTITY,
+	 PRIMARY KEY (id),
+	 UNIQUE(provincia, canton, distrito)
+);
+
+  create table Etapa(
+	 nombre varchar(50),
+	 descripcion varchar(100),
+	 fecha_incio date,
+	 fecha_finalizacion date,
+	 id int GENERATED ALWAYS AS IDENTITY,
+	 PRIMARY KEY (id)
+ );
+ 
+   create table Material(
+	 nombre varchar(50),
+	 precio_unitario float,
+	 codigo varchar(25),
+	 PRIMARY KEY (codigo)
+ );
+ 
+  create table Empleado(
+	 nombre varchar(40),
+	 apellido1 varchar(40),	
+	 apellido2 varchar(40),
+	 cedula int,
+	 numero_telefono int,
+	 pago_hora float,
+	 id int GENERATED ALWAYS AS IDENTITY,
+	 PRIMARY KEY (id),
+	 UNIQUE(cedula)
+ );
+ 
+   create table Arquitecto(
+	 nombre varchar(40),
+	 apellido1 varchar(40),	
+	 apellido2 varchar(40),
+	 cedula int,
+	 numero_telefono int,
+	 codigo_arquitecto varchar(20),
+	 id_especialidad int,
+	 id int GENERATED ALWAYS AS IDENTITY,
+	 PRIMARY KEY (id),
+	 UNIQUE(cedula),
+	 UNIQUE(codigo_arquitecto)
+ );
+ 
+    create table Ingeniero(
+	 nombre varchar(40),
+	 apellido1 varchar(40),	
+	 apellido2 varchar(40),
+	 cedula int,
+	 numero_telefono int,
+	 codigo_ingeniero varchar(20),
+	 id_especialidad int,
+	 id int GENERATED ALWAYS AS IDENTITY,
+	 PRIMARY KEY (id),
+	 UNIQUE(cedula),
+	 UNIQUE(codigo_ingeniero)
+ );
+ 
+    create table Especialidad(
+	 nombre varchar(40),
+	 id int GENERATED ALWAYS AS IDENTITY,
+	 PRIMARY KEY (id)
+ );
+ 
+    create table Requiere(
+	 id_etapa int,
+	 codigo_material varchar(25),
+	 cantidad int
+ );
+ 
+    create table Tiene(
+	 id_etapa int,
+	 id_obra int
+ );
+ 
+    create table Labora_en(
+	 id_empleado int,
+	 id_obra int,
+	 horas_laboradas float
+ );
+ 
+    create table Trabaja_en(
+	 id_arquitecto int,
+	 id_obra int,
+	 horas_laboradas float
+ );
+ 
+    create table Diseña(
+	 id_ingeniero int,
+	 id_obra int,
+	 horas_laboradas float
+ );
+ 
+ 
+ 
