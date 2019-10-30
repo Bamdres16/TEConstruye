@@ -122,4 +122,13 @@
  );
  
  
+ALTER TABLE ingeniero
+ADD CONSTRAINT FK_ESPECIALIDAD FOREIGN KEY (id_especialidad) REFERENCES especialidad(id)
+
+ALTER TABLE arquitecto
+ADD CONSTRAINT FK_ESPECIALIDAD FOREIGN KEY (id_especialidad) REFERENCES especialidad(id)
+
+ALTER TABLE requiere
+ADD CONSTRAINT FK_MATERIAL FOREIGN KEY (codigo_material) REFERENCES material(codigo)
+
  
