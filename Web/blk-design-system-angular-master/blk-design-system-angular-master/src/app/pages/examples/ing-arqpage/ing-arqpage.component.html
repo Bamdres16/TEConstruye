@@ -1,0 +1,910 @@
+<nav
+  class="navbar navbar-expand-lg fixed-top navbar-transparent"
+  color-on-scroll="100"
+  id="navbar-top"
+>
+  <div class="container">
+    <div class="navbar-translate">
+      <a
+        class="navbar-brand"
+        placement="bottom"
+        [routerLink]="['/inicio']"
+        target="_blank"
+        tooltip="Ir al inicio de TEConstruye"
+      >
+        <span> TEConstruye • </span>
+      </a>
+      <button
+        aria-controls="navigation-index"
+        aria-label="Toggle navigation"
+        class="navbar-toggler navbar-toggler"
+        [attr.aria-expanded]="!isCollapsed"
+        (click)="isCollapsed = !isCollapsed"
+        id="navigation"
+        type="button"
+      >
+        <span class="navbar-toggler-bar bar1"> </span>
+        <span class="navbar-toggler-bar bar2"> </span>
+        <span class="navbar-toggler-bar bar3"> </span>
+      </button>
+    </div>
+    <div
+      class="navbar-collapse justify-content-end"
+      [collapse]="isCollapsed"
+      id="navigation"
+    >
+      <div class="navbar-collapse-header">
+        <div class="row">
+          <div class="col-6 collapse-brand"><a> Administrador</a></div>
+          <div class="col-6 collapse-close text-right">
+            <button
+              aria-controls="navigation-index"
+              aria-label="Toggle navigation"
+              class="navbar-toggler"
+              [attr.aria-expanded]="!isCollapsed"
+              (click)="isCollapsed = !isCollapsed"
+              id="navigation"
+              type="button"
+            >
+              <i class="tim-icons icon-simple-remove"> </i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <ul class="navbar-nav">
+        <li class="nav-item p-0">
+          <a
+            class="nav-link"
+            href="https://twitter.com/CreativeTim"
+            placement="bottom"
+            target="_blank"
+            tooltip="Follow us on Twitter"
+          >
+            <i class="fab fa-twitter"> </i>
+            <p class="d-lg-none d-xl-none">Twitter</p>
+          </a>
+        </li>
+        <li class="nav-item p-0">
+          <a
+            class="nav-link"
+            href="https://www.facebook.com/CreativeTim"
+            placement="bottom"
+            target="_blank"
+            tooltip="Like us on Facebook"
+          >
+            <i class="fab fa-facebook-square"> </i>
+            <p class="d-lg-none d-xl-none">Facebook</p>
+          </a>
+        </li>
+        <li class="nav-item p-0">
+          <a
+            class="nav-link"
+            href="https://www.instagram.com/CreativeTimOfficial"
+            placement="bottom"
+            target="_blank"
+            tooltip="Follow us on Instagram"
+          >
+            <i class="fab fa-instagram"> </i>
+            <p class="d-lg-none d-xl-none">Instagram</p>
+          </a>
+        </li>
+        <li class="dropdown nav-item" dropdown>
+          <a
+            class="dropdown-toggle nav-link dropdown-toggle"
+            data-toggle="dropdown"
+            dropdownToggle
+            href="javascript:void(0)"
+          >
+          <i class="tim-icons icon-single-02"> </i> nuevo usuario
+          </a>
+          <div class="dropdown-menu dropdown-with-icons" *dropdownMenu>
+            <a
+              class="dropdown-item"
+              [routerLink]="['/registroIng']"
+            >
+           <i class="tim-icons icon-bullet-list-67"> </i>Ingeniero
+            </a>
+            <a class="dropdown-item" [routerLink]="['/registroArq']">
+              <i class="tim-icons icon-bullet-list-67"> </i> Arquitecto
+            </a>
+            <a class="dropdown-item" [routerLink]="['/registroEmp']">
+                <i class="tim-icons icon-bullet-list-67"> </i> Empleado
+              </a>
+              <a class="dropdown-item" [routerLink]="['/registroCli']">
+                <i class="tim-icons icon-bullet-list-67"> </i> Cliente
+              </a>
+            
+          </div>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link btn btn-default d-none d-lg-block"
+            href="javascript:void(0)"
+            (click)="scrollToDownload(target)"
+          >
+            <i class="tim-icons icon-cloud-download-93"> </i> Download
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="wrapper">
+  <div class="page-header header-filter">
+    <div class="squares square1"></div>
+    <div class="squares square2"></div>
+    <div class="squares square3"></div>
+    <div class="squares square4"></div>
+    <div class="squares square5"></div>
+    <div class="squares square6"></div>
+    <div class="squares square7"></div>
+    <div class="container">
+      <div class="content-center brand">
+        <h1 class="h1-seo">TEConstruye•</h1>
+        <h3>
+          Gestión de proyectos habitacionales
+        </h3>
+      </div>
+    </div>
+  </div>
+  <div class="main">
+    <div class="section section-basic" id="basic-elements">
+      <img class="path" src="assets/img/path1.png" />
+
+      <div class="container">
+        <h2 class="title">Administrador</h2>
+
+        
+        
+
+    <!----Seccion Añadir nuevo-->
+    <div class="section section-tabs">
+      <div class="container">
+        <div class="title"><h3 class="mb-3">Añadir nuevo(a)</h3></div>
+        <div class="row">
+          <div class="col-md-12 ml-auto col-xl-12 mr-auto">
+            <div class="mb-3">
+              <small class="text-uppercase font-weight-bold">
+                With icons
+              </small>
+            </div>
+            <div class="card">
+              <div class="card-header">
+                <tabset class="nav-tabs-danger">
+                  <tab>
+                    <ng-template tabHeading>
+                      <i class="tim-icons icon-settings"> </i> Obra
+                    </ng-template>
+                    
+
+        <!--Formulario Obra-->
+        <!--Caja de texto nombre-->
+          <div class="row">
+            <div class="col-sm-8 col-lg-3">
+              <div class="form-group">
+                <input
+                  class="form-control"
+                  placeholder="Nombre"
+                  type="text"
+                  value=""
+                />
+              </div>
+            </div>
+           
+            <!--Caja de texto habitaciones-->
+            <div class="col-sm-8 col-lg-3">
+                    <div class="input-group">
+                      <input
+                        class="form-control"
+                        placeholder="Habitaciones"
+                        type="number"
+                      />
+                      <div class="input-group-append">
+                        <span class="input-group-text">
+                          <i class="tim-icons icon-coins"> </i>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+            <!--Caja de texto baños-->
+            <div class="col-sm-8 col-lg-3">
+                    <div class="input-group">
+                      <input
+                        class="form-control"
+                        placeholder="Baños"
+                        type="number"
+                      />
+                      <div class="input-group-append">
+                        <span class="input-group-text">
+                          <i class="tim-icons icon-coins"> </i>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+            <!--Caja de texto pisos-->
+            <div class="col-sm-8 col-lg-3">
+                    <div class="input-group">
+                      <input
+                        class="form-control"
+                        placeholder="Plantas"
+                        type="number"
+                      />
+                      <div class="input-group-append">
+                        <span class="input-group-text">
+                          <i class="tim-icons icon-coins"> </i>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+            <!--Caja de texto m construccion-->
+            <div class="col-sm-8 col-lg-3">
+                    <div class="input-group">
+                      <input
+                        class="form-control"
+                        placeholder="Metros const."
+                        type="number"
+                      />
+                      <div class="input-group-append">
+                        <span class="input-group-text">
+                          <i class="tim-icons icon-coins"> </i>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+            <!--Caja de texto m lote-->
+            <div class="col-sm-8 col-lg-3">
+                    <div class="input-group">
+                      <input
+                        class="form-control"
+                        placeholder="Metros lote"
+                        type="number"
+                      />
+                      <div class="input-group-append">
+                        <span class="input-group-text">
+                          <i class="tim-icons icon-coins"> </i>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+            <!--Dropdown ubicacion-->
+            <!--Dropdown ingenieros-->
+            <!--Dropdown arquitectos-->
+            <!--Dropdown cliente-->
+         
+            <!--Termina caja de texto precio unitario-->
+            <!--Botón de guardar material-->
+            <div class="col-sm-6 col-lg-3">
+            <button class="btn btn-primary btn-sm mr-1  mb-3">Agregar</button>
+          </div>
+            <!--Termina botón de guardar material-->
+          </div>
+
+        <!----Fin formulario mini -->
+          
+                  </tab>
+                  <tab>
+                    <ng-template tabHeading>
+                      <i class="tim-icons icon-components"> </i> Etapa
+                    </ng-template>
+
+          <!--Formulario mini etapa-->
+          <!--Caja de texto Nombre-->
+          <div class="row">
+          <div class="col-sm-6 col-lg-3">
+            <div class="input-group">
+              <input
+                class="form-control"
+                placeholder="Nombre"
+                type="text"
+              />
+              <div class="input-group-append">
+                <span class="input-group-text">
+                  
+                </span>
+              </div>
+            </div>
+          </div>
+
+              <!--Caja de texto descripción-->
+              <div class="col-sm-6 col-lg-3">
+                <div class="input-group">
+                  <input
+                    class="form-control"
+                    placeholder="Descripción"
+                    type="text"
+                  />
+                  <div class="input-group-append">
+                    <span class="input-group-text">
+                      <i class="tim-icons icon-paper"> </i>
+                    </span>
+                  </div>
+                </div>
+              </div>
+             
+              <!--Fases default--
+              <div
+              class="input-group"
+              [ngClass]="{ 'input-group-focus': focus1 === true }"
+            >
+              
+               <div class="dropdown nav-item" dropdown>
+                <a
+                  class="dropdown-toggle nav-link dropdown-toggle"
+                  data-toggle="dropdown"
+                  dropdownToggle
+                  href="javascript:void(0)"
+                >
+                <i class="tim-icons icon-badge"> </i> Fases
+                </a>
+                <div class="dropdown-menu dropdown-with-icons" *dropdownMenu>
+                  <a class="dropdown-item"
+                  *ngFor="let fase of fases, index as i" > {{fases[i]}}</a>            
+                </div>
+              </div>
+            </div>
+          -->
+
+               <!--Botón de guardar material-->
+               <div class="col-sm-6 col-lg-3">
+               <button class="btn btn-primary btn-sm mr-1 mb-3">Agregar</button>
+              </div>
+              </div>
+         
+  
+          <!----Fin formulario mini-->
+                  
+                  </tab>
+                </tabset>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!----Seccion Asignar -->
+    <div class="section section-tabs">
+      <div class="container">
+        <div class="title"><h3 class="mb-3">Asignar</h3></div>
+        <div class="row">
+          <div class="col-md-12 ml-auto col-xl-12 mr-auto">
+            <div class="mb-3">
+              <small class="text-uppercase font-weight-bold">
+                With icons
+              </small>
+            </div>
+            <div class="card">
+              <div class="card-header">
+                <tabset class="nav-tabs-danger">
+                  <tab>
+                    <ng-template tabHeading>
+                      <i class="tim-icons icon-settings"> </i> Horas
+                    </ng-template>
+                    
+
+        <!--Formulario mini para asignar horas-->
+        <div class="row">
+          
+         <!--Dropdown empleados-->
+         <div class="col-sm-6 col-lg-3">
+              <div
+              class="input-group"
+              [ngClass]="{ 'input-group-focus': focus1 === true }"
+            >
+              
+               <div class="dropdown nav-item" dropdown>
+                <a
+                  class="dropdown-toggle nav-link dropdown-toggle"
+                  data-toggle="dropdown"
+                  dropdownToggle
+                  href="javascript:void(0)"
+                >
+                <i class="tim-icons icon-single-02"> </i> Empleado
+                </a>
+                <div class="dropdown-menu dropdown-with-icons" *dropdownMenu>
+                  <a class="dropdown-item"
+                  *ngFor="let fase of fases, index as i" > {{fases[i]}}</a>            
+                </div>
+              </div>
+            </div>
+         </div>
+
+              <!--Dropdown proyecto-->
+              <div class="col-sm-6 col-lg-3">
+              <div
+              class="input-group"
+              [ngClass]="{ 'input-group-focus': focus1 === true }"
+            >
+              
+               <div class="dropdown nav-item" dropdown>
+                <a
+                  class="dropdown-toggle nav-link dropdown-toggle"
+                  data-toggle="dropdown"
+                  dropdownToggle
+                  href="javascript:void(0)"
+                >
+                <i class="tim-icons icon-single-copy-04"> </i> Proyecto
+                </a>
+                <div class="dropdown-menu dropdown-with-icons" *dropdownMenu>
+                  <a class="dropdown-item"
+                  *ngFor="let fase of fases, index as i" > {{fases[i]}}</a>            
+                </div>
+              </div>
+            </div>
+          </div>
+         
+            <!--Botón de asignar empleado-->
+            
+            <div class="col-sm-6 col-lg-3">
+            <button class="btn btn-primary btn-sm mr-1  mb-3">Asignar</button>
+          </div>
+        </div>
+        <!----Fin formulario mini -->
+          
+                  </tab>
+                  <tab>
+                    <ng-template tabHeading>
+                      <i class="tim-icons icon-components"> </i> Gastos
+                    </ng-template>
+
+          <!--Formulario mini etapa-->
+          <!--Caja de texto Nombre-->
+          <div class="row">
+          <div class="col-sm-6 col-lg-3">
+            <div class="input-group">
+              <input
+                class="form-control"
+                placeholder="Nombre"
+                type="text"
+              />
+              <div class="input-group-append">
+                <span class="input-group-text">
+                  
+                </span>
+              </div>
+            </div>
+          </div>
+
+              <!--Caja de texto descripción-->
+              <div class="col-sm-6 col-lg-3">
+                <div class="input-group">
+                  <input
+                    class="form-control"
+                    placeholder="Descripción"
+                    type="text"
+                  />
+                  <div class="input-group-append">
+                    <span class="input-group-text">
+                      <i class="tim-icons icon-paper"> </i>
+                    </span>
+                  </div>
+                </div>
+              </div>
+             
+             
+
+               <!--Botón de guardar material-->
+               <div class="col-sm-6 col-lg-3">
+               <button class="btn btn-primary btn-sm mr-1 mb-3">Agregar</button>
+              </div>
+              </div>
+         
+  
+          <!----Fin formulario mini-->
+                  
+                  </tab>
+                </tabset>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!----Seccion Publicar-->
+    <div class="section section-tabs">
+      <div class="container">
+        <div class="title"><h3 class="mb-3">Publicar en TECres</h3></div>
+        <div class="row">
+          <div class="col-md-12 ml-auto col-xl-12 mr-auto">
+            <div class="mb-3">
+            </div>
+            <div class="card">
+              <div class="card-header">
+                <tabset class="nav-tabs-danger">
+                  
+                    
+
+        <!--Formulario mini para asignar horas-->
+        <div class="row">
+          
+         
+ 
+               <!--Dropdown proyecto-->
+               <div class="col-sm-6 col-lg-3">
+               <div
+               class="input-group"
+               [ngClass]="{ 'input-group-focus': focus1 === true }"
+             >
+               
+                <div class="dropdown nav-item" dropdown>
+                 <a
+                   class="dropdown-toggle nav-link dropdown-toggle"
+                   data-toggle="dropdown"
+                   dropdownToggle
+                   href="javascript:void(0)"
+                 >
+                 <i class="tim-icons icon-single-copy-04"> </i> Proyecto
+                 </a>
+                 <div class="dropdown-menu dropdown-with-icons" *dropdownMenu>
+                   <a class="dropdown-item"
+                   *ngFor="let fase of fases, index as i" > {{fases[i]}}</a>            
+                 </div>
+               </div>
+             </div>
+           </div>
+             <!--Botón de asignar empleado-->
+             <div class="col-sm-6 col-lg-3">
+             <button class="btn btn-primary btn-sm mr-1  mb-3">Publicar</button>
+           </div>
+         </div>
+                  
+                 
+                </tabset>
+              </div>
+            </div>
+          </div>
+        </div>
+
+     <!----Seccion Reportes-->
+
+     <div class="section section-tabs">
+      <div class="container">
+        <div class="title"><h3 class="mb-3">Reportes</h3></div>
+        <div class="row">
+          <div class="col-md-12 ml-auto col-xl-12 mr-auto">
+            <div class="mb-3">
+              <small class="text-uppercase font-weight-bold">
+                With icons
+              </small>
+            </div>
+            <div class="card">
+              <div class="card-header">
+                <tabset class="nav-tabs-danger">
+
+                  <!--Botón Presupuesto-->
+                  <tab>
+                    <ng-template tabHeading>
+                      <i class="tim-icons icon-money-coins"> </i> Presupuesto
+                    </ng-template>
+                    
+
+        <!--Formulario mini para asignar horas-->
+        <div class="row">
+          
+         <!--Dropdown empleados-->
+         <div class="col-sm-6 col-lg-3">
+              <div
+              class="input-group"
+              [ngClass]="{ 'input-group-focus': focus1 === true }"
+            >
+              
+               <div class="dropdown nav-item" dropdown>
+                <a
+                  class="dropdown-toggle nav-link dropdown-toggle"
+                  data-toggle="dropdown"
+                  dropdownToggle
+                  href="javascript:void(0)"
+                >
+                <i class="tim-icons icon-single-02"> </i> Empleado
+                </a>
+                <div class="dropdown-menu dropdown-with-icons" *dropdownMenu>
+                  <a class="dropdown-item"
+                  *ngFor="let fase of fases, index as i" > {{fases[i]}}</a>            
+                </div>
+              </div>
+            </div>
+         </div>
+
+              <!--Dropdown proyecto-->
+              <div class="col-sm-6 col-lg-3">
+              <div
+              class="input-group"
+              [ngClass]="{ 'input-group-focus': focus1 === true }"
+            >
+              
+               <div class="dropdown nav-item" dropdown>
+                <a
+                  class="dropdown-toggle nav-link dropdown-toggle"
+                  data-toggle="dropdown"
+                  dropdownToggle
+                  href="javascript:void(0)"
+                >
+                <i class="tim-icons icon-single-copy-04"> </i> Proyecto
+                </a>
+                <div class="dropdown-menu dropdown-with-icons" *dropdownMenu>
+                  <a class="dropdown-item"
+                  *ngFor="let fase of fases, index as i" > {{fases[i]}}</a>            
+                </div>
+              </div>
+            </div>
+          </div>
+         
+            <!--Botón de asignar empleado-->
+            
+            <div class="col-sm-6 col-lg-3">
+            <button class="btn btn-primary btn-sm mr-1  mb-3">Asignar</button>
+          </div>
+        </div>
+       
+          
+                  </tab>
+
+                <!---------------Botón Planilla-->
+                  <tab>
+                    <ng-template tabHeading>
+                      <i class="tim-icons icon-components"> Planilla</i> 
+                    </ng-template>
+
+          <!--Formulario mini etapa-->
+          <!--Caja de texto Nombre-->
+          <div class="row">
+          <div class="col-sm-6 col-lg-3">
+            <div class="input-group">
+              <input
+                class="form-control"
+                placeholder="Nombre"
+                type="text"
+              />
+              <div class="input-group-append">
+                <span class="input-group-text">
+                  
+                </span>
+              </div>
+            </div>
+          </div>
+
+              <!--Caja de texto descripción-->
+              <div class="col-sm-6 col-lg-3">
+                <div class="input-group">
+                  <input
+                    class="form-control"
+                    placeholder="Descripción"
+                    type="text"
+                  />
+                  <div class="input-group-append">
+                    <span class="input-group-text">
+                      <i class="tim-icons icon-paper"> </i>
+                    </span>
+                  </div>
+                </div>
+              </div>
+             
+             
+
+               <!--Botón de guardar material-->
+               <div class="col-sm-6 col-lg-3">
+               <button class="btn btn-primary btn-sm mr-1 mb-3">Agregar</button>
+              </div>
+              </div>
+         
+  
+          <!----Fin formulario mini-->
+                  
+                  </tab>
+
+                  <!--Botón de reporte gastos-->
+                  <tab>
+                      <ng-template tabHeading>
+                        <i class="tim-icons icon-money-coins"> </i> Gastos
+                      </ng-template>
+                      
+  
+          <!--Formulario mini para asignar horas-->
+          <div class="row">
+            
+           <!--Dropdown empleados-->
+           <div class="col-sm-6 col-lg-3">
+                <div
+                class="input-group"
+                [ngClass]="{ 'input-group-focus': focus1 === true }"
+              >
+                
+                 <div class="dropdown nav-item" dropdown>
+                  <a
+                    class="dropdown-toggle nav-link dropdown-toggle"
+                    data-toggle="dropdown"
+                    dropdownToggle
+                    href="javascript:void(0)"
+                  >
+                  <i class="tim-icons icon-single-02"> </i> Empleado
+                  </a>
+                  <div class="dropdown-menu dropdown-with-icons" *dropdownMenu>
+                    <a class="dropdown-item"
+                    *ngFor="let fase of fases, index as i" > {{fases[i]}}</a>            
+                  </div>
+                </div>
+              </div>
+           </div>
+  
+                <!--Dropdown proyecto-->
+                <div class="col-sm-6 col-lg-3">
+                <div
+                class="input-group"
+                [ngClass]="{ 'input-group-focus': focus1 === true }"
+              >
+                
+                 <div class="dropdown nav-item" dropdown>
+                  <a
+                    class="dropdown-toggle nav-link dropdown-toggle"
+                    data-toggle="dropdown"
+                    dropdownToggle
+                    href="javascript:void(0)"
+                  >
+                  <i class="tim-icons icon-single-copy-04"> </i> Proyecto
+                  </a>
+                  <div class="dropdown-menu dropdown-with-icons" *dropdownMenu>
+                    <a class="dropdown-item"
+                    *ngFor="let fase of fases, index as i" > {{fases[i]}}</a>            
+                  </div>
+                </div>
+              </div>
+            </div>
+           
+              <!--Botón de asignar empleado-->
+              
+              <div class="col-sm-6 col-lg-3">
+              <button class="btn btn-primary btn-sm mr-1  mb-3">Asignar</button>
+            </div>
+          </div>
+          <!----Fin formulario mini -->
+            
+                    </tab>
+
+            <!--Botón reporte estado-->
+            <tab>
+                <ng-template tabHeading>
+                  <i class="tim-icons icon-sound-wave"> </i> Estado
+                </ng-template>
+                
+
+    <!--Formulario mini para asignar horas-->
+    <div class="row">
+      
+     <!--Dropdown empleados-->
+     <div class="col-sm-6 col-lg-3">
+          <div
+          class="input-group"
+          [ngClass]="{ 'input-group-focus': focus1 === true }"
+        >
+          
+           <div class="dropdown nav-item" dropdown>
+            <a
+              class="dropdown-toggle nav-link dropdown-toggle"
+              data-toggle="dropdown"
+              dropdownToggle
+              href="javascript:void(0)"
+            >
+            <i class="tim-icons icon-single-02"> </i> Empleado
+            </a>
+            <div class="dropdown-menu dropdown-with-icons" *dropdownMenu>
+              <a class="dropdown-item"
+              *ngFor="let fase of fases, index as i" > {{fases[i]}}</a>            
+            </div>
+          </div>
+        </div>
+     </div>
+
+          <!--Dropdown proyecto-->
+          <div class="col-sm-6 col-lg-3">
+          <div
+          class="input-group"
+          [ngClass]="{ 'input-group-focus': focus1 === true }"
+        >
+          
+           <div class="dropdown nav-item" dropdown>
+            <a
+              class="dropdown-toggle nav-link dropdown-toggle"
+              data-toggle="dropdown"
+              dropdownToggle
+              href="javascript:void(0)"
+            >
+            <i class="tim-icons icon-single-copy-04"> </i> Proyecto
+            </a>
+            <div class="dropdown-menu dropdown-with-icons" *dropdownMenu>
+              <a class="dropdown-item"
+              *ngFor="let fase of fases, index as i" > {{fases[i]}}</a>            
+            </div>
+          </div>
+        </div>
+      </div>
+     
+        <!--Botón de asignar empleado-->
+        
+        <div class="col-sm-6 col-lg-3">
+        <button class="btn btn-primary btn-sm mr-1  mb-3">Asignar</button>
+      </div>
+    </div>
+    <!----Fin formulario mini -->
+      
+              </tab>
+                </tabset>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+  <!---------------Footer------------------>
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3"><h1 class="title">TEConstruye•</h1></div>
+        <div class="col-md-3">
+          <ul class="nav">
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/home']"> Inicio </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/landing']"> Landing </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/register']"> Registro </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/profile']"> Perfil </a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <ul class="nav">
+            <li class="nav-item">
+              <a class="nav-link" href="https://creative-tim.com/contact-us?ref=blkdsa-footer">
+                Contact Us
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://creative-tim.com/about-us?ref=blkdsa-footer">
+                About Us
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://creative-tim.com/blog?ref=blkdsa-footer">
+                Blog
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://opensource.org/licenses/MIT">
+                License
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <h3 class="title">Follow us:</h3>
+          <div class="btn-wrapper profile">
+            <a
+              class="btn btn-icon btn-neutral btn-round btn-simple mr-1"
+              href="https://twitter.com/creativetim"
+              target="_blank"
+            >
+              <i class="fab fa-twitter"> </i>
+            </a>
+            <a
+              class="btn btn-icon btn-neutral btn-round btn-simple mr-1"
+              href="https://www.facebook.com/creativetim"
+              target="_blank"
+            >
+              <i class="fab fa-facebook-square"> </i>
+            </a>
+            <a
+              class="btn btn-icon btn-neutral btn-round btn-simple"
+              href="https://dribbble.com/creativetim"
+              target="_blank"
+            >
+              <i class="fab fa-dribbble"> </i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+
