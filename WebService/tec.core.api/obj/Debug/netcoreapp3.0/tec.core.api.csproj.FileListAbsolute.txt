@@ -1,9 +1,0 @@
-D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.core.api\bin\Debug\netcoreapp3.0\appsettings.Development.json
-D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.core.api\bin\Debug\netcoreapp3.0\appsettings.json
-D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.core.api\bin\Debug\netcoreapp3.0\Properties\launchSettings.json
-D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.core.api\bin\Debug\netcoreapp3.0\tec.core.api.exe
-D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.core.api\obj\Debug\netcoreapp3.0\staticwebassets\tec.core.api.StaticWebAssets.Manifest.cache
-D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.core.api\obj\Debug\netcoreapp3.0\staticwebassets\tec.core.api.StaticWebAssets.xml
-D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.core.api\obj\Debug\netcoreapp3.0\tec.core.api.AssemblyInfoInputs.cache
-D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.core.api\obj\Debug\netcoreapp3.0\tec.core.api.AssemblyInfo.cs
-D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.core.api\obj\Debug\netcoreapp3.0\tec.core.api.RazorTargetAssemblyInfo.cache

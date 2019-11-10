@@ -1,5 +1,0 @@
-D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.core.model\bin\Debug\netcoreapp3.0\tec.core.model.deps.json
-D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.core.model\bin\Debug\netcoreapp3.0\tec.core.model.dll
-D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.core.model\obj\Debug\netcoreapp3.0\tec.core.model.csprojAssemblyReference.cache
-D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.core.model\obj\Debug\netcoreapp3.0\tec.core.model.AssemblyInfoInputs.cache
-D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.core.model\obj\Debug\netcoreapp3.0\tec.core.model.AssemblyInfo.cs
