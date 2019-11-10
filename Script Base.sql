@@ -89,7 +89,8 @@
     create table Especialidad(
 	 nombre varchar(40),
 	 id int GENERATED ALWAYS AS IDENTITY,
-	 PRIMARY KEY (id)
+	 PRIMARY KEY (id),
+	 UNIQUE(nombre)
  );
  
     create table Requiere(
