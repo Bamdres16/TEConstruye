@@ -96,30 +96,35 @@
     create table Requiere(
 	 id_etapa int,
 	 codigo_material varchar(25),
-	 cantidad int
+	 cantidad int,
+	 PRIMARY KEY(id_etapa,codigo_material)
  );
  
     create table Tiene(
 	 id_etapa int,
-	 id_obra int
+	 id_obra int,
+	 PRIMARY KEY (id_etapa,id_obra)
  );
  
     create table Labora_en(
 	 id_empleado int,
 	 id_obra int,
-	 horas_laboradas float
+	 horas_laboradas float,
+	 PRIMARY KEY(id_empleado, id_obra)
  );
  
     create table Trabaja_en(
 	 id_arquitecto int,
 	 id_obra int,
-	 horas_laboradas float
+	 horas_laboradas float,
+	 PRIMARY KEY (id_arquitecto, id_obra)
  );
  
     create table Diseña(
 	 id_ingeniero int,
 	 id_obra int,
-	 horas_laboradas float
+	 horas_laboradas float,
+	 PRIMARY KEY (id_ingeniero, id_obra)
  );
  
  
@@ -156,3 +161,6 @@ ADD CONSTRAINT FK_ETAPA FOREIGN KEY (id_etapa) REFERENCES Etapa(id);
 
 ALTER TABLE Tiene 
 ADD CONSTRAINT FK_OBRA FOREIGN KEY (id_obra) REFERENCES obra(id);
+
+ALTER TABLE Obra
+ADD CONSTRAINT FK_OBRAUbicacion FOREIGN KEY (ubicacion) REFERENCES Ubicacion(id);
