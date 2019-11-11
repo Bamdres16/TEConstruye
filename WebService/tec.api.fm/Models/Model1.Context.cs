@@ -25,19 +25,8 @@ namespace tec.api.fm.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<arquitecto> arquitecto { get; set; }
         public virtual DbSet<cliente> cliente { get; set; }
-        public virtual DbSet<diseña> diseña { get; set; }
-        public virtual DbSet<empleado> empleado { get; set; }
-        public virtual DbSet<especialidad> especialidad { get; set; }
         public virtual DbSet<etapa> etapa { get; set; }
-        public virtual DbSet<ingeniero> ingeniero { get; set; }
-        public virtual DbSet<labora_en> labora_en { get; set; }
-        public virtual DbSet<material> material { get; set; }
-        public virtual DbSet<obra> obra { get; set; }
-        public virtual DbSet<requiere> requiere { get; set; }
-        public virtual DbSet<tiene> tiene { get; set; }
-        public virtual DbSet<trabaja_en> trabaja_en { get; set; }
         public virtual DbSet<ubicacion> ubicacion { get; set; }
     }
 }

@@ -14,19 +14,8 @@ namespace tec.api.fm.Models
     
     public partial class etapa
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public etapa()
-        {
-            this.tiene = new HashSet<tiene>();
-        }
-    
         public string nombre { get; set; }
         public string descripcion { get; set; }
-        public Nullable<System.DateTime> fecha_incio { get; set; }
-        public Nullable<System.DateTime> fecha_finalizacion { get; set; }
         public int id { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tiene> tiene { get; set; }
     }
 }

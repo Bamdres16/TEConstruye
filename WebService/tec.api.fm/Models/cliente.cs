@@ -14,20 +14,11 @@ namespace tec.api.fm.Models
     
     public partial class cliente
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public cliente()
-        {
-            this.obra = new HashSet<obra>();
-        }
-    
         public string nombre { get; set; }
         public string apellido1 { get; set; }
         public string apellido2 { get; set; }
-        public Nullable<int> cedula { get; set; }
-        public Nullable<int> numero_telefono { get; set; }
+        public string cedula { get; set; }
+        public string numero_telefono { get; set; }
         public int id { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<obra> obra { get; set; }
     }
 }

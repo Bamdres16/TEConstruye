@@ -4,33 +4,10 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="9cf1cdad63584130935c22102b6728de" Name="Diagram1" ZoomLevel="64">
-        <EntityTypeShape EntityType="TEConstruyeModel.arquitecto" Width="1.5" PointX="3" PointY="12.5" />
-        <EntityTypeShape EntityType="TEConstruyeModel.cliente" Width="1.5" PointX="0.75" PointY="1.875" />
-        <EntityTypeShape EntityType="TEConstruyeModel.diseña" Width="1.5" PointX="5.25" PointY="2" />
-        <EntityTypeShape EntityType="TEConstruyeModel.empleado" Width="1.5" PointX="3" PointY="0.75" />
-        <EntityTypeShape EntityType="TEConstruyeModel.especialidad" Width="1.5" PointX="0.75" PointY="9.25" />
-        <EntityTypeShape EntityType="TEConstruyeModel.etapa" Width="1.5" PointX="7.75" PointY="2" />
-        <EntityTypeShape EntityType="TEConstruyeModel.ingeniero" Width="1.5" PointX="3" PointY="8.75" />
-        <EntityTypeShape EntityType="TEConstruyeModel.labora_en" Width="1.5" PointX="5.25" PointY="8" />
-        <EntityTypeShape EntityType="TEConstruyeModel.material" Width="1.5" PointX="7.75" PointY="6" />
-        <EntityTypeShape EntityType="TEConstruyeModel.obra" Width="1.5" PointX="3" PointY="4.125" />
-        <EntityTypeShape EntityType="TEConstruyeModel.requiere" Width="1.5" PointX="10" PointY="6" />
-        <EntityTypeShape EntityType="TEConstruyeModel.tiene" Width="1.5" PointX="10" PointY="2.375" />
-        <EntityTypeShape EntityType="TEConstruyeModel.trabaja_en" Width="1.5" PointX="5.25" PointY="5" />
-        <EntityTypeShape EntityType="TEConstruyeModel.ubicacion" Width="1.5" PointX="0.75" PointY="5" />
-        <AssociationConnector Association="TEConstruyeModel.fk_arquitecto1" />
-        <AssociationConnector Association="TEConstruyeModel.fk_especialidad1" />
-        <AssociationConnector Association="TEConstruyeModel.fk_propietario_obra" />
-        <AssociationConnector Association="TEConstruyeModel.fk_arquitecto" />
-        <AssociationConnector Association="TEConstruyeModel.fk_obra1" />
-        <AssociationConnector Association="TEConstruyeModel.fk_empleado" />
-        <AssociationConnector Association="TEConstruyeModel.fk_especialidad" />
-        <AssociationConnector Association="TEConstruyeModel.fk_etapa" />
-        <AssociationConnector Association="TEConstruyeModel.fk_obra" />
-        <AssociationConnector Association="TEConstruyeModel.fk_material" />
-        <AssociationConnector Association="TEConstruyeModel.fk_obra2" />
-        <AssociationConnector Association="TEConstruyeModel.fk_obraubicacion" />
+      <Diagram DiagramId="b5b8b04d15874ece8d2d6f99b7c53834" Name="Diagram1">
+        <EntityTypeShape EntityType="TEConstruyeModel.cliente" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TEConstruyeModel.etapa" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TEConstruyeModel.ubicacion" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
