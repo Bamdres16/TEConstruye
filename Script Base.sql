@@ -17,6 +17,7 @@
 	 cantidad_pisos int,
 	 area_construccion float,
 	 area_lote int,
+	 propietario int,
 	 id int GENERATED ALWAYS AS IDENTITY,
 	 PRIMARY KEY (id)
  );
@@ -164,3 +165,6 @@ ADD CONSTRAINT FK_OBRA FOREIGN KEY (id_obra) REFERENCES obra(id);
 
 ALTER TABLE Obra
 ADD CONSTRAINT FK_OBRAUbicacion FOREIGN KEY (ubicacion) REFERENCES Ubicacion(id);
+
+ALTER TABLE Obra
+ADD CONSTRAINT FK_PROPIETARIO_OBRA FOREIGN KEY (propietario) REFERENCES Cliente(id);
