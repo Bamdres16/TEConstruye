@@ -6,62 +6,50 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Web;
 using System.Web.Http;
 using System.Web.Http.Description;
 using tec.api.fm.Models;
 
 namespace tec.api.fm.Controllers
 {
-    public class especialidadController : ApiController
+    public class arquitectoController : ApiController
     {
         private TEConstruyeEntities db = new TEConstruyeEntities();
 
-        // GET: api/especialidad
-        public IHttpActionResult Options()
+        // GET: api/arquitecto
+        public IQueryable<arquitecto> Getarquitecto()
         {
-            HttpContext.Current.Response.AppendHeader("Allow", "GET,DELETE,PUT,POST,OPTIONS");
-            return Ok();
+            return db.arquitecto;
         }
 
-        // GET: api/especialidad
-        public object Getespecialidad()
+        // GET: api/arquitecto/5
+        [ResponseType(typeof(arquitecto))]
+        public IHttpActionResult Getarquitecto(int id)
         {
-            var espe = db.especialidad
-                       .Select(e => new { e.nombre, e.id })
-                       .ToList();
-            return espe;
-
-        }
-
-        // GET: api/especialidad/5
-        [ResponseType(typeof(especialidad))]
-        public IHttpActionResult Getespecialidad(int id)
-        {
-            especialidad especialidad = db.especialidad.Find(id);
-            if (especialidad == null)
+            arquitecto arquitecto = db.arquitecto.Find(id);
+            if (arquitecto == null)
             {
                 return NotFound();
             }
 
-            return Ok(especialidad);
+            return Ok(arquitecto);
         }
 
-        // PUT: api/especialidad/5
+        // PUT: api/arquitecto/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult Putespecialidad(int id, especialidad especialidad)
+        public IHttpActionResult Putarquitecto(int id, arquitecto arquitecto)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != especialidad.id)
+            if (id != arquitecto.id)
             {
                 return BadRequest();
             }
 
-            db.Entry(especialidad).State = EntityState.Modified;
+            db.Entry(arquitecto).State = EntityState.Modified;
 
             try
             {
@@ -69,7 +57,7 @@ namespace tec.api.fm.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!especialidadExists(id))
+                if (!arquitectoExists(id))
                 {
                     return NotFound();
                 }
@@ -82,16 +70,16 @@ namespace tec.api.fm.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/especialidad
-        [ResponseType(typeof(especialidad))]
-        public IHttpActionResult Postespecialidad(especialidad especialidad)
+        // POST: api/arquitecto
+        [ResponseType(typeof(arquitecto))]
+        public IHttpActionResult Postarquitecto(arquitecto arquitecto)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.especialidad.Add(especialidad);
+            db.arquitecto.Add(arquitecto);
 
             try
             {
@@ -99,7 +87,7 @@ namespace tec.api.fm.Controllers
             }
             catch (DbUpdateException)
             {
-                if (especialidadExists(especialidad.id))
+                if (arquitectoExists(arquitecto.id))
                 {
                     return Conflict();
                 }
@@ -109,23 +97,23 @@ namespace tec.api.fm.Controllers
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = especialidad.id }, especialidad);
+            return CreatedAtRoute("DefaultApi", new { id = arquitecto.id }, arquitecto);
         }
 
-        // DELETE: api/especialidad/5
-        [ResponseType(typeof(especialidad))]
-        public IHttpActionResult Deleteespecialidad(int id)
+        // DELETE: api/arquitecto/5
+        [ResponseType(typeof(arquitecto))]
+        public IHttpActionResult Deletearquitecto(int id)
         {
-            especialidad especialidad = db.especialidad.Find(id);
-            if (especialidad == null)
+            arquitecto arquitecto = db.arquitecto.Find(id);
+            if (arquitecto == null)
             {
                 return NotFound();
             }
 
-            db.especialidad.Remove(especialidad);
+            db.arquitecto.Remove(arquitecto);
             db.SaveChanges();
 
-            return Ok(especialidad);
+            return Ok(arquitecto);
         }
 
         protected override void Dispose(bool disposing)
@@ -137,9 +125,9 @@ namespace tec.api.fm.Controllers
             base.Dispose(disposing);
         }
 
-        private bool especialidadExists(int id)
+        private bool arquitectoExists(int id)
         {
-            return db.especialidad.Count(e => e.id == id) > 0;
+            return db.arquitecto.Count(e => e.id == id) > 0;
         }
     }
 }

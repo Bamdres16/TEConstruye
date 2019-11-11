@@ -32,10 +32,8 @@
 );
 
   create table Etapa(
-	 nombre varchar(50),
-	 descripcion varchar(100),
-	 fecha_incio date,
-	 fecha_finalizacion date,
+	 nombre varchar(60),
+	 descripcion varchar(250),
 	 id int GENERATED ALWAYS AS IDENTITY,
 	 PRIMARY KEY (id)
  );
@@ -104,6 +102,8 @@
     create table Tiene(
 	 id_etapa int,
 	 id_obra int,
+	 fecha_incio date,
+	 fecha_finalizacion date,
 	 PRIMARY KEY (id_etapa,id_obra)
  );
  
