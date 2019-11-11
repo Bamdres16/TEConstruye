@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29503.13
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "teconstruye.api", "teconstruye.api.csproj", "{81BA96B6-E083-4108-A49E-396210A7ECAA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "teconstruye.api", "teconstruye.api.csproj", "{81BA96B6-E083-4108-A49E-396210A7ECAA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tec.api.fm", "..\tec.api.fm\tec.api.fm.csproj", "{35AE3849-02B6-490A-8CE0-30EC4E127717}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{81BA96B6-E083-4108-A49E-396210A7ECAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81BA96B6-E083-4108-A49E-396210A7ECAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{81BA96B6-E083-4108-A49E-396210A7ECAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35AE3849-02B6-490A-8CE0-30EC4E127717}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35AE3849-02B6-490A-8CE0-30EC4E127717}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35AE3849-02B6-490A-8CE0-30EC4E127717}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35AE3849-02B6-490A-8CE0-30EC4E127717}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

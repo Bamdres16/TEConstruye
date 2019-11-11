@@ -1,0 +1,352 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TEConstruyeModel.Store" Provider="Npgsql" ProviderManifestToken="10.10" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="arquitecto">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="nombre" Type="varchar" MaxLength="40" />
+    <Property Name="apellido1" Type="varchar" MaxLength="40" />
+    <Property Name="apellido2" Type="varchar" MaxLength="40" />
+    <Property Name="cedula" Type="int4" />
+    <Property Name="numero_telefono" Type="int4" />
+    <Property Name="codigo_arquitecto" Type="varchar" MaxLength="20" />
+    <Property Name="id_especialidad" Type="int4" />
+    <Property Name="id" Type="int4" Nullable="false" />
+  </EntityType>
+  <EntityType Name="cliente">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="nombre" Type="varchar" MaxLength="40" />
+    <Property Name="apellido1" Type="varchar" MaxLength="40" />
+    <Property Name="apellido2" Type="varchar" MaxLength="40" />
+    <Property Name="cedula" Type="int4" />
+    <Property Name="numero_telefono" Type="int4" />
+    <Property Name="id" Type="int4" Nullable="false" />
+  </EntityType>
+  <EntityType Name="diseña">
+    <Key>
+      <PropertyRef Name="id_ingeniero" />
+      <PropertyRef Name="id_obra" />
+    </Key>
+    <Property Name="id_ingeniero" Type="int4" Nullable="false" />
+    <Property Name="id_obra" Type="int4" Nullable="false" />
+    <Property Name="horas_laboradas" Type="float8" />
+  </EntityType>
+  <EntityType Name="empleado">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="nombre" Type="varchar" MaxLength="40" />
+    <Property Name="apellido1" Type="varchar" MaxLength="40" />
+    <Property Name="apellido2" Type="varchar" MaxLength="40" />
+    <Property Name="cedula" Type="int4" />
+    <Property Name="numero_telefono" Type="int4" />
+    <Property Name="pago_hora" Type="float8" />
+    <Property Name="id" Type="int4" Nullable="false" />
+  </EntityType>
+  <EntityType Name="especialidad">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="nombre" Type="varchar" MaxLength="40" />
+    <Property Name="id" Type="int4" Nullable="false" />
+  </EntityType>
+  <EntityType Name="etapa">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="nombre" Type="varchar" MaxLength="50" />
+    <Property Name="descripcion" Type="varchar" MaxLength="100" />
+    <Property Name="fecha_incio" Type="date" />
+    <Property Name="fecha_finalizacion" Type="date" />
+    <Property Name="id" Type="int4" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ingeniero">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="nombre" Type="varchar" MaxLength="40" />
+    <Property Name="apellido1" Type="varchar" MaxLength="40" />
+    <Property Name="apellido2" Type="varchar" MaxLength="40" />
+    <Property Name="cedula" Type="int4" />
+    <Property Name="numero_telefono" Type="int4" />
+    <Property Name="codigo_ingeniero" Type="varchar" MaxLength="20" />
+    <Property Name="id_especialidad" Type="int4" />
+    <Property Name="id" Type="int4" Nullable="false" />
+  </EntityType>
+  <EntityType Name="labora_en">
+    <Key>
+      <PropertyRef Name="id_empleado" />
+      <PropertyRef Name="id_obra" />
+    </Key>
+    <Property Name="id_empleado" Type="int4" Nullable="false" />
+    <Property Name="id_obra" Type="int4" Nullable="false" />
+    <Property Name="horas_laboradas" Type="float8" />
+  </EntityType>
+  <EntityType Name="material">
+    <Key>
+      <PropertyRef Name="codigo" />
+    </Key>
+    <Property Name="nombre" Type="varchar" MaxLength="50" />
+    <Property Name="precio_unitario" Type="float8" />
+    <Property Name="codigo" Type="varchar" MaxLength="25" Nullable="false" />
+  </EntityType>
+  <EntityType Name="obra">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="nombre_obra" Type="varchar" MaxLength="80" />
+    <Property Name="ubicacion" Type="int4" />
+    <Property Name="cantidad_habitaciones" Type="int4" />
+    <Property Name="cantidad_banos" Type="int4" />
+    <Property Name="cantidad_pisos" Type="int4" />
+    <Property Name="area_construccion" Type="float8" />
+    <Property Name="area_lote" Type="int4" />
+    <Property Name="propietario" Type="int4" />
+    <Property Name="id" Type="int4" Nullable="false" />
+  </EntityType>
+  <EntityType Name="requiere">
+    <Key>
+      <PropertyRef Name="id_etapa" />
+      <PropertyRef Name="codigo_material" />
+    </Key>
+    <Property Name="id_etapa" Type="int4" Nullable="false" />
+    <Property Name="codigo_material" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="cantidad" Type="int4" />
+  </EntityType>
+  <EntityType Name="tiene">
+    <Key>
+      <PropertyRef Name="id_etapa" />
+      <PropertyRef Name="id_obra" />
+    </Key>
+    <Property Name="id_etapa" Type="int4" Nullable="false" />
+    <Property Name="id_obra" Type="int4" Nullable="false" />
+  </EntityType>
+  <EntityType Name="trabaja_en">
+    <Key>
+      <PropertyRef Name="id_arquitecto" />
+      <PropertyRef Name="id_obra" />
+    </Key>
+    <Property Name="id_arquitecto" Type="int4" Nullable="false" />
+    <Property Name="id_obra" Type="int4" Nullable="false" />
+    <Property Name="horas_laboradas" Type="float8" />
+  </EntityType>
+  <EntityType Name="ubicacion">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="provincia" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="canton" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="distrito" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="id" Type="int4" Nullable="false" />
+  </EntityType>
+  <Association Name="fk_arquitecto">
+    <End Role="ingeniero" Type="Self.ingeniero" Multiplicity="1" />
+    <End Role="diseña" Type="Self.diseña" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ingeniero">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="diseña">
+        <PropertyRef Name="id_ingeniero" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_arquitecto1">
+    <End Role="arquitecto" Type="Self.arquitecto" Multiplicity="1" />
+    <End Role="trabaja_en" Type="Self.trabaja_en" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="arquitecto">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="trabaja_en">
+        <PropertyRef Name="id_arquitecto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_empleado">
+    <End Role="empleado" Type="Self.empleado" Multiplicity="1" />
+    <End Role="labora_en" Type="Self.labora_en" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="empleado">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="labora_en">
+        <PropertyRef Name="id_empleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_especialidad">
+    <End Role="especialidad" Type="Self.especialidad" Multiplicity="0..1" />
+    <End Role="ingeniero" Type="Self.ingeniero" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="especialidad">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ingeniero">
+        <PropertyRef Name="id_especialidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_especialidad1">
+    <End Role="especialidad" Type="Self.especialidad" Multiplicity="0..1" />
+    <End Role="arquitecto" Type="Self.arquitecto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="especialidad">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="arquitecto">
+        <PropertyRef Name="id_especialidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_etapa">
+    <End Role="etapa" Type="Self.etapa" Multiplicity="1" />
+    <End Role="tiene" Type="Self.tiene" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="etapa">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="tiene">
+        <PropertyRef Name="id_etapa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_material">
+    <End Role="material" Type="Self.material" Multiplicity="1" />
+    <End Role="requiere" Type="Self.requiere" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="material">
+        <PropertyRef Name="codigo" />
+      </Principal>
+      <Dependent Role="requiere">
+        <PropertyRef Name="codigo_material" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_obra">
+    <End Role="obra" Type="Self.obra" Multiplicity="1" />
+    <End Role="labora_en" Type="Self.labora_en" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="obra">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="labora_en">
+        <PropertyRef Name="id_obra" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_obra1">
+    <End Role="obra" Type="Self.obra" Multiplicity="1" />
+    <End Role="diseña" Type="Self.diseña" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="obra">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="diseña">
+        <PropertyRef Name="id_obra" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_obra2">
+    <End Role="obra" Type="Self.obra" Multiplicity="1" />
+    <End Role="trabaja_en" Type="Self.trabaja_en" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="obra">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="trabaja_en">
+        <PropertyRef Name="id_obra" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_obraubicacion">
+    <End Role="ubicacion" Type="Self.ubicacion" Multiplicity="0..1" />
+    <End Role="obra" Type="Self.obra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ubicacion">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="obra">
+        <PropertyRef Name="ubicacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_propietario_obra">
+    <End Role="cliente" Type="Self.cliente" Multiplicity="0..1" />
+    <End Role="obra" Type="Self.obra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cliente">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="obra">
+        <PropertyRef Name="propietario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TEConstruyeModelStoreContainer">
+    <EntitySet Name="arquitecto" EntityType="Self.arquitecto" Schema="public" store:Type="Tables" />
+    <EntitySet Name="cliente" EntityType="Self.cliente" Schema="public" store:Type="Tables" />
+    <EntitySet Name="diseña" EntityType="Self.diseña" Schema="public" store:Type="Tables" />
+    <EntitySet Name="empleado" EntityType="Self.empleado" Schema="public" store:Type="Tables" />
+    <EntitySet Name="especialidad" EntityType="Self.especialidad" Schema="public" store:Type="Tables" />
+    <EntitySet Name="etapa" EntityType="Self.etapa" Schema="public" store:Type="Tables" />
+    <EntitySet Name="ingeniero" EntityType="Self.ingeniero" Schema="public" store:Type="Tables" />
+    <EntitySet Name="labora_en" EntityType="Self.labora_en" Schema="public" store:Type="Tables" />
+    <EntitySet Name="material" EntityType="Self.material" Schema="public" store:Type="Tables" />
+    <EntitySet Name="obra" EntityType="Self.obra" Schema="public" store:Type="Tables" />
+    <EntitySet Name="requiere" EntityType="Self.requiere" Schema="public" store:Type="Tables" />
+    <EntitySet Name="tiene" EntityType="Self.tiene" Schema="public" store:Type="Tables" />
+    <EntitySet Name="trabaja_en" EntityType="Self.trabaja_en" Schema="public" store:Type="Tables" />
+    <EntitySet Name="ubicacion" EntityType="Self.ubicacion" Schema="public" store:Type="Tables" />
+    <AssociationSet Name="fk_arquitecto" Association="Self.fk_arquitecto">
+      <End Role="ingeniero" EntitySet="ingeniero" />
+      <End Role="diseña" EntitySet="diseña" />
+    </AssociationSet>
+    <AssociationSet Name="fk_arquitecto1" Association="Self.fk_arquitecto1">
+      <End Role="arquitecto" EntitySet="arquitecto" />
+      <End Role="trabaja_en" EntitySet="trabaja_en" />
+    </AssociationSet>
+    <AssociationSet Name="fk_empleado" Association="Self.fk_empleado">
+      <End Role="empleado" EntitySet="empleado" />
+      <End Role="labora_en" EntitySet="labora_en" />
+    </AssociationSet>
+    <AssociationSet Name="fk_especialidad" Association="Self.fk_especialidad">
+      <End Role="especialidad" EntitySet="especialidad" />
+      <End Role="ingeniero" EntitySet="ingeniero" />
+    </AssociationSet>
+    <AssociationSet Name="fk_especialidad1" Association="Self.fk_especialidad1">
+      <End Role="especialidad" EntitySet="especialidad" />
+      <End Role="arquitecto" EntitySet="arquitecto" />
+    </AssociationSet>
+    <AssociationSet Name="fk_etapa" Association="Self.fk_etapa">
+      <End Role="etapa" EntitySet="etapa" />
+      <End Role="tiene" EntitySet="tiene" />
+    </AssociationSet>
+    <AssociationSet Name="fk_material" Association="Self.fk_material">
+      <End Role="material" EntitySet="material" />
+      <End Role="requiere" EntitySet="requiere" />
+    </AssociationSet>
+    <AssociationSet Name="fk_obra" Association="Self.fk_obra">
+      <End Role="obra" EntitySet="obra" />
+      <End Role="labora_en" EntitySet="labora_en" />
+    </AssociationSet>
+    <AssociationSet Name="fk_obra1" Association="Self.fk_obra1">
+      <End Role="obra" EntitySet="obra" />
+      <End Role="diseña" EntitySet="diseña" />
+    </AssociationSet>
+    <AssociationSet Name="fk_obra2" Association="Self.fk_obra2">
+      <End Role="obra" EntitySet="obra" />
+      <End Role="trabaja_en" EntitySet="trabaja_en" />
+    </AssociationSet>
+    <AssociationSet Name="fk_obraubicacion" Association="Self.fk_obraubicacion">
+      <End Role="ubicacion" EntitySet="ubicacion" />
+      <End Role="obra" EntitySet="obra" />
+    </AssociationSet>
+    <AssociationSet Name="fk_propietario_obra" Association="Self.fk_propietario_obra">
+      <End Role="cliente" EntitySet="cliente" />
+      <End Role="obra" EntitySet="obra" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

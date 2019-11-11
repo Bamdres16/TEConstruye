@@ -110,4 +110,12 @@ D:\Escritorio\TEConstruye\TEConstruye\WebService\teconstruye.api\obj\Debug\netco
 D:\Escritorio\TEConstruye\TEConstruye\WebService\teconstruye.api\bin\Debug\netcoreapp3.0\Npgsql.dll
 D:\Escritorio\TEConstruye\TEConstruye\WebService\teconstruye.api\bin\Debug\netcoreapp3.0\Dapper.dll
 D:\Escritorio\TEConstruye\TEConstruye\WebService\teconstruye.api\bin\Debug\netcoreapp3.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+D:\Escritorio\TEConstruye\TEConstruye\WebService\teconstruye.api\bin\Debug\netcoreapp3.0\packages\Microsoft.AspNet.WebApi.HelpPage.5.2.7\Content\Areas\HelpPage\Views\Web.config
+D:\Escritorio\TEConstruye\TEConstruye\WebService\teconstruye.api\bin\Debug\netcoreapp3.0\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\tools\Roslyn45\csc.exe.config
+D:\Escritorio\TEConstruye\TEConstruye\WebService\teconstruye.api\bin\Debug\netcoreapp3.0\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\tools\Roslyn45\vbc.exe.config
+D:\Escritorio\TEConstruye\TEConstruye\WebService\teconstruye.api\bin\Debug\netcoreapp3.0\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\tools\Roslyn45\VBCSCompiler.exe.config
+D:\Escritorio\TEConstruye\TEConstruye\WebService\teconstruye.api\bin\Debug\netcoreapp3.0\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\tools\RoslynLatest\csc.exe.config
+D:\Escritorio\TEConstruye\TEConstruye\WebService\teconstruye.api\bin\Debug\netcoreapp3.0\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\tools\RoslynLatest\csi.exe.config
+D:\Escritorio\TEConstruye\TEConstruye\WebService\teconstruye.api\bin\Debug\netcoreapp3.0\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\tools\RoslynLatest\vbc.exe.config
+D:\Escritorio\TEConstruye\TEConstruye\WebService\teconstruye.api\bin\Debug\netcoreapp3.0\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\tools\RoslynLatest\VBCSCompiler.exe.config
 D:\Escritorio\TEConstruye\TEConstruye\WebService\teconstruye.api\obj\Debug\netcoreapp3.0\teconstruye.api.MvcApplicationPartsAssemblyInfo.cache
