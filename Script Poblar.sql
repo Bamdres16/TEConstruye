@@ -1436,7 +1436,7 @@ INSERT INTO Ubicacion(provincia, canton, distrito)
  INSERT INTO Ubicacion(provincia, canton, distrito) 
  VALUES ('Limón','Guácimo','Duacari');
  
- -- Para Etapas
+ -- PARA ETAPAS
  
 INSERT INTO Etapa (nombre, descripcion)
 VALUES ('Trabajo Preliminar', 'Conjunto de procesos que se realiza previo a la construcción de una obra');
@@ -1497,3 +1497,5 @@ VALUES ('Pintura','Etapa en la que se le da color a las diferentes secciones de 
 
 INSERT INTO Etapa (nombre, descripcion)
 VALUES ('Escaleras','Sección de una construcción que permite acceder a los diferentes niveles ya sean inferiores o superiores');
+
+-- PARA CLIENTES
