@@ -1507,7 +1507,7 @@ INSERT INTO Cliente (nombre, apellido1, apellido2, cedula, numero_telefono)
 VALUES ('Kimberly','Calderon','Prado','2017088598','54545456');
 
 INSERT INTO Cliente (nombre, apellido1, apellido2, cedula, numero_telefono)
-VALUES ('Cristofer','Azofeifa','Ureña','2017100164','11245526')
+VALUES ('Cristofer','Azofeifa','Ureña','2017100164','11245526');
 
 INSERT INTO Cliente (nombre, apellido1, apellido2, cedula, numero_telefono)
-VALUES ('Edgar','Chavez','Gonzalez','2017239281','454568218')
+VALUES ('Edgar','Chavez','Gonzalez','2017239281','454568218');
