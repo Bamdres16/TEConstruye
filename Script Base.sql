@@ -168,3 +168,27 @@ ADD CONSTRAINT FK_OBRAUbicacion FOREIGN KEY (ubicacion) REFERENCES Ubicacion(id)
 
 ALTER TABLE Obra
 ADD CONSTRAINT FK_PROPIETARIO_OBRA FOREIGN KEY (propietario) REFERENCES Cliente(id);
+
+
+CREATE FUNCTION etapa_default() RETURNS trigger AS $etapa_default$
+    BEGIN
+        IF OLD.id >= 1 AND OLD.id <= 20 THEN
+            RAISE EXCEPTION 'No se puede eliminar, es un valor default';
+		END IF;
+    END;
+$etapa_default$ LANGUAGE plpgsql;
+
+CREATE TRIGGER etapa_default BEFORE DELETE ON etapa
+    FOR EACH ROW EXECUTE PROCEDURE etapa_default();
+
+
+CREATE FUNCTION especialidad_default() RETURNS trigger AS $especialidad_default$
+    BEGIN
+        IF OLD.id >= 1 AND OLD.id <= 2 THEN
+            RAISE EXCEPTION 'No se puede eliminar, es un valor default';
+		END IF;
+    END;
+$especialidad_default$ LANGUAGE plpgsql;
+
+CREATE TRIGGER especialidad_default BEFORE DELETE ON especialidad
+    FOR EACH ROW EXECUTE PROCEDURE especialidad_default();
