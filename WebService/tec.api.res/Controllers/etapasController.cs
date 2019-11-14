@@ -71,11 +71,16 @@ namespace tec.api.res.Controllers
             {
                 await db.SaveChangesAsync();
             }
-            catch (DbUpdateConcurrencyException)
+           
+            catch (Exception e)
             {
                 if (!etapaExists(id))
                 {
                     return NotFound();
+                }
+                else if ((string) e.Message == "An error occurred while updating the entries. See the inner exception for details.")
+                {
+                    return Content(HttpStatusCode.Conflict, e.InnerException.InnerException.Message);
                 }
                 else
                 {
