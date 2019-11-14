@@ -175,7 +175,10 @@ CREATE FUNCTION etapa_default() RETURNS trigger AS $etapa_default$
     BEGIN
         IF OLD.id >= 1 AND OLD.id <= 20 THEN
             RAISE EXCEPTION 'No se puede eliminar, es un valor default';
+		ELSE
+			RETURN OLD;
 		END IF;
+		
     END;
 $etapa_default$ LANGUAGE plpgsql;
 
