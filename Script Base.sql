@@ -188,8 +188,10 @@ CREATE TRIGGER etapa_default BEFORE DELETE ON etapa
 
 CREATE FUNCTION especialidad_default() RETURNS trigger AS $especialidad_default$
     BEGIN
-        IF OLD.id >= 1 AND OLD.id <= 2 THEN
+        IF OLD.id >= 1 AND OLD.id <= 3 THEN
             RAISE EXCEPTION 'No se puede eliminar, es un valor default';
+		ELSE
+			RETURN OLD;
 		END IF;
     END;
 $especialidad_default$ LANGUAGE plpgsql;
