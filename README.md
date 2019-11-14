@@ -1,6 +1,6 @@
 Este documento tiene como finalidad especificar las diferentes peticiones que se le puede hacer al API de TEConstruye
 ##Clientes
--Métodos implementados:
+-Métodos implementados
 	-GET: http://teconstruyeapi.azurewebsites.net/api/Clientes
 		Descripción: Retorna un JSON con todos los Clientes existentes en la base de datos de TEConstruye
 	-GET: http://teconstruyeapi.azurewebsites.net/api/Clientes/{id}
