@@ -174,7 +174,7 @@ ADD CONSTRAINT FK_PROPIETARIO_OBRA FOREIGN KEY (propietario) REFERENCES Cliente(
 CREATE FUNCTION etapa_default() RETURNS trigger AS $etapa_default$
     BEGIN
         IF OLD.id >= 1 AND OLD.id <= 20 THEN
-            RAISE EXCEPTION 'No se puede eliminar, es un valor default';
+            RAISE EXCEPTION 'No se puede eliminar o actualizar, es un valor default';
 		ELSE
 			RETURN OLD;
 		END IF;
@@ -182,19 +182,19 @@ CREATE FUNCTION etapa_default() RETURNS trigger AS $etapa_default$
     END;
 $etapa_default$ LANGUAGE plpgsql;
 
-CREATE TRIGGER etapa_default BEFORE DELETE ON etapa
+CREATE TRIGGER etapa_default BEFORE DELETE OR UPDATE ON etapa
     FOR EACH ROW EXECUTE PROCEDURE etapa_default();
 
 
 CREATE FUNCTION especialidad_default() RETURNS trigger AS $especialidad_default$
     BEGIN
         IF OLD.id >= 1 AND OLD.id <= 3 THEN
-            RAISE EXCEPTION 'No se puede eliminar, es un valor default';
+            RAISE EXCEPTION 'No se puede eliminar o actualizar, es un valor default';
 		ELSE
 			RETURN OLD;
 		END IF;
     END;
 $especialidad_default$ LANGUAGE plpgsql;
 
-CREATE TRIGGER especialidad_default BEFORE DELETE ON especialidad
+CREATE TRIGGER especialidad_default BEFORE DELETE OR UPDATE ON especialidad
     FOR EACH ROW EXECUTE PROCEDURE especialidad_default();
