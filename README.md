@@ -1,4 +1,5 @@
 Este documento tiene como finalidad especificar las diferentes peticiones que se le puede hacer al API de TEConstruye
+
 ##Clientes
 -Métodos implementados
 	-GET: http://teconstruyeapi.azurewebsites.net/api/Clientes
@@ -15,7 +16,7 @@ Este documento tiene como finalidad especificar las diferentes peticiones que se
   				"numero_telefono": "sample string 5"
   			}
 Descripción: Añade un nuevo Cliente a la base de datos de TEConstruye, pero si la cédula ya se encuentra registrada en TEConstruye genera "Ya existe ese cliente en TEConstruye" o sí existe en la base de datos de TECres "Ya existe ese cliente en TECres" y genera un código de error 409 Conflict
-DELETE: http://teconstruyeapi.azurewebsites.net/api/Clientes/{id}
+	-DELETE: http://teconstruyeapi.azurewebsites.net/api/Clientes/{id}
 		Descripción: Elimina el cliente que corresponda al id, si no existe genera un 404 Not found
 ##Etapas:
 Métodos implementados:
