@@ -28,5 +28,6 @@ namespace tec.api.res.Models
         public virtual DbSet<cliente> cliente { get; set; }
         public virtual DbSet<etapa> etapa { get; set; }
         public virtual DbSet<ubicacion> ubicacion { get; set; }
+        public virtual DbSet<especialidad> especialidad { get; set; }
     }
 }

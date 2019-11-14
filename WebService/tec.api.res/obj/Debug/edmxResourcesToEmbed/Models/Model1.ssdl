@@ -11,6 +11,13 @@
     <Property Name="numero_telefono" Type="varchar" MaxLength="15" />
     <Property Name="id" Type="int4" Nullable="false" StoreGeneratedPattern="Identity" />
   </EntityType>
+  <EntityType Name="especialidad">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="nombre" Type="varchar" MaxLength="40" />
+    <Property Name="id" Type="int4" Nullable="false" StoreGeneratedPattern="Identity" />
+  </EntityType>
   <EntityType Name="etapa">
     <Key>
       <PropertyRef Name="id" />
@@ -30,6 +37,7 @@
   </EntityType>
   <EntityContainer Name="TEConstruyeModelStoreContainer">
     <EntitySet Name="cliente" EntityType="Self.cliente" Schema="public" store:Type="Tables" />
+    <EntitySet Name="especialidad" EntityType="Self.especialidad" Schema="public" store:Type="Tables" />
     <EntitySet Name="etapa" EntityType="Self.etapa" Schema="public" store:Type="Tables" />
     <EntitySet Name="ubicacion" EntityType="Self.ubicacion" Schema="public" store:Type="Tables" />
   </EntityContainer>

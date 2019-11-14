@@ -19,6 +19,8 @@ namespace tec.api.res.Controllers
         private TEConstruyeEntities db = new TEConstruyeEntities();
 
         // GET: api/etapas
+        // Obtiene la lista de todas las etapas que existen en la base de de datos
+        // Los atributos de cada registro son Nombre, Descripcion y el Id
         public object Getetapa()
         {
             var etapas = from e in db.etapa
@@ -27,6 +29,7 @@ namespace tec.api.res.Controllers
         }
 
         // GET: api/etapas/5
+        // Obtiene el registro de una etapa en especifico por su id
         [ResponseType(typeof(etapa))]
         public async Task<IHttpActionResult> Getetapa(int id)
         {
@@ -40,6 +43,8 @@ namespace tec.api.res.Controllers
         }
 
         // PUT: api/etapas/5
+        // Permite modificar un registro mediante su identificador
+        // Se actualiza con el id, y etapa corresponde a los nuevos registros en ese id
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> Putetapa(int id, etapa etapa)
         {
@@ -75,6 +80,9 @@ namespace tec.api.res.Controllers
         }
 
         // POST: api/etapas
+        // Permite añadir una nueva etapa, en este caso valida que la etapa no exista ya que el nombre es unico
+        // La entrada son los valores nuevos a agregar en un JSON, la especificación de los atributos de entrada
+        // está en el documento de descripción de métodos
         [ResponseType(typeof(etapa))]
         public async Task<IHttpActionResult> Postetapa(etapa etapa)
         {
@@ -100,6 +108,7 @@ namespace tec.api.res.Controllers
         }
 
         // DELETE: api/etapas/5
+        // Permite elimnar un registro mediante el id
         [ResponseType(typeof(etapa))]
         public async Task<IHttpActionResult> Deleteetapa(int id)
         {
@@ -120,7 +129,7 @@ namespace tec.api.res.Controllers
             }
             return Ok(etapa);
         }
-
+        // Métodos autogenerados ---
         protected override void Dispose(bool disposing)
         {
             if (disposing)

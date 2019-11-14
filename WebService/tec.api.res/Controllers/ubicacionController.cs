@@ -44,7 +44,7 @@ namespace tec.api.res.Controllers
 
             return ubicaciones.Distinct();
         }
-
+        // Metodos autogenerados --
         protected override void Dispose(bool disposing)
         {
             if (disposing)

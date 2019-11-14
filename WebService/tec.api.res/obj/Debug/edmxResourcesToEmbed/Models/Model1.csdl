@@ -32,5 +32,13 @@
     <EntitySet Name="cliente" EntityType="Self.cliente" />
     <EntitySet Name="etapa" EntityType="Self.etapa" />
     <EntitySet Name="ubicacion" EntityType="Self.ubicacion" />
+    <EntitySet Name="especialidad" EntityType="TEConstruyeModel.especialidad" />
   </EntityContainer>
+  <EntityType Name="especialidad">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="nombre" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
 </Schema>
