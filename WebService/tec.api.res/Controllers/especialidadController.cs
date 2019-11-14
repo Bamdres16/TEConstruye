@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Http;
 using System.Web.Http.Description;
 using tec.api.res.Models;
@@ -25,7 +26,12 @@ namespace tec.api.res.Controllers
                        select new { e.id, e.nombre };
             return espe;
         }
-
+        // Este método permite retonar una respuesta a las peticiones, evitando cualquier problema de CORS
+        public IHttpActionResult Options()
+        {
+            HttpContext.Current.Response.AppendHeader("Allow", "GET,DELETE,PUT,POST,OPTIONS");
+            return Ok();
+        }
         // GET: api/especialidad/5
         // Obtiene el registro de la especialidad por su id
         [ResponseType(typeof(especialidad))]

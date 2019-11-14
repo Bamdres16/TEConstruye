@@ -8,6 +8,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Http;
 using System.Web.Http.Description;
 using tec.api.res.Models;
@@ -26,6 +27,12 @@ namespace tec.api.res.Controllers
             var etapas = from e in db.etapa
                          select new { e.nombre, e.descripcion, e.id };
             return etapas;
+        }
+        // Este método permite retonar una respuesta a las peticiones, evitando cualquier problema de CORS
+        public IHttpActionResult Options()
+        {
+            HttpContext.Current.Response.AppendHeader("Allow", "GET,DELETE,PUT,POST,OPTIONS");
+            return Ok();
         }
 
         // GET: api/etapas/5
