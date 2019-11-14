@@ -1,11 +1,11 @@
 Este documento tiene como finalidad especificar las diferentes peticiones que se le puede hacer al API de TEConstruye
 ##Clientes
-	Métodos implementados:
-GET: http://teconstruyeapi.azurewebsites.net/api/Clientes
+-Métodos implementados:
+	-GET: http://teconstruyeapi.azurewebsites.net/api/Clientes
 		Descripción: Retorna un JSON con todos los Clientes existentes en la base de datos de TEConstruye
-GET: http://teconstruyeapi.azurewebsites.net/api/Clientes/{id}
+	-GET: http://teconstruyeapi.azurewebsites.net/api/Clientes/{id}
 		Descripción: Retorna un JSON con los datos del Cliente que corresponda al id si existe, si no existe genera un 404 Not found
-POST: http://teconstruyeapi.azurewebsites.net/api/Clientes
+-	-POST: http://teconstruyeapi.azurewebsites.net/api/Clientes
 		Entradas:
 			{
   				"nombre": "sample string 1",
