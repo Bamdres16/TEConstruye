@@ -35,6 +35,7 @@
 	 nombre varchar(60),
 	 descripcion varchar(250),
 	 id int GENERATED ALWAYS AS IDENTITY,
+	 UNIQUE (nombre),
 	 PRIMARY KEY (id)
  );
  
