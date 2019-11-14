@@ -10,13 +10,13 @@ Este documento tiene como finalidad especificar las diferentes peticiones que se
 - POST: http://teconstruyeapi.azurewebsites.net/api/Clientes
 ### Entradas:
 ```json
-	{
-		"nombre": "sample string 1",
-		"apellido1": "sample string 2",
-		"apellido2": "sample string 3",
-		"cedula": "sample string 4",
-		"numero_telefono": "sample string 5"
-	}
+{
+	"nombre": "sample string 1",
+	"apellido1": "sample string 2",
+	"apellido2": "sample string 3",
+	"cedula": "sample string 4",
+	"numero_telefono": "sample string 5"
+}
 ```
 #### Elimina el cliente que corresponda al id, si no existe genera un 404 Not found
 - DELETE: http://teconstruyeapi.azurewebsites.net/api/Clientes/{id}
@@ -27,8 +27,8 @@ Este documento tiene como finalidad especificar las diferentes peticiones que se
 - GET: http://teconstruyeapi.azurewebsites.net/api/Etapas
 #### Permite almacenar una nueva etapa
 - POST:  http://teconstruyeapi.azurewebsites.net/api/Etapas
-``` json
-Entradas:
+#### Entradas
+```json
 {
   "nombre": "sample string 1",
   "descripcion": "sample string 2"
@@ -38,9 +38,8 @@ Entradas:
 #### Permite actualizar un registro de etapa mediante un id y el nuevo registro
 - PUT: http://teconstruyeapi.azurewebsites.net/api/Etapas/{id}
 #### Entrada:
-```json
-
-	{
+```javascript
+{
   "nombre": "sample string 1",
   "descripcion": "sample string 2",
   "id": 3
@@ -70,8 +69,8 @@ Nota: El JSON debe incluir el id ya que se compara para evitar que sea diferente
 #### Permite actualizar un registro de especialidad mediante un id y el nuevo registro
 - PUT: http://teconstruyeapi.azurewebsites.net/api/Especialidad/{id}
 Entrada:
-``` json
-	{
+```json
+{
   "nombre": "sample string 1",
   "id": 2
 }
@@ -80,8 +79,8 @@ Nota: El JSON debe incluir el id ya que se compara para evitar que sea diferente
 #### Permite añadir una nueva especialidad, debe incluir solo el nombre en el JSON.
 - POST: http://teconstruyeapi.azurewebsites.net/api/Especialidad
 Entrada:
-``` json
-	{
+```json
+{
   "nombre": "sample string 1" 
 }
 ``` 
