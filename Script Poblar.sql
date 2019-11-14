@@ -1511,3 +1511,14 @@ VALUES ('Cristofer','Azofeifa','Ureña','2017100164','11245526');
 
 INSERT INTO Cliente (nombre, apellido1, apellido2, cedula, numero_telefono)
 VALUES ('Edgar','Chavez','Gonzalez','2017239281','454568218');
+
+-- PARA ESPECIALIDAD
+
+INSERT INTO Especialidad (nombre)
+VALUES ('Civil');
+
+INSERT INTO Especialidad (nombre)
+VALUES ('Construcción');
+
+INSERT INTO Especialidad (nombre)
+VALUES ('Eléctrico');
