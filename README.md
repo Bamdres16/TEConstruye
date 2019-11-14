@@ -30,8 +30,8 @@ Este documento tiene como finalidad especificar las diferentes peticiones que se
 #### Entradas
 ```json
 {
-  "nombre": "sample string 1",
-  "descripcion": "sample string 2"
+	  "nombre": "sample string 1",
+	  "descripcion": "sample string 2"
 }
 
 ```
@@ -40,9 +40,9 @@ Este documento tiene como finalidad especificar las diferentes peticiones que se
 #### Entrada:
 ```javascript
 {
-  "nombre": "sample string 1",
-  "descripcion": "sample string 2",
-  "id": 3
+	  "nombre": "sample string 1",
+	  "descripcion": "sample string 2",
+	  "id": 3
 }
 ``` 
 
@@ -71,8 +71,8 @@ Nota: El JSON debe incluir el id ya que se compara para evitar que sea diferente
 Entrada:
 ```json
 {
-  "nombre": "sample string 1",
-  "id": 2
+	  "nombre": "sample string 1",
+	  "id": 2
 }
 ``` 
 Nota: El JSON debe incluir el id ya que se compara para evitar que sea diferente al id del link
@@ -81,7 +81,7 @@ Nota: El JSON debe incluir el id ya que se compara para evitar que sea diferente
 Entrada:
 ```json
 {
-  "nombre": "sample string 1" 
+  	"nombre": "sample string 1" 
 }
 ``` 
 
