@@ -29,7 +29,7 @@ export class RegisterArqpageComponent implements OnInit {
 
  add_arquitecto(){
   console.log(this.arquitecto);
-  this.data.addCliente(this.arquitecto).subscribe(
+  this.data.addArquitecto(this.arquitecto).subscribe(
     res => {
       console.log(res);
       this.arquitecto= res;

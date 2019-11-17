@@ -140,7 +140,7 @@
                     <input
                       class="form-control"
                       placeholder="Cédula"
-                      type="number"
+                      type="text"
                       (focus)="focus1 = true"
                       (blur)="focus1 = false"
                       name="cedula"
@@ -162,14 +162,14 @@
                     <input
                       class="form-control"
                       placeholder="Teléfono"
-                      type="number"
+                      type="text"
                       (focus)="focus1 = true"
                       (blur)="focus1 = false"
                       name="telefono"
                       [(ngModel)]="arquitecto.numero_telefono"
                     />
                   </div>
-                  <!--Caja de texto para Email-->
+                  <!--Caja de texto para Codigo-->
                   <div
                     class="input-group"
                     [ngClass]="{ 'input-group-focus': focus1 === true }"
@@ -185,7 +185,7 @@
                       type="text"
                       (focus)="focus1 = true"
                       (blur)="focus1 = false"
-                      name="email"
+                      name="codigo_arquitecto"
                       [(ngModel)]="arquitecto.codigo_arquitecto"
                     />
                   </div>
@@ -203,7 +203,7 @@
                     <input
                       class="form-control"
                       placeholder="Password"
-                      type="text"
+                      type="password"
                       (focus)="focus2 = true"
                       (blur)="focus2 = false"
                       name="contrasena"
@@ -218,10 +218,9 @@
                             ng-click="get_especialidades()"
                             class="form-control"
                             name ="especialidad"
-                            [(ngModel)]="arquitecto.especialidad"
-                            
+                            [(ngModel)]="arquitecto.id_especialidad"
                             >
-                            <option class="bg-dark" *ngFor="let especialidad of especialidades, index as i"   >{{especialidad.nombre}}</option>
+                            <option class="bg-dark" *ngFor="let especialidad of especialidades, index as i" [value]= "especialidad.id"  >{{especialidad.nombre}}</option>
                         
                     </select>
                     </div>
@@ -232,6 +231,7 @@
                   class="btn btn-danger btn-round btn-lg"
                   (click) =  "add_arquitecto()"
                   type="submit"
+                  
                   
                 >
                   Crear cuenta

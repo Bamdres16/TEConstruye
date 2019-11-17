@@ -140,7 +140,7 @@
                     <input
                       class="form-control"
                       placeholder="Cédula"
-                      type="number"
+                      type="text"
                       (focus)="focus1 = true"
                       (blur)="focus1 = false"
                       name="cedula"
@@ -162,11 +162,11 @@
                     <input
                       class="form-control"
                       placeholder="Teléfono"
-                      type="number"
+                      type="text"
                       (focus)="focus1 = true"
                       (blur)="focus1 = false"
-                      name="telefono"
-                      [(ngModel)]="ingeniero.telefono"
+                      name="numero_telefono"
+                      [(ngModel)]="ingeniero.numero_telefono"
                     />
                   </div>
                   <!--Caja de texto para Email-->
@@ -181,12 +181,12 @@
                     </div>
                     <input
                       class="form-control"
-                      placeholder="Email"
+                      placeholder="Codigo"
                       type="text"
                       (focus)="focus1 = true"
                       (blur)="focus1 = false"
-                      name="email"
-                      [(ngModel)]="ingeniero.email"
+                      name="codigo_ingeniero"
+                      [(ngModel)]="ingeniero.codigo_ingeniero"
                     />
                   </div>
 
@@ -202,7 +202,7 @@
                     </div>
                     <input
                       class="form-control"
-                      placeholder="Password"
+                      placeholder="Contraseña"
                       type="text"
                       (focus)="focus2 = true"
                       (blur)="focus2 = false"
@@ -216,11 +216,11 @@
                             type="number"
                             ng-click="get_especialidades()"
                             class="form-control"
-                            name ="especialidad"
-                            [(ngModel)]="ingeniero.especialidad"
+                            name ="id_especialidad"
+                            [(ngModel)]="ingeniero.id_especialidad"
                             
                             >
-                            <option class="bg-dark" *ngFor="let especialidad of especialidades, index as i"   >{{especialidad.nombre}}</option>
+                            <option class="bg-dark" *ngFor="let especialidad of especialidades, index as i" [value]="especialidad.id"  >{{especialidad.nombre}}</option>
                         
                     </select>
                     </div>

@@ -98,7 +98,7 @@ export class RegisterpageComponent implements OnInit, OnDestroy {
 
 add_ingeniero(){
 console.log(this.ingeniero);
-this.data.addCliente(this.ingeniero).subscribe(
+this.data.addIngeniero(this.ingeniero).subscribe(
   res => {
     console.log(res);
     this.ingeniero= res;

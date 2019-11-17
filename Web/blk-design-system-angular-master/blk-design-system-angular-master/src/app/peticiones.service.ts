@@ -24,6 +24,12 @@ export class PeticionesService {
   addCliente(cliente:void){
     return this._http.post<any>(this.ID+'/Clientes',cliente)
  }
+ addArquitecto(cliente:void){
+  return this._http.post<any>(this.ID+'/Arquitectos',cliente)
+}
+addIngeniero(cliente:void){
+  return this._http.post<any>(this.ID+'/Ingenieros',cliente)
+}
  addEtapa(etapa:void){
   return this._http.post<any>(this.ID+'/Etapas',etapa)
   }
