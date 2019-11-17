@@ -123,6 +123,7 @@
     create table Labora_en(
 	 id_empleado int,
 	 id_obra int,
+	 semana int,
 	 horas_laboradas float,
 	 PRIMARY KEY(id_empleado, id_obra)
  );
