@@ -18,24 +18,40 @@ namespace tec.res.api.Controllers
     {
         private TEConstruyeEntities db = new TEConstruyeEntities();
 
-        // GET: api/admin
-        public IQueryable<admin> Getadmin()
+        // Método para logear un nuevo ingeniero
+        
+        [HttpPost]
+        public IHttpActionResult PostLogin(admin login)
         {
-            return db.admin;
-        }
-
-        // GET: api/admin/5
-        [ResponseType(typeof(admin))]
-        public async Task<IHttpActionResult> Getadmin(int id)
-        {
-            admin admin = await db.admin.FindAsync(id);
-            if (admin == null)
+            if ((login.usuario == null) | (login.contrasena == null))
             {
-                return NotFound();
+                return BadRequest();
+            }
+            var user = from i in db.admin
+                       where i.usuario == login.usuario
+                       select new { i.contrasena };
+
+            if (user.Count() == 0)
+            {
+                return Content(HttpStatusCode.NotFound, "Ese usuario no existe en la base de datos");
             }
 
-            return Ok(admin);
+            foreach (var u in user)
+            {
+                if (u.contrasena != login.contrasena)
+                {
+                    return Content(HttpStatusCode.Conflict, "Contraseña invalida");
+                }
+
+            }
+            var nuser = from i in db.admin
+                        where i.usuario == login.usuario
+                        select new { i.usuario, i.correo, i.id };
+
+            return Ok(nuser);
+
         }
+
 
         // Este método permite retonar una respuesta a las peticiones, evitando cualquier problema de CORS
         public IHttpActionResult Options()
@@ -44,86 +60,7 @@ namespace tec.res.api.Controllers
             return Ok();
         }
 
-        // PUT: api/admin/5
-        [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> Putadmin(int id, admin admin)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != admin.id)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(admin).State = EntityState.Modified;
-
-            try
-            {
-                await db.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!adminExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
-        }
-
-        // POST: api/admin
-        [ResponseType(typeof(admin))]
-        public async Task<IHttpActionResult> Postadmin(admin admin)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            db.admin.Add(admin);
-
-            try
-            {
-                await db.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (adminExists(admin.id))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return CreatedAtRoute("DefaultApi", new { id = admin.id }, admin);
-        }
-
-        // DELETE: api/admin/5
-        [ResponseType(typeof(admin))]
-        public async Task<IHttpActionResult> Deleteadmin(int id)
-        {
-            admin admin = await db.admin.FindAsync(id);
-            if (admin == null)
-            {
-                return NotFound();
-            }
-
-            db.admin.Remove(admin);
-            await db.SaveChangesAsync();
-
-            return Ok(admin);
-        }
+       
 
         protected override void Dispose(bool disposing)
         {

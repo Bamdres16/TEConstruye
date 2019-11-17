@@ -19,6 +19,12 @@ namespace tec.res.api.Controllers
 
         private TEConstruyeEntities db = new TEConstruyeEntities();
 
+        // Este método permite retonar una respuesta a las peticiones, evitando cualquier problema de CORS
+        public IHttpActionResult Options()
+        {
+            HttpContext.Current.Response.AppendHeader("Allow", "GET,DELETE,PUT,POST,OPTIONS");
+            return Ok();
+        }
         // GET: api/arquitectos
         // Este método permite obtener la lista de todos los arquitectos, los select se realizan mediante LINQ expresions
         public object Getarquitecto()
@@ -41,17 +47,12 @@ namespace tec.res.api.Controllers
 
             return Ok(arquitecto);
         }
-        // Este método permite retonar una respuesta a las peticiones, evitando cualquier problema de CORS
-        public IHttpActionResult Options()
-        {
-            HttpContext.Current.Response.AppendHeader("Allow", "GET,DELETE,PUT,POST,OPTIONS");
-            return Ok();
-        }
+        
 
         // Método para logear un nuevo ingeniero
         [Route("api/Arquitectos/login")]
         [HttpPost]
-        public IHttpActionResult PostLogin(arquitecto login)
+        public IHttpActionResult Postlogin(arquitecto login)
         {
             if ((login.codigo_arquitecto == null) | (login.contrasena == null))
             {

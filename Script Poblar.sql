@@ -1551,3 +1551,7 @@ VALUES ('Cristofer','Azofeifa','Ureña','2017100164','11245526','ARQ2352','juas1
 INSERT INTO Arquitecto (nombre, apellido1, apellido2, cedula, numero_telefono, codigo_arquitecto,contrasena, id_especialidad)
 VALUES ('Edgar','Chavez','Gonzalez','2017239281','454568218','ARQ5645','lijg35',1);
 
+-- PARA ADMIN
+
+INSERT INTO Admin (usuario, contrasena, correo)
+VALUES ('su','123456','su@teconstruye.com')

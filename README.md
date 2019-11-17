@@ -135,7 +135,9 @@ Entrada:
 ``` 
 
 ## Arquitectos
+
 ### Métodos implementados
+
 #### Para retonar la lista de todos los Arquitectos
 - GET http://teconstruyeapi.azurewebsites.net/api/Arquitectos
 #### Para obtener un arquitecto en específico se debe proveer el id del arquitecto
@@ -180,7 +182,18 @@ Entrada:
 	  "id" : 1
 }
 ``` 
+## Admin
 
+### Métodos implementados
 
+#### Para logearse
+- POST http://teconstruyeapi.azurewebsites.net/api/Admin
+#### Entradas
+```json
+{
+  "usuario": "sample string 1",
+  "contrasena": "sample string 2"
+}
+```
 
 
