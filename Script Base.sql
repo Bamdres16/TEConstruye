@@ -66,6 +66,7 @@
 	 numero_telefono varchar(30),
 	 codigo_arquitecto varchar(20),
 	 id_especialidad int,
+	 contrasena varchar (100),
 	 id int GENERATED ALWAYS AS IDENTITY,
 	 PRIMARY KEY (id),
 	 UNIQUE(cedula),
@@ -80,11 +81,22 @@
 	 numero_telefono varchar(30),
 	 codigo_ingeniero varchar(20),
 	 id_especialidad int,
+	 contrasena varchar (100),
 	 id int GENERATED ALWAYS AS IDENTITY,
 	 PRIMARY KEY (id),
 	 UNIQUE(cedula),
 	 UNIQUE(codigo_ingeniero)
  );
+ 
+	create table Admin (
+	usuario varchar(30),
+	contrasena varchar(100),
+	correo varchar (100),
+	id int GENERATED ALWAYS AS Identity,
+	UNIQUE (usuario),
+	UNIQUE (correo),
+	PRIMARY KEY (id)
+);
  
     create table Especialidad(
 	 nombre varchar(40),
@@ -143,7 +155,7 @@ ALTER TABLE requiere
 ADD CONSTRAINT FK_ETAPAREQUIERE FOREIGN KEY (id_etapa ) REFERENCES etapa(id);
 
  ALTER TABLE diseña	
-ADD CONSTRAINT FK_ARQUITECTO FOREIGN KEY (id_ingeniero) REFERENCES ingeniero(id);	
+ADD CONSTRAINT FK_INGENIERO FOREIGN KEY (id_ingeniero) REFERENCES ingeniero(id);	
 
 ALTER TABLE diseña	
 ADD CONSTRAINT FK_OBRA FOREIGN KEY (id_obra) REFERENCES obra(id);	
@@ -156,7 +168,6 @@ ADD CONSTRAINT FK_OBRA FOREIGN KEY (id_obra) REFERENCES obra(id);
 
 ALTER TABLE Trabaja_en	
 ADD CONSTRAINT FK_ARQUITECTO FOREIGN KEY (id_arquitecto) REFERENCES Arquitecto(id);
-
 
 ALTER TABLE Trabaja_en
 ADD CONSTRAINT FK_OBRA FOREIGN KEY (id_obra) REFERENCES obra(id);
