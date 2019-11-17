@@ -25,7 +25,7 @@ const routes: Routes = [
   { path: "registroArq", component: RegisterArqpageComponent},
   { path: "registroCli", component: RegisterClipageComponent },
   { path: "registroEmp", component: RegisterEmppageComponent},
-  { path: "ingarq", component: IngArqpageComponent },
+  {path: 'ingarq/:id', component: IngArqpageComponent},
   { path: "administrador", component: AdminpageComponent}
   
 ];

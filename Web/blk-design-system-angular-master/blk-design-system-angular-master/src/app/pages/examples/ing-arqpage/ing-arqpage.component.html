@@ -15,7 +15,7 @@
       >
         <span> TEConstruye • </span>
       </a>
-      <span>Ingeniero-Arquitecto</span>
+      <span>{{tipo}}</span>
       <button
         aria-controls="navigation-index"
         aria-label="Toggle navigation"
@@ -55,34 +55,6 @@
       </div>
       <ul class="navbar-nav">
 
-        <li class="dropdown nav-item" dropdown>
-          <a
-            class="dropdown-toggle nav-link dropdown-toggle"
-            data-toggle="dropdown"
-            dropdownToggle
-            href="javascript:void(0)"
-          >
-          <i class="tim-icons icon-single-02"> </i> nuevo usuario
-          </a>
-          <div class="dropdown-menu dropdown-with-icons" *dropdownMenu>
-            <a
-              class="dropdown-item"
-              [routerLink]="['/registroIng']"
-            >
-           <i class="tim-icons icon-bullet-list-67"> </i>Ingeniero
-            </a>
-            <a class="dropdown-item" [routerLink]="['/registroArq']">
-              <i class="tim-icons icon-bullet-list-67"> </i> Arquitecto
-            </a>
-            <a class="dropdown-item" [routerLink]="['/registroEmp']">
-                <i class="tim-icons icon-bullet-list-67"> </i> Empleado
-              </a>
-              <a class="dropdown-item" [routerLink]="['/registroCli']">
-                <i class="tim-icons icon-bullet-list-67"> </i> Cliente
-              </a>
-            
-          </div>
-        </li>
       </ul>
     </div>
   </div>
@@ -101,11 +73,6 @@
                 <div class="title"><h3 class="mb-3">Añadir nuevo(a)</h3></div>
                 <div class="row">
                   <div class="col-md-12 ml-auto col-xl-12 mr-auto">
-                    <div class="mb-3">
-                      <small class="text-uppercase font-weight-bold">
-                        With icons
-                      </small>
-                    </div>
                     <div class="card">
                       <div class="card-header">
                         <tabset class="nav-tabs-danger">

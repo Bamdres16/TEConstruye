@@ -166,7 +166,7 @@
                       (focus)="focus1 = true"
                       (blur)="focus1 = false"
                       name="telefono"
-                      [(ngModel)]="arquitecto.telefono"
+                      [(ngModel)]="arquitecto.numero_telefono"
                     />
                   </div>
                   <!--Caja de texto para Email-->
@@ -181,12 +181,12 @@
                     </div>
                     <input
                       class="form-control"
-                      placeholder="Email"
+                      placeholder="Codigo"
                       type="text"
                       (focus)="focus1 = true"
                       (blur)="focus1 = false"
                       name="email"
-                      [(ngModel)]="arquitecto.email"
+                      [(ngModel)]="arquitecto.codigo_arquitecto"
                     />
                   </div>
 
@@ -210,6 +210,7 @@
                       [(ngModel)]="arquitecto.contrasena"
                     />
                   </div>
+                  <!--Dropdown especialidad-->
                   <div class="form-group">
                     <label for="inputState">Especialidad</label>
                     <select id="inputState"

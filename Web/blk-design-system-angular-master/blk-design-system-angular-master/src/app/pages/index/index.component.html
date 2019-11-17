@@ -1,3 +1,4 @@
+<!--Barra de navegación principal-->
 <nav
   class="navbar navbar-expand-lg fixed-top navbar-transparent"
   color-on-scroll="100"
@@ -67,6 +68,8 @@
     </div>
   </div>
 </nav>
+
+<!--Cuerpo de la página-->
 <div class="wrapper">
   <div class="page-header header-filter">
     <div class="squares square1"></div>
@@ -78,6 +81,7 @@
     <div class="squares square7"></div>
     <div class="container">
       <div class="content-center brand">
+        <!--Título del sitio y descripción-->
         <h1 class="h1-seo">TEConstruye•</h1>
         <h3>
           Gestión de proyectos habitacionales
@@ -97,24 +101,7 @@
               Ingrese a su perfil para comenzar a administrar sus obras
               
             </h3>
-            <div class="card-footer">
-              <a
-                class="btn btn-danger btn-round btn-lg"
-                href="javascript:void(0)"
-                [routerLink]="['/administrador']"
-              >
-                Enlace temporal administrador
-              </a>
-
-              <a
-                class="btn btn-danger btn-round btn-lg"
-                href="javascript:void(0)"
-                [routerLink]="['/ingarq']"
-              >
-                Enlace temporal ingeniero/arquitecto
-              </a>
-            </div>
-           
+            
           </div>
           <div class="col-lg-6 mb-lg-auto">
             <div class="card card-register">
@@ -127,7 +114,7 @@
                 </h3>
               </div>
               <div class="card-body">
-                <form class="form">
+                <form (ngSubmit)="iniciar_sesion()" class="form">
                   <div class="input-group">
                     <div class="input-group-prepend">
                       <div class="input-group-text">
@@ -138,6 +125,8 @@
                       class="form-control"
                       placeholder="Correo"
                       type="text"
+                      name="correo"
+                      [(ngModel)]="usuario.correo"
                     />
                   </div>
                   <div class="input-group">
@@ -149,7 +138,9 @@
                     <input
                       class="form-control"
                       placeholder="Contraseña"
-                      type="text"
+                      type="password"
+                      name="contrasena"
+                      [(ngModel)]="usuario.contrasena"
                     />
                   </div>
                   <div class="form-check text-left">
@@ -157,15 +148,32 @@
                       <input class="form-check-input" type="checkbox" />
                     </label>
                   </div>
+                  <div class="form-group">
+                      <label for="inputState">Tipo de usuario</label>
+                      <select id="inputState"
+                              type="text"
+                              
+                              class="form-control"
+                              name ="tipo"
+                              [(ngModel)]="usuario.tipo"
+                              
+                              >
+                              <option class="bg-dark"   >Administrador(a)</option>
+                              <option class="bg-dark"   >Ingeniero(a)</option>
+                              <option class="bg-dark"   >Arquitecto(a)</option>
+                          
+                      </select>
+                      </div>
                 </form>
               </div>
               <div class="card-footer">
-                <a
+                  <button
                   class="btn btn-danger btn-round btn-lg"
-                  href="javascript:void(0)"
+                  (click) =  "iniciar_sesion()"
+                  type="submit"
                 >
                   Entrar
-                </a>
+                </button>
               </div>
             </div>
           </div>

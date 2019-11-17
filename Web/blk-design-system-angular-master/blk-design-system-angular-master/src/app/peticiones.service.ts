@@ -28,4 +28,15 @@ export class PeticionesService {
   return this._http.post<any>(this.ID+'/Etapas',etapa)
 }
 
+
+loginIngeniero(ingeniero:void){
+  return this._http.post<any>('http://teconstruyeapi.azurewebsites.net/api/Ingenieros/login',ingeniero)
+}
+loginAdmin(admin:void){
+  return this._http.post<any>(this.ID+'/Admin',admin)
+}
+loginArquitecto(arquitecto:void){
+  return this._http.post<any>(this.ID+'/Arquitectos/login',arquitecto)
+}
+
 }

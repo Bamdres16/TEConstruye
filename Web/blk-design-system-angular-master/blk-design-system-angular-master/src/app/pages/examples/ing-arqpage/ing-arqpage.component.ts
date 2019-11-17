@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
 import noUiSlider from "nouislider";
-
+import { PeticionesService } from 'C:/Users/Franklin/Desktop/TEConstruye/Web/blk-design-system-angular-master/blk-design-system-angular-master/src/app/peticiones.service';
+import {Router, ActivatedRoute} from '@angular/router';
 @Component({
   selector: 'app-ing-arqpage',
   templateUrl: './ing-arqpage.component.html',
@@ -17,7 +18,16 @@ export class IngArqpageComponent implements OnInit {
   date = new Date();
   pagination = 3;
   pagination1 = 1;
-  constructor() {}
+  tipo: any;
+  constructor(private data:PeticionesService, private ruta:ActivatedRoute, ) {
+    this.ruta.queryParams.subscribe(params =>{
+      this.tipo= params['tipo'];
+      console.log("EL TIPO ES" + this.tipo);
+    
+      }
+      
+   );
+  }
   scrollToDownload(element: any) {
     element.scrollIntoView({ behavior: "smooth" });
   }
