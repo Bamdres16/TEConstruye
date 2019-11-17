@@ -14,32 +14,32 @@ using tec.res.api.Models;
 
 namespace tec.res.api.Controllers
 {
-    public class ingenierosController : ApiController
+    public class arquitectosController : ApiController
     {   // Se inicializa el modelo de datos, para poder realizar las peticiones a la Base de Datos
 
         private TEConstruyeEntities db = new TEConstruyeEntities();
 
-        // GET: api/ingenieros
-        // Este método permite obtener la lista de todos los ingenieros, los select se realizan mediante LINQ expresions
-        public object Getingeniero()
+        // GET: api/arquitectos
+        // Este método permite obtener la lista de todos los arquitectos, los select se realizan mediante LINQ expresions
+        public object Getarquitecto()
         {
-            var ingenieros = from i in db.ingeniero
-                             select new { i.nombre, i.apellido1, i.apellido2, i.cedula, i.codigo_ingeniero, i.numero_telefono, i.id_especialidad, i.id };
-            return ingenieros;
+            var arquitectos = from i in db.arquitecto
+                             select new { i.nombre, i.apellido1, i.apellido2, i.cedula, i.codigo_arquitecto, i.numero_telefono, i.id_especialidad, i.id };
+            return arquitectos;
         }
 
-        // GET: api/ingenieros/5
-        // Obtiene un ingeniero en especifico
-        [ResponseType(typeof(ingeniero))]
-        public async Task<IHttpActionResult> Getingeniero(int id)
+        // GET: api/arquitectos/5
+        // Obtiene un arquitecto en especifico
+        [ResponseType(typeof(arquitecto))]
+        public async Task<IHttpActionResult> Getarquitecto(int id)
         {
-            ingeniero ingeniero = await db.ingeniero.FindAsync(id);
-            if (ingeniero == null)
+            arquitecto arquitecto = await db.arquitecto.FindAsync(id);
+            if (arquitecto == null)
             {
                 return NotFound();
             }
 
-            return Ok(ingeniero);
+            return Ok(arquitecto);
         }
         // Este método permite retonar una respuesta a las peticiones, evitando cualquier problema de CORS
         public IHttpActionResult Options()
@@ -48,22 +48,22 @@ namespace tec.res.api.Controllers
             return Ok();
         }
 
-        // PUT: api/ingenieros/5
-        // Permite actualiza un ingeniero, se debe proveer el nuevo ingeniero y ademas el id que corresponde a la llave primaria
+        // PUT: api/arquitectos/5
+        // Permite actualizar un arquitecto, se debe proveer el nuevo arquitecto y ademas el id que corresponde a la llave primaria
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> Putingeniero(int id, ingeniero ingeniero)
+        public async Task<IHttpActionResult> Putarquitecto(int id, arquitecto arquitecto)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != ingeniero.id)
+            if (id != arquitecto.id)
             {
                 return BadRequest();
             }
 
-            db.Entry(ingeniero).State = EntityState.Modified;
+            db.Entry(arquitecto).State = EntityState.Modified;
 
             try
             {
@@ -71,7 +71,7 @@ namespace tec.res.api.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ingenieroExists(id))
+                if (!arquitectoExists(id))
                 {
                     return NotFound();
                 }
@@ -83,29 +83,30 @@ namespace tec.res.api.Controllers
 
             return StatusCode(HttpStatusCode.NoContent);
         }
-        // Con este método se puede añadir un nuevo ingeniero
-        // POST: api/ingenieros
-        [ResponseType(typeof(ingeniero))]
-        public async Task<IHttpActionResult> Postingeniero(ingeniero ingeniero)
+        // Con este método se puede añadir un nuevo arquitecto
+        // POST: api/arquitectos
+        [ResponseType(typeof(arquitecto))]
+        public async Task<IHttpActionResult> Postarquitecto(arquitecto arquitecto)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.ingeniero.Add(ingeniero);
+            db.arquitecto.Add(arquitecto);
             try
             {
                 await db.SaveChangesAsync();
             }
             catch (DbUpdateException)
             {
-                if (ingenieroExists(ingeniero.cedula))
+                if (arquitectoExists(arquitecto.cedula))
                 {
                     return Content(HttpStatusCode.Conflict, "Esa cédula ya está en TEConstruye");
-                } else if (codigoExists(ingeniero.codigo_ingeniero))
+                }
+                else if (codigoExists(arquitecto.codigo_arquitecto))
                 {
-                    return Content(HttpStatusCode.Conflict, "Ese código de ingeniero ya está en TEConstruye");
+                    return Content(HttpStatusCode.Conflict, "Ese código de arquitecto ya está en TEConstruye");
                 }
                 else
                 {
@@ -113,23 +114,23 @@ namespace tec.res.api.Controllers
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = ingeniero.id }, ingeniero);
+            return CreatedAtRoute("DefaultApi", new { id = arquitecto.id }, arquitecto);
         }
-        // Permite eliminar un ingeniero en especifico por su id
-        // DELETE: api/ingenieros/5
-        [ResponseType(typeof(ingeniero))]
-        public async Task<IHttpActionResult> Deleteingeniero(int id)
+        // Permite eliminar un arquitecto en especifico por su id
+        // DELETE: api/arquitectos/5
+        [ResponseType(typeof(arquitecto))]
+        public async Task<IHttpActionResult> Deletearquitecto(int id)
         {
-            ingeniero ingeniero = await db.ingeniero.FindAsync(id);
-            if (ingeniero == null)
+            arquitecto arquitecto = await db.arquitecto.FindAsync(id);
+            if (arquitecto == null)
             {
                 return NotFound();
             }
 
-            db.ingeniero.Remove(ingeniero);
+            db.arquitecto.Remove(arquitecto);
             await db.SaveChangesAsync();
 
-            return Ok(ingeniero);
+            return Ok(arquitecto);
         }
         // Métodos autogenerados
         protected override void Dispose(bool disposing)
@@ -141,17 +142,17 @@ namespace tec.res.api.Controllers
             base.Dispose(disposing);
         }
 
-        private bool ingenieroExists(int id)
+        private bool arquitectoExists(int id)
         {
-            return db.ingeniero.Count(e => e.id == id) > 0;
+            return db.arquitecto.Count(e => e.id == id) > 0;
         }
-        private bool ingenieroExists(string id)
+        private bool arquitectoExists(string id)
         {
-            return db.ingeniero.Count(e => e.cedula == id) > 0;
+            return db.arquitecto.Count(e => e.cedula == id) > 0;
         }
         private bool codigoExists(string id)
         {
-            return db.ingeniero.Count(e => e.codigo_ingeniero == id) > 0;
+            return db.arquitecto.Count(e => e.codigo_arquitecto == id) > 0;
         }
     }
 }
