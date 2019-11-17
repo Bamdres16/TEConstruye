@@ -85,7 +85,43 @@ Entrada:
 }
 ``` 
 
-
+## Ingenieros
+### Métodos implementados
+#### Para retonar la lista de todos los ingenieros
+- GET http://teconstruyeapi.azurewebsites.net/api/Ingenieros
+#### Para obtener un ingeniero en específico se debe proveer el id del ingeniero
+- GET http://teconstruyeapi.azurewebsites.net/api/Ingenieros/{id}
+#### Para añadir un nuevo ingeniero, se toma en cuenta que el número de cédula y código de ingeniero no se repiten, además el código de ingeniero, cedula y numero de telefono son tipo string, esto ya que el valor de estos puede ser mayor que el valor máximo del tipo integer.
+- POST http://teconstruyeapi.azurewebsites.net/api/Ingenieros
+Entrada:
+```json
+{
+	  "nombre": "sample string 1",
+	  "apellido1": "sample string 2",
+	  "apellido2": "sample string 3",
+	  "cedula": "sample string 4",
+	  "numero_telefono": "sample string 5",
+	  "codigo_ingeniero": "sample string 6",
+	  "id_especialidad": 1
+}
+``` 
+#### Para eliminar un ingeniero, se debe proveer únicamente el id
+- DELETE http://teconstruyeapi.azurewebsites.net/api/Ingenieros/{id}
+#### Para actualizar el registro de un ingeniero existente, se debe proveer el id actual por parámetro y además debe venir en el JSON ya que se compara si estos son iguales.
+- PUT http://teconstruyeapi.azurewebsites.net/api/Ingenieros/{id}
+Entrada:
+```json
+{
+	  "nombre": "sample string 1",
+	  "apellido1": "sample string 2",
+	  "apellido2": "sample string 3",
+	  "cedula": "sample string 4",
+	  "numero_telefono": "sample string 5",
+	  "codigo_ingeniero": "sample string 6",
+	  "id_especialidad": 1,
+	  "id" : 1
+}
+``` 
 
 
 
