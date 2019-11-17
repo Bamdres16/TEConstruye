@@ -105,7 +105,17 @@ Entrada:
 	  "codigo_ingeniero": "sample string 6",
 	  "id_especialidad": 1
 }
-``` 
+```
+#### Para logearse como ingeniero
+- POST http://teconstruyeapi.azurewebsites.net/api/Ingenieros/login
+#### Entradas:
+```json
+{
+	  "codigo": "sample string 1",
+	  "contrasena": "sample string 2"
+}
+```
+ 
 #### Para eliminar un ingeniero, se debe proveer únicamente el id
 - DELETE http://teconstruyeapi.azurewebsites.net/api/Ingenieros/{id}
 #### Para actualizar el registro de un ingeniero existente, se debe proveer el id actual por parámetro y además debe venir en el JSON ya que se compara si estos son iguales.
@@ -144,6 +154,15 @@ Entrada:
 	  "id_especialidad": 1
 }
 ``` 
+#### Para logearse como ingeniero
+- POST http://teconstruyeapi.azurewebsites.net/api/Arquitectos/login
+#### Entradas:
+```json
+{
+	  "codigo": "sample string 1",
+	  "contrasena": "sample string 2"
+}
+```
 #### Para eliminar un arquitecto, se debe proveer únicamente el id
 - DELETE http://teconstruyeapi.azurewebsites.net/api/Arquitectos/{id}
 #### Para actualizar el registro de un arquitecto existente, se debe proveer el id actual por parámetro y además debe venir en el JSON ya que se compara si estos son iguales.
