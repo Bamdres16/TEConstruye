@@ -26,7 +26,7 @@ export class PeticionesService {
  }
  addEtapa(etapa:void){
   return this._http.post<any>(this.ID+'/Etapas',etapa)
-}
+  }
 
 
 loginIngeniero(ingeniero:void){
@@ -39,4 +39,7 @@ loginArquitecto(arquitecto:void){
   return this._http.post<any>(this.ID+'/Arquitectos/login',arquitecto)
 }
 
+  getEtapa(etapa:void){
+    return this._http.get<void[]>('http://teconstruyeapi.azurewebsites.net/api/Etapas');
+  }
 }
