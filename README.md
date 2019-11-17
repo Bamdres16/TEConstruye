@@ -8,7 +8,7 @@ Este documento tiene como finalidad especificar las diferentes peticiones que se
 - GET: http://teconstruyeapi.azurewebsites.net/api/Clientes/{id}
 #### Añade un nuevo Cliente a la base de datos de TEConstruye, pero si la cédula ya se encuentra registrada en TEConstruye genera "Ya existe ese cliente en TEConstruye" o sí existe en la base de datos de TECres "Ya existe ese cliente en TECres" y genera un código de error 409 Conflict
 - POST: http://teconstruyeapi.azurewebsites.net/api/Clientes
-### Entradas:
+#### Entradas
 ```json
 {
 	"nombre": "sample string 1",
@@ -38,7 +38,7 @@ Este documento tiene como finalidad especificar las diferentes peticiones que se
 #### Permite actualizar un registro de etapa mediante un id y el nuevo registro
 - PUT: http://teconstruyeapi.azurewebsites.net/api/Etapas/{id}
 #### Entrada:
-```javascript
+```json
 {
 	  "nombre": "sample string 1",
 	  "descripcion": "sample string 2",
@@ -68,7 +68,7 @@ Nota: El JSON debe incluir el id ya que se compara para evitar que sea diferente
 - GET: http://teconstruyeapi.azurewebsites.net/api/Especialidad/{id}
 #### Permite actualizar un registro de especialidad mediante un id y el nuevo registro
 - PUT: http://teconstruyeapi.azurewebsites.net/api/Especialidad/{id}
-Entrada:
+#### Entradas
 ```json
 {
 	  "nombre": "sample string 1",
@@ -78,6 +78,7 @@ Entrada:
 Nota: El JSON debe incluir el id ya que se compara para evitar que sea diferente al id del link
 #### Permite añadir una nueva especialidad, debe incluir solo el nombre en el JSON.
 - POST: http://teconstruyeapi.azurewebsites.net/api/Especialidad
+
 Entrada:
 ```json
 {
@@ -91,9 +92,9 @@ Entrada:
 - GET http://teconstruyeapi.azurewebsites.net/api/Ingenieros
 #### Para obtener un ingeniero en específico se debe proveer el id del ingeniero
 - GET http://teconstruyeapi.azurewebsites.net/api/Ingenieros/{id}
-#### Para añadir un nuevo ingeniero, se toma en cuenta que el número de cédula y código de ingeniero no se repiten, además el código de ingeniero, cedula y numero de telefono son tipo string, esto ya que el valor de estos puede ser mayor que el valor máximo del tipo integer.
+#### Para añadir un nuevo ingeniero, se toma en cuenta que el número de cédula y código de ingeniero no se repiten, además el código de ingeniero, cedula y numero de telefono son tipo string, esto ya que el valor de estos puede ser mayor que el valor máximo del tipo integer. Si la cédula ya existe retorna el mensaje: "Esa cédula ya está en TEConstruye" con un código 409 Conflict, y si el código de ingeniero ya existe retorna "Esa código de ingeniero ya está en TEConstruye" con un código 409 Conflict.
 - POST http://teconstruyeapi.azurewebsites.net/api/Ingenieros
-Entrada:
+#### Entradas
 ```json
 {
 	  "nombre": "sample string 1",
@@ -109,7 +110,7 @@ Entrada:
 - DELETE http://teconstruyeapi.azurewebsites.net/api/Ingenieros/{id}
 #### Para actualizar el registro de un ingeniero existente, se debe proveer el id actual por parámetro y además debe venir en el JSON ya que se compara si estos son iguales.
 - PUT http://teconstruyeapi.azurewebsites.net/api/Ingenieros/{id}
-Entrada:
+#### Entradas
 ```json
 {
 	  "nombre": "sample string 1",
