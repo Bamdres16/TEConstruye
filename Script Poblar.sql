@@ -1525,29 +1525,29 @@ VALUES ('Eléctrico');
 
 -- PARA INGENIEROS
 
-INSERT INTO Ingeniero (nombre, apellido1, apellido2, cedula, numero_telefono, codigo_ingeniero, id_especialidad)
-VALUES ('Brayan', 'Muñoz', 'Mora', '2017042094','62856458','ING0010',1);
+INSERT INTO Ingeniero (nombre, apellido1, apellido2, cedula, numero_telefono, codigo_ingeniero,contrasena, id_especialidad)
+VALUES ('Brayan', 'Muñoz', 'Mora', '2017042094','62856458','ING0010','aws123',1);
 
-INSERT INTO Ingeniero (nombre, apellido1, apellido2, cedula, numero_telefono, codigo_ingeniero, id_especialidad)
-VALUES ('Kimberly','Calderon','Prado','2017088598','54545456','ING1020',2);
+INSERT INTO Ingeniero (nombre, apellido1, apellido2, cedula, numero_telefono, codigo_ingeniero,contrasena, id_especialidad)
+VALUES ('Kimberly','Calderon','Prado','2017088598','54545456','ING1020','azer1245',2);
 
-INSERT INTO Ingeniero (nombre, apellido1, apellido2, cedula, numero_telefono, codigo_ingeniero, id_especialidad)
-VALUES ('Cristofer','Azofeifa','Ureña','2017100164','11245526','ING2352',3);
+INSERT INTO Ingeniero (nombre, apellido1, apellido2, cedula, numero_telefono, codigo_ingeniero,contrasena, id_especialidad)
+VALUES ('Cristofer','Azofeifa','Ureña','2017100164','11245526','ING2352','julio456',3);
 
-INSERT INTO Ingeniero (nombre, apellido1, apellido2, cedula, numero_telefono, codigo_ingeniero, id_especialidad)
-VALUES ('Edgar','Chavez','Gonzalez','2017239281','454568218','ING5645',1);
+INSERT INTO Ingeniero (nombre, apellido1, apellido2, cedula, numero_telefono, codigo_ingeniero,contrasena, id_especialidad)
+VALUES ('Edgar','Chavez','Gonzalez','2017239281','454568218','ING5645','ras457',1);
 
 -- PARA ARQUITECTOS
 
-INSERT INTO Arquitecto (nombre, apellido1, apellido2, cedula, numero_telefono, codigo_arquitecto, id_especialidad)
-VALUES ('Brayan', 'Muñoz', 'Mora', '2017042094','62856458','ARQ0010',1);
+INSERT INTO Arquitecto (nombre, apellido1, apellido2, cedula, numero_telefono, codigo_arquitecto,contrasena,id_especialidad)
+VALUES ('Brayan', 'Muñoz', 'Mora', '2017042094','62856458','ARQ0010','qwerty1234',1);
 
-INSERT INTO Arquitecto (nombre, apellido1, apellido2, cedula, numero_telefono, codigo_arquitecto, id_especialidad)
-VALUES ('Kimberly','Calderon','Prado','2017088598','54545456','ARQ1020',2);
+INSERT INTO Arquitecto (nombre, apellido1, apellido2, cedula, numero_telefono, codigo_arquitecto,contrasena, id_especialidad)
+VALUES ('Kimberly','Calderon','Prado','2017088598','54545456','ARQ1020','test1',2);
 
-INSERT INTO Arquitecto (nombre, apellido1, apellido2, cedula, numero_telefono, codigo_arquitecto, id_especialidad)
-VALUES ('Cristofer','Azofeifa','Ureña','2017100164','11245526','ARQ2352',3);
+INSERT INTO Arquitecto (nombre, apellido1, apellido2, cedula, numero_telefono, codigo_arquitecto,contrasena, id_especialidad)
+VALUES ('Cristofer','Azofeifa','Ureña','2017100164','11245526','ARQ2352','juas134',3);
 
-INSERT INTO Arquitecto (nombre, apellido1, apellido2, cedula, numero_telefono, codigo_arquitecto, id_especialidad)
-VALUES ('Edgar','Chavez','Gonzalez','2017239281','454568218','ARQ5645',1);
+INSERT INTO Arquitecto (nombre, apellido1, apellido2, cedula, numero_telefono, codigo_arquitecto,contrasena, id_especialidad)
+VALUES ('Edgar','Chavez','Gonzalez','2017239281','454568218','ARQ5645','lijg35',1);
 
