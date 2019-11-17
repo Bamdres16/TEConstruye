@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
 import noUiSlider from "nouislider";
+import { PeticionesService } from 'src/app/peticiones.service';
 
 @Component({
   selector: 'app-ing-arqpage',
@@ -17,10 +18,13 @@ export class IngArqpageComponent implements OnInit {
   date = new Date();
   pagination = 3;
   pagination1 = 1;
-  constructor() {}
+  constructor(private data:PeticionesService) {}
   scrollToDownload(element: any) {
     element.scrollIntoView({ behavior: "smooth" });
   }
+
+  public etapas: any = null;
+
   ngOnInit() {
     var body = document.getElementsByTagName("body")[0];
     body.classList.add("index-page");
@@ -50,6 +54,12 @@ export class IngArqpageComponent implements OnInit {
   ngOnDestroy() {
     var body = document.getElementsByTagName("body")[0];
     body.classList.remove("index-page");
+  }
+
+  getEtapas(){
+    this.data.getEtapa().subscribe(datos => this.etapas = datos);
+    console.log(this.etapas);
+    
   }
 
 }

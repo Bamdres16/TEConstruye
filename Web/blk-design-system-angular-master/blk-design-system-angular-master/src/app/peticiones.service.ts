@@ -26,6 +26,9 @@ export class PeticionesService {
  }
  addEtapa(etapa:void){
   return this._http.post<any>(this.ID+'/Etapas',etapa)
-}
+  }
 
+  getEtapa(etapa:void){
+    return this._http.get<void[]>('http://teconstruyeapi.azurewebsites.net/api/Etapas');
+  }
 }
