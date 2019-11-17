@@ -52,43 +52,6 @@
         </div>
       </div>
       <ul class="navbar-nav">
-        <li class="nav-item p-0">
-          <a
-            class="nav-link"
-            href="https://twitter.com/CreativeTim"
-            placement="bottom"
-            target="_blank"
-            tooltip="Follow us on Twitter"
-          >
-            <i class="fab fa-twitter"> </i>
-            <p class="d-lg-none d-xl-none">Twitter</p>
-          </a>
-        </li>
-        <li class="nav-item p-0">
-          <a
-            class="nav-link"
-            href="https://www.facebook.com/CreativeTim"
-            placement="bottom"
-            target="_blank"
-            tooltip="Like us on Facebook"
-          >
-            <i class="fab fa-facebook-square"> </i>
-            <p class="d-lg-none d-xl-none">Facebook</p>
-          </a>
-        </li>
-        <li class="nav-item p-0">
-          <a
-            class="nav-link"
-            href="https://www.instagram.com/CreativeTimOfficial"
-            placement="bottom"
-            target="_blank"
-            tooltip="Follow us on Instagram"
-          >
-            <i class="fab fa-instagram"> </i>
-            <p class="d-lg-none d-xl-none">Instagram</p>
-          </a>
-        </li>
-        
         <li class="nav-item">
           <a
             class="nav-link"
@@ -118,7 +81,7 @@
                 <h1>ingeniero</h1>
               </div>
               <div class="card-body">
-                <form class="form">
+                <form (ngSubmit)="add_ingeniero()" class="form">
                   <div
                     class="input-group"
                     [ngClass]="{ 'input-group-focus': focus === true }"
@@ -137,6 +100,8 @@
                       type="text"
                       (focus)="focus = true"
                       (blur)="focus = false"
+                      name="nombre"
+                      [(ngModel)]="ingeniero.nombre"
                     />
                     <!--Caja de texto para el primer apellido-->
                     <input
@@ -145,6 +110,8 @@
                       type="text"
                       (focus)="focus = true"
                       (blur)="focus = false"
+                      name="apellido1"
+                      [(ngModel)]="ingeniero.apellido1"
                     />
                     <!--Caja de texto para el segundo apellido-->
                     <input
@@ -153,7 +120,10 @@
                       type="text"
                       (focus)="focus = true"
                       (blur)="focus = false"
+                      name="apellido2"
+                      [(ngModel)]="ingeniero.apellido2"
                     />
+                    
                                      
                   </div>
 
@@ -173,6 +143,8 @@
                       type="number"
                       (focus)="focus1 = true"
                       (blur)="focus1 = false"
+                      name="cedula"
+                      [(ngModel)]="ingeniero.cedula"
                     />
                   </div>
 
@@ -193,6 +165,8 @@
                       type="number"
                       (focus)="focus1 = true"
                       (blur)="focus1 = false"
+                      name="telefono"
+                      [(ngModel)]="ingeniero.telefono"
                     />
                   </div>
                   <!--Caja de texto para Email-->
@@ -211,6 +185,8 @@
                       type="text"
                       (focus)="focus1 = true"
                       (blur)="focus1 = false"
+                      name="email"
+                      [(ngModel)]="ingeniero.email"
                     />
                   </div>
 
@@ -230,58 +206,35 @@
                       type="text"
                       (focus)="focus2 = true"
                       (blur)="focus2 = false"
+                      name="contrasena"
+                      [(ngModel)]="ingeniero.contrasena"
                     />
                   </div>
-
-                  <!--Dropdown para especialidad-->
-                  <div
-                    class="input-group"
-                    [ngClass]="{ 'input-group-focus': focus1 === true }"
-                  >
-                    
-                     <div class="dropdown nav-item" dropdown>
-                      <a
-                        class="dropdown-toggle nav-link dropdown-toggle"
-                        data-toggle="dropdown"
-                        dropdownToggle
-                        href="javascript:void(0)"
-                      >
-                      <i class="tim-icons icon-badge"> </i> especialidad
-                      </a>
-                      <div class="dropdown-menu dropdown-with-icons" *dropdownMenu>
-                        <a
-                          class="dropdown-item"
-                          [routerLink]="['/registro']"
-                        >
-                       Civil
-                        </a>
-                        <a class="dropdown-item" >
-                          Eléctrico
-                        </a>
-                        <a class="dropdown-item" [routerLink]="['/registro']">
-                            Construcción
-                          </a>              
-                      </div>
+                  <div class="form-group">
+                    <label for="inputState">Especialidad</label>
+                    <select id="inputState"
+                            type="number"
+                            ng-click="get_especialidades()"
+                            class="form-control"
+                            name ="especialidad"
+                            [(ngModel)]="ingeniero.especialidad"
+                            
+                            >
+                            <option class="bg-dark" *ngFor="let especialidad of especialidades, index as i"   >{{especialidad.nombre}}</option>
+                        
+                    </select>
                     </div>
-                  </div>
-                  <!--Caja de selección términos y condiciones-->
-                  <div class="form-check text-left">
-                    <label class="form-check-label">
-                      <input class="form-check-input" type="checkbox" />
-
-                      <span class="form-check-sign"> </span> 
-                      <a href="javascript:void(0)"> Acepto los términos  y las condiciones </a> .
-                    </label>
-                  </div>
                 </form>
               </div>
               <div class="card-footer">
-                <a
+                <button
                   class="btn btn-danger btn-round btn-lg"
-                  href="javascript:void(0)"
+                  (click) =  "add_ingeniero()"
+                  type="submit"
+                  
                 >
                   Crear cuenta
-                </a>
+                </button>
               </div>
             </div>
           </div>

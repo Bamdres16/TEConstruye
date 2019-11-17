@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
 import noUiSlider from "nouislider";
+import { PeticionesService } from 'C:/Users/Franklin/Desktop/TEConstruye/Web/blk-design-system-angular-master/blk-design-system-angular-master/src/app/peticiones.service';
 
 @Component({
   selector: 'app-adminpage',
@@ -16,7 +17,25 @@ export class AdminpageComponent implements OnInit {
   date = new Date();
   pagination = 3;
   pagination1 = 1;
-  constructor() {}
+  etapa: any ={};
+  add_etapa(){
+    console.log("Activado");
+    this.etapa.nombre = (<HTMLInputElement>document.getElementById("etapa_nombre")).value;
+    this.etapa.descripcion = (<HTMLInputElement>document.getElementById("etapa_descripcion")).value;
+    console.log(this.etapa);
+      this.data.addEtapa(this.etapa).subscribe(
+        res => {
+          
+          this.etapa= res;
+         },
+         error => {
+           console.error(error);
+           alert(error.error);
+         }
+      );
+  
+  }
+  constructor(private data:PeticionesService) {}
   scrollToDownload(element: any) {
     element.scrollIntoView({ behavior: "smooth" });
   }

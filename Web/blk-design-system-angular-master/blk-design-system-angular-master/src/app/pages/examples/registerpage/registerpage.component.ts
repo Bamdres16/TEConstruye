@@ -1,15 +1,20 @@
 import { Component, OnInit, OnDestroy, HostListener } from "@angular/core";
+import { PeticionesService } from 'C:/Users/Franklin/Desktop/TEConstruye/Web/blk-design-system-angular-master/blk-design-system-angular-master/src/app/peticiones.service';
 
 @Component({
   selector: "app-registerpage",
   templateUrl: "registerpage.component.html"
 })
 export class RegisterpageComponent implements OnInit, OnDestroy {
+  especialidades:Array<any>=[];
+  ingeniero: any ={};
   isCollapsed = true;
   focus;
   focus1;
   focus2;
-  constructor() {}
+  constructor(private data:PeticionesService) {
+    this.get_especialidades();
+  }
   @HostListener("document:mousemove", ["$event"])
   onMouseMove(e) {
     var squares1 = document.getElementById("square1");
@@ -84,4 +89,28 @@ export class RegisterpageComponent implements OnInit, OnDestroy {
     var body = document.getElementsByTagName("body")[0];
     body.classList.remove("register-page");
   }
+  get_especialidades(){
+ 
+    this.data.getEspecialidades().subscribe(datos => this.especialidades= datos);
+    console.log(this.especialidades);
+
+}
+
+add_ingeniero(){
+console.log(this.ingeniero);
+this.data.addCliente(this.ingeniero).subscribe(
+  res => {
+    console.log(res);
+    this.ingeniero= res;
+
+   },
+   error => {
+     console.error(error);
+     alert(error.error);
+
+     
+   }
+);
+ 
+}
 }
