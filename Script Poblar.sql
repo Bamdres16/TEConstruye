@@ -1555,3 +1555,29 @@ VALUES ('Edgar','Chavez','Gonzalez','2017239281','454568218','ARQ5645','lijg35',
 
 INSERT INTO Admin (usuario, contrasena, correo)
 VALUES ('su','123456','su@teconstruye.com')
+
+-- PARA MATERIAL
+
+INSERT INTO Material (nombre, precio_unitario, codigo)
+VALUES ('Arena de río por m3',15990.00,'FDR124545');
+
+INSERT INTO Material (nombre, precio_unitario, codigo)
+VALUES ('Back-Hoe por Hora',15537.90,'FDR476589');
+
+INSERT INTO Material (nombre, precio_unitario, codigo)
+VALUES ('Aplanadora 210-A por Hora',22115.60,'FDR657458');
+
+INSERT INTO Material (nombre, precio_unitario, codigo)
+VALUES ('Adoquin 10x20x8 CMS UND',3428.70,'FDR676437');
+
+INSERT INTO Material (nombre, precio_unitario, codigo)
+VALUES ('Ácido Muriático por Galón',1589.10,'FDR342356');
+
+INSERT INTO Material (nombre, precio_unitario, codigo)
+VALUES ('Accesorios para Baño UND',5681.00,'FDR765479');
+
+INSERT INTO Material (nombre, precio_unitario, codigo)
+VALUES ('Ascensor 12 Pasajeros UND',42781018.00,'FDR657483');
+
+INSERT INTO Material (nombre, precio_unitario, codigo)
+VALUES ('Alambre galvanizado NO 16 Kg',849.40,'FDR540912');
