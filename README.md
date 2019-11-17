@@ -127,8 +127,9 @@ Entrada:
 	  "apellido1": "sample string 2",
 	  "apellido2": "sample string 3",
 	  "cedula": "sample string 4",
-	  "numero_telefono": "sample string 5",
-	  "codigo_ingeniero": "sample string 6",
+	  "contrasena" : "sample string 5",
+	  "numero_telefono": "sample string 6",
+	  "codigo_ingeniero": "sample string 7",
 	  "id_especialidad": 1,
 	  "id" : 1
 }
@@ -151,8 +152,9 @@ Entrada:
 	  "apellido1": "sample string 2",
 	  "apellido2": "sample string 3",
 	  "cedula": "sample string 4",
-	  "numero_telefono": "sample string 5",
-	  "codigo_arquitecto": "sample string 6",
+	  "contrasena" : "sample string 5",
+	  "numero_telefono": "sample string 6",
+	  "codigo_arquitecto": "sample string 7",
 	  "id_especialidad": 1
 }
 ``` 
