@@ -154,7 +154,7 @@ Entrada:
 	  "id_especialidad": 1
 }
 ``` 
-#### Para logearse como ingeniero
+#### Para logearse como arquitecto
 - POST http://teconstruyeapi.azurewebsites.net/api/Arquitectos/login
 #### Entradas:
 ```json
