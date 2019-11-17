@@ -81,6 +81,14 @@ namespace tec.res.api.Controllers
             HttpContext.Current.Response.AppendHeader("Allow", "GET,DELETE,PUT,POST,OPTIONS");
             return Ok();
         }
+        [Route("api/Ingenieros/login")]
+        [HttpOptions]
+        // Este método permite retonar una respuesta a las peticiones, evitando cualquier problema de CORS
+        public IHttpActionResult pOptions()
+        {
+            HttpContext.Current.Response.AppendHeader("Allow", "GET,DELETE,PUT,POST,OPTIONS");
+            return Ok();
+        }
 
         // PUT: api/ingenieros/5
         // Permite actualiza un ingeniero, se debe proveer el nuevo ingeniero y ademas el id que corresponde a la llave primaria

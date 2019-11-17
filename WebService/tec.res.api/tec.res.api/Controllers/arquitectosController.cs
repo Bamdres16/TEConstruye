@@ -25,6 +25,14 @@ namespace tec.res.api.Controllers
             HttpContext.Current.Response.AppendHeader("Allow", "GET,DELETE,PUT,POST,OPTIONS");
             return Ok();
         }
+        [Route("api/Arquitectos/login")]
+        [HttpOptions]
+        // Este método permite retonar una respuesta a las peticiones, evitando cualquier problema de CORS
+        public IHttpActionResult pOptions()
+        {
+            HttpContext.Current.Response.AppendHeader("Allow", "GET,DELETE,PUT,POST,OPTIONS");
+            return Ok();
+        }
         // GET: api/arquitectos
         // Este método permite obtener la lista de todos los arquitectos, los select se realizan mediante LINQ expresions
         public object Getarquitecto()
