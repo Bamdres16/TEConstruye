@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TEConstruyeModel.Store" Provider="Npgsql" ProviderManifestToken="10.10" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="cliente">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="nombre" Type="varchar" MaxLength="40" />
+          <Property Name="apellido1" Type="varchar" MaxLength="40" />
+          <Property Name="apellido2" Type="varchar" MaxLength="40" />
+          <Property Name="cedula" Type="varchar" MaxLength="15" />
+          <Property Name="numero_telefono" Type="varchar" MaxLength="15" />
+          <Property Name="id" Type="int4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="especialidad">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="nombre" Type="varchar" MaxLength="40" />
+          <Property Name="id" Type="int4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="etapa">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="nombre" Type="varchar" MaxLength="60" />
+          <Property Name="descripcion" Type="varchar" MaxLength="250" />
+          <Property Name="id" Type="int4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ubicacion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="provincia" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="canton" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="distrito" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="id" Type="int4" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="TEConstruyeModelStoreContainer">
+          <EntitySet Name="cliente" EntityType="Self.cliente" Schema="public" store:Type="Tables" />
+          <EntitySet Name="especialidad" EntityType="Self.especialidad" Schema="public" store:Type="Tables" />
+          <EntitySet Name="etapa" EntityType="Self.etapa" Schema="public" store:Type="Tables" />
+          <EntitySet Name="ubicacion" EntityType="Self.ubicacion" Schema="public" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TEConstruyeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="cliente">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="nombre" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="apellido1" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="apellido2" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="cedula" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="numero_telefono" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="especialidad">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="nombre" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="etapa">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="nombre" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ubicacion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="provincia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="canton" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="distrito" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="TEConstruyeEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="cliente" EntityType="Self.cliente" />
+          <EntitySet Name="especialidad" EntityType="Self.especialidad" />
+          <EntitySet Name="etapa" EntityType="Self.etapa" />
+          <EntitySet Name="ubicacion" EntityType="Self.ubicacion" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TEConstruyeModelStoreContainer" CdmEntityContainer="TEConstruyeEntities">
+          <EntitySetMapping Name="cliente">
+            <EntityTypeMapping TypeName="TEConstruyeModel.cliente">
+              <MappingFragment StoreEntitySet="cliente">
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido1" ColumnName="apellido1" />
+                <ScalarProperty Name="apellido2" ColumnName="apellido2" />
+                <ScalarProperty Name="cedula" ColumnName="cedula" />
+                <ScalarProperty Name="numero_telefono" ColumnName="numero_telefono" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="especialidad">
+            <EntityTypeMapping TypeName="TEConstruyeModel.especialidad">
+              <MappingFragment StoreEntitySet="especialidad">
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="etapa">
+            <EntityTypeMapping TypeName="TEConstruyeModel.etapa">
+              <MappingFragment StoreEntitySet="etapa">
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ubicacion">
+            <EntityTypeMapping TypeName="TEConstruyeModel.ubicacion">
+              <MappingFragment StoreEntitySet="ubicacion">
+                <ScalarProperty Name="provincia" ColumnName="provincia" />
+                <ScalarProperty Name="canton" ColumnName="canton" />
+                <ScalarProperty Name="distrito" ColumnName="distrito" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
