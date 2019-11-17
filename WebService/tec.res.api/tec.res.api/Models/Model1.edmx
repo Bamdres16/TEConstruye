@@ -97,6 +97,7 @@
           <Property Name="id_empleado" Type="int4" Nullable="false" />
           <Property Name="id_obra" Type="int4" Nullable="false" />
           <Property Name="horas_laboradas" Type="float8" />
+          <Property Name="semana" Type="int4" />
         </EntityType>
         <EntityType Name="material">
           <Key>
@@ -606,6 +607,7 @@
           <Property Name="horas_laboradas" Type="Double" />
           <NavigationProperty Name="empleado" Relationship="TEConstruyeModel.fk_empleado" FromRole="labora_en" ToRole="empleado" />
           <NavigationProperty Name="obra" Relationship="TEConstruyeModel.fk_obra1" FromRole="labora_en" ToRole="obra" />
+          <Property Name="semana" Type="Int32" />
         </EntityType>
         <EntityType Name="material">
           <Key>
@@ -923,6 +925,7 @@
           <EntitySetMapping Name="labora_en">
             <EntityTypeMapping TypeName="TEConstruyeModel.labora_en">
               <MappingFragment StoreEntitySet="labora_en">
+                <ScalarProperty Name="semana" ColumnName="semana" />
                 <ScalarProperty Name="horas_laboradas" ColumnName="horas_laboradas" />
                 <ScalarProperty Name="id_obra" ColumnName="id_obra" />
                 <ScalarProperty Name="id_empleado" ColumnName="id_empleado" />
