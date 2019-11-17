@@ -124,6 +124,44 @@ Entrada:
 }
 ``` 
 
+## Arquitectos
+### Métodos implementados
+#### Para retonar la lista de todos los Arquitectos
+- GET http://teconstruyeapi.azurewebsites.net/api/Arquitectos
+#### Para obtener un arquitecto en específico se debe proveer el id del arquitecto
+- GET http://teconstruyeapi.azurewebsites.net/api/Arquitectos/{id}
+#### Para añadir un nuevo arquitecto, se toma en cuenta que el número de cédula y código de arquitecto no se repiten, además el código de ingeniero, cedula y numero de telefono son tipo string, esto ya que el valor de estos puede ser mayor que el valor máximo del tipo integer. Si la cédula ya existe retorna el mensaje: "Esa cédula ya está en TEConstruye" con un código 409 Conflict, y si el código de arquitecto ya existe retorna "Ese código de arquitecto ya está en TEConstruye" con un código 409 Conflict.
+- POST http://teconstruyeapi.azurewebsites.net/api/Arquitectos
+#### Entradas
+```json
+{
+	  "nombre": "sample string 1",
+	  "apellido1": "sample string 2",
+	  "apellido2": "sample string 3",
+	  "cedula": "sample string 4",
+	  "numero_telefono": "sample string 5",
+	  "codigo_arquitecto": "sample string 6",
+	  "id_especialidad": 1
+}
+``` 
+#### Para eliminar un arquitecto, se debe proveer únicamente el id
+- DELETE http://teconstruyeapi.azurewebsites.net/api/Arquitectos/{id}
+#### Para actualizar el registro de un arquitecto existente, se debe proveer el id actual por parámetro y además debe venir en el JSON ya que se compara si estos son iguales.
+- PUT http://teconstruyeapi.azurewebsites.net/api/Arquitectos/{id}
+#### Entradas
+```json
+{
+	  "nombre": "sample string 1",
+	  "apellido1": "sample string 2",
+	  "apellido2": "sample string 3",
+	  "cedula": "sample string 4",
+	  "numero_telefono": "sample string 5",
+	  "codigo_arquitecto": "sample string 6",
+	  "id_especialidad": 1,
+	  "id" : 1
+}
+``` 
+
 
 
 
