@@ -102,7 +102,10 @@ namespace tec.res.api.Controllers
             {
                 if (ingenieroExists(ingeniero.cedula))
                 {
-                    return Content(HttpStatusCode.Conflict, "El ingeniero ya está en TEConstruye");
+                    return Content(HttpStatusCode.Conflict, "Esa cédula ya está en TEConstruye");
+                } else if (codigoExists(ingeniero.codigo_ingeniero))
+                {
+                    return Content(HttpStatusCode.Conflict, "Esa código de ingeniero ya está en TEConstruye");
                 }
                 else
                 {
@@ -145,6 +148,10 @@ namespace tec.res.api.Controllers
         private bool ingenieroExists(string id)
         {
             return db.ingeniero.Count(e => e.cedula == id) > 0;
+        }
+        private bool codigoExists(string id)
+        {
+            return db.ingeniero.Count(e => e.codigo_ingeniero == id) > 0;
         }
     }
 }
