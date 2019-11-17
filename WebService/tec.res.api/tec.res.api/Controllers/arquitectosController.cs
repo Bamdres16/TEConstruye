@@ -51,14 +51,14 @@ namespace tec.res.api.Controllers
         // Método para logear un nuevo ingeniero
         [Route("api/Arquitectos/login")]
         [HttpPost]
-        public IHttpActionResult PostLogin(login login)
+        public IHttpActionResult PostLogin(arquitecto login)
         {
-            if ((login.codigo == null) | (login.contrasena == null))
+            if ((login.codigo_arquitecto == null) | (login.contrasena == null))
             {
                 return BadRequest();
             }
             var user = from i in db.arquitecto
-                       where i.codigo_arquitecto == login.codigo
+                       where i.codigo_arquitecto == login.codigo_arquitecto
                        select new { i.contrasena };
 
             if (user.Count() == 0)
@@ -75,12 +75,14 @@ namespace tec.res.api.Controllers
 
             }
             var nuser = from i in db.arquitecto
-                        where i.codigo_arquitecto == login.codigo
+                        where i.codigo_arquitecto == login.codigo_arquitecto
                         select new { i.nombre, i.apellido1, i.apellido2, i.cedula, i.codigo_arquitecto, i.numero_telefono, i.id_especialidad, i.id };
 
             return Ok(nuser);
 
         }
+
+
 
         // PUT: api/arquitectos/5
         // Permite actualizar un arquitecto, se debe proveer el nuevo arquitecto y ademas el id que corresponde a la llave primaria

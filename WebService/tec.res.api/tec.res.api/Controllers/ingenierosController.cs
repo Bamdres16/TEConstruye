@@ -45,14 +45,14 @@ namespace tec.res.api.Controllers
         // Método para logear un nuevo ingeniero
         [Route("api/Ingenieros/login")]
         [HttpPost]
-        public IHttpActionResult PostLogin(login login)
+        public IHttpActionResult PostLogin(ingeniero login)
         {
-            if ((login.codigo == null) | (login.contrasena == null))
+            if ((login.codigo_ingeniero == null) | (login.contrasena == null))
             {
                 return BadRequest();
             }
             var user = from i in db.ingeniero
-                        where i.codigo_ingeniero == login.codigo
+                        where i.codigo_ingeniero == login.codigo_ingeniero
                         select new { i.contrasena };
 
             if (user.Count() == 0)
@@ -69,7 +69,7 @@ namespace tec.res.api.Controllers
 
             }
             var nuser = from i in db.ingeniero
-                       where i.codigo_ingeniero == login.codigo
+                       where i.codigo_ingeniero == login.codigo_ingeniero
                        select new { i.nombre, i.apellido1, i.apellido2, i.cedula, i.codigo_ingeniero, i.numero_telefono, i.id_especialidad, i.id };
 
             return Ok(nuser);

@@ -111,7 +111,7 @@ Entrada:
 #### Entradas:
 ```json
 {
-	  "codigo": "sample string 1",
+	  "codigo_ingeniero": "sample string 1",
 	  "contrasena": "sample string 2"
 }
 ```
@@ -159,7 +159,7 @@ Entrada:
 #### Entradas:
 ```json
 {
-	  "codigo": "sample string 1",
+	  "codigo_arquitecto": "sample string 1",
 	  "contrasena": "sample string 2"
 }
 ```
