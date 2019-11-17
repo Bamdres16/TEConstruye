@@ -193,6 +193,7 @@
     <Compile Include="Controllers\especialidadController.cs" />
     <Compile Include="Controllers\etapasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ingenierosController.cs" />
     <Compile Include="Controllers\ubicacionController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">

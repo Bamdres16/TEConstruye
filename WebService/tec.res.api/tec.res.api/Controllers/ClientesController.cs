@@ -118,7 +118,7 @@ namespace tec.res.api.Controllers
 
             return CreatedAtRoute("DefaultApi", new { id = cliente.id }, cliente);
         }
-
+        // Permite borrar un cliente, unicamente se debe proveer el id
         // DELETE: api/Clientes/5
         [ResponseType(typeof(cliente))]
         public async Task<IHttpActionResult> Deletecliente(int id)
@@ -134,6 +134,8 @@ namespace tec.res.api.Controllers
 
             return Ok(cliente);
         }
+
+        // Métodos autogenerados
 
         protected override void Dispose(bool disposing)
         {
