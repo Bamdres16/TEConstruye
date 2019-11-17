@@ -198,4 +198,25 @@ Entrada:
 }
 ```
 
+## Materiales
+
+### Métodos implementados
+
+#### Para obtener la lista de todos los materiales
+- GET http://teconstruyeapi.azurewebsites.net/api/Material
+
+#### Para agregar un nuevo material
+- POST http://teconstruyeapi.azurewebsites.net/api/Material
+#### Entradas
+```json
+{
+  "nombre": "sample string 1",
+  "precio_unitario": 1.1,
+  "codigo": "sample string 2"
+}
+```
+
+#### Para eliminar un material se debe proveer el código de material
+- DELETE http://teconstruyeapi.azurewebsites.net/api/Material/{id}
+
 
