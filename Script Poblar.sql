@@ -1522,3 +1522,17 @@ VALUES ('Construcción');
 
 INSERT INTO Especialidad (nombre)
 VALUES ('Eléctrico');
+
+-- PARA INGENIEROS
+
+INSERT INTO Ingeniero (nombre, apellido1, apellido2, cedula, numero_telefono, codigo_ingeniero, id_especialidad)
+VALUES ('Brayan', 'Muñoz', 'Mora', '2017042094','62856458','TR0010',1);
+
+INSERT INTO Ingeniero (nombre, apellido1, apellido2, cedula, numero_telefono, codigo_ingeniero, id_especialidad)
+VALUES ('Kimberly','Calderon','Prado','2017088598','54545456','TR1020',2);
+
+INSERT INTO Ingeniero (nombre, apellido1, apellido2, cedula, numero_telefono, codigo_ingeniero, id_especialidad)
+VALUES ('Cristofer','Azofeifa','Ureña','2017100164','11245526','TR2352',3);
+
+INSERT INTO Ingeniero (nombre, apellido1, apellido2, cedula, numero_telefono, codigo_ingeniero, id_especialidad)
+VALUES ('Edgar','Chavez','Gonzalez','2017239281','454568218','TR5645',1);
