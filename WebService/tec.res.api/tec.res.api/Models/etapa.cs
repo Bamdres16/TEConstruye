@@ -14,8 +14,20 @@ namespace tec.res.api.Models
     
     public partial class etapa
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public etapa()
+        {
+            this.tiene = new HashSet<tiene>();
+            this.requiere = new HashSet<requiere>();
+        }
+    
         public string nombre { get; set; }
         public string descripcion { get; set; }
         public int id { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tiene> tiene { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<requiere> requiere { get; set; }
     }
 }

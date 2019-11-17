@@ -14,7 +14,19 @@ namespace tec.res.api.Models
     
     public partial class especialidad
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public especialidad()
+        {
+            this.arquitecto = new HashSet<arquitecto>();
+            this.ingeniero = new HashSet<ingeniero>();
+        }
+    
         public string nombre { get; set; }
         public int id { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<arquitecto> arquitecto { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ingeniero> ingeniero { get; set; }
     }
 }
