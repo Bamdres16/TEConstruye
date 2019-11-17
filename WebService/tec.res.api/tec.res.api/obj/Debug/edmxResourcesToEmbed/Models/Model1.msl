@@ -43,6 +43,7 @@
     <EntitySetMapping Name="arquitecto">
       <EntityTypeMapping TypeName="TEConstruyeModel.arquitecto">
         <MappingFragment StoreEntitySet="arquitecto">
+          <ScalarProperty Name="contrasena" ColumnName="contrasena" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="id_especialidad" ColumnName="id_especialidad" />
           <ScalarProperty Name="codigo_arquitecto" ColumnName="codigo_arquitecto" />
@@ -57,6 +58,7 @@
     <EntitySetMapping Name="ingeniero">
       <EntityTypeMapping TypeName="TEConstruyeModel.ingeniero">
         <MappingFragment StoreEntitySet="ingeniero">
+          <ScalarProperty Name="contrasena" ColumnName="contrasena" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="id_especialidad" ColumnName="id_especialidad" />
           <ScalarProperty Name="codigo_ingeniero" ColumnName="codigo_ingeniero" />
@@ -148,6 +150,16 @@
           <ScalarProperty Name="horas_laboradas" ColumnName="horas_laboradas" />
           <ScalarProperty Name="id_obra" ColumnName="id_obra" />
           <ScalarProperty Name="id_arquitecto" ColumnName="id_arquitecto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="admin">
+      <EntityTypeMapping TypeName="TEConstruyeModel.admin">
+        <MappingFragment StoreEntitySet="admin">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="correo" ColumnName="correo" />
+          <ScalarProperty Name="contrasena" ColumnName="contrasena" />
+          <ScalarProperty Name="usuario" ColumnName="usuario" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

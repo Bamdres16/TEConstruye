@@ -112,6 +112,7 @@
       <End Role="etapa" EntitySet="etapa" />
       <End Role="requiere" EntitySet="requiere" />
     </AssociationSet>
+    <EntitySet Name="admin" EntityType="TEConstruyeModel.admin" />
   </EntityContainer>
   <EntityType Name="arquitecto">
     <Key>
@@ -127,6 +128,7 @@
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <NavigationProperty Name="especialidad" Relationship="TEConstruyeModel.fk_especialidad1" FromRole="arquitecto" ToRole="especialidad" />
     <NavigationProperty Name="trabaja_en" Relationship="TEConstruyeModel.fk_arquitecto1" FromRole="arquitecto" ToRole="trabaja_en" />
+    <Property Name="contrasena" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="ingeniero">
     <Key>
@@ -142,6 +144,7 @@
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <NavigationProperty Name="especialidad" Relationship="TEConstruyeModel.fk_especialidad" FromRole="ingeniero" ToRole="especialidad" />
     <NavigationProperty Name="diseña" Relationship="TEConstruyeModel.fk_arquitecto" FromRole="ingeniero" ToRole="diseña" />
+    <Property Name="contrasena" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
   </EntityType>
   <Association Name="fk_especialidad1">
     <End Type="TEConstruyeModel.especialidad" Role="especialidad" Multiplicity="0..1" />
@@ -409,4 +412,13 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="admin">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="usuario" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="contrasena" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="correo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="id" Type="Int32" Nullable="false" />
+  </EntityType>
 </Schema>

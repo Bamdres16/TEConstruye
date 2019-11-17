@@ -28,6 +28,7 @@ namespace tec.res.api.Models
         public string codigo_ingeniero { get; set; }
         public Nullable<int> id_especialidad { get; set; }
         public int id { get; set; }
+        public string contrasena { get; set; }
     
         public virtual especialidad especialidad { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

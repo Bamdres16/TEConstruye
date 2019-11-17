@@ -200,6 +200,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="login.cs" />
+    <Compile Include="Models\admin.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\arquitecto.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

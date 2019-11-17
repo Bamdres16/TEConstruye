@@ -1,5 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="TEConstruyeModel.Store" Provider="Npgsql" ProviderManifestToken="10.10" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="admin">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="usuario" Type="varchar" MaxLength="30" />
+    <Property Name="contrasena" Type="varchar" MaxLength="100" />
+    <Property Name="correo" Type="varchar" MaxLength="100" />
+    <Property Name="id" Type="int4" Nullable="false" />
+  </EntityType>
   <EntityType Name="arquitecto">
     <Key>
       <PropertyRef Name="id" />
@@ -11,6 +20,7 @@
     <Property Name="numero_telefono" Type="varchar" MaxLength="30" />
     <Property Name="codigo_arquitecto" Type="varchar" MaxLength="20" />
     <Property Name="id_especialidad" Type="int4" />
+    <Property Name="contrasena" Type="varchar" MaxLength="100" />
     <Property Name="id" Type="int4" Nullable="false" StoreGeneratedPattern="Identity" />
   </EntityType>
   <EntityType Name="cliente">
@@ -71,6 +81,7 @@
     <Property Name="numero_telefono" Type="varchar" MaxLength="30" />
     <Property Name="codigo_ingeniero" Type="varchar" MaxLength="20" />
     <Property Name="id_especialidad" Type="int4" />
+    <Property Name="contrasena" Type="varchar" MaxLength="100" />
     <Property Name="id" Type="int4" Nullable="false" StoreGeneratedPattern="Identity" />
   </EntityType>
   <EntityType Name="labora_en">
@@ -142,18 +153,6 @@
     <Property Name="id" Type="int4" Nullable="false" StoreGeneratedPattern="Identity" />
   </EntityType>
   <Association Name="fk_arquitecto">
-    <End Role="ingeniero" Type="Self.ingeniero" Multiplicity="1" />
-    <End Role="diseña" Type="Self.diseña" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ingeniero">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="diseña">
-        <PropertyRef Name="id_ingeniero" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="fk_arquitecto1">
     <End Role="arquitecto" Type="Self.arquitecto" Multiplicity="1" />
     <End Role="trabaja_en" Type="Self.trabaja_en" Multiplicity="*" />
     <ReferentialConstraint>
@@ -222,6 +221,18 @@
       </Principal>
       <Dependent Role="requiere">
         <PropertyRef Name="id_etapa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_ingeniero">
+    <End Role="ingeniero" Type="Self.ingeniero" Multiplicity="1" />
+    <End Role="diseña" Type="Self.diseña" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ingeniero">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="diseña">
+        <PropertyRef Name="id_ingeniero" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -310,6 +321,7 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="TEConstruyeModelStoreContainer">
+    <EntitySet Name="admin" EntityType="Self.admin" Schema="public" store:Type="Tables" />
     <EntitySet Name="arquitecto" EntityType="Self.arquitecto" Schema="public" store:Type="Tables" />
     <EntitySet Name="cliente" EntityType="Self.cliente" Schema="public" store:Type="Tables" />
     <EntitySet Name="diseña" EntityType="Self.diseña" Schema="public" store:Type="Tables" />
@@ -325,10 +337,6 @@
     <EntitySet Name="trabaja_en" EntityType="Self.trabaja_en" Schema="public" store:Type="Tables" />
     <EntitySet Name="ubicacion" EntityType="Self.ubicacion" Schema="public" store:Type="Tables" />
     <AssociationSet Name="fk_arquitecto" Association="Self.fk_arquitecto">
-      <End Role="ingeniero" EntitySet="ingeniero" />
-      <End Role="diseña" EntitySet="diseña" />
-    </AssociationSet>
-    <AssociationSet Name="fk_arquitecto1" Association="Self.fk_arquitecto1">
       <End Role="arquitecto" EntitySet="arquitecto" />
       <End Role="trabaja_en" EntitySet="trabaja_en" />
     </AssociationSet>
@@ -351,6 +359,10 @@
     <AssociationSet Name="fk_etaparequiere" Association="Self.fk_etaparequiere">
       <End Role="etapa" EntitySet="etapa" />
       <End Role="requiere" EntitySet="requiere" />
+    </AssociationSet>
+    <AssociationSet Name="fk_ingeniero" Association="Self.fk_ingeniero">
+      <End Role="ingeniero" EntitySet="ingeniero" />
+      <End Role="diseña" EntitySet="diseña" />
     </AssociationSet>
     <AssociationSet Name="fk_material" Association="Self.fk_material">
       <End Role="material" EntitySet="material" />

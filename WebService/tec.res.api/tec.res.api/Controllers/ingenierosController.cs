@@ -41,6 +41,40 @@ namespace tec.res.api.Controllers
 
             return Ok(ingeniero);
         }
+
+        // Método para logear un nuevo ingeniero
+        [Route("api/Ingenieros/login")]
+        [HttpPost]
+        public IHttpActionResult PostLogin(login login)
+        {
+            if ((login.codigo == null) | (login.contrasena == null))
+            {
+                return BadRequest();
+            }
+            var user = from i in db.ingeniero
+                        where i.codigo_ingeniero == login.codigo
+                        select new { i.contrasena };
+
+            if (user.Count() == 0)
+            {
+                return Content(HttpStatusCode.NotFound, "Ese usuario no existe en la base de datos");
+            }
+            
+            foreach (var u in user)
+            {
+                if (u.contrasena != login.contrasena)
+                {
+                    return Content(HttpStatusCode.Conflict, "Contraseña invalida");
+                } 
+
+            }
+            var nuser = from i in db.ingeniero
+                       where i.codigo_ingeniero == login.codigo
+                       select new { i.nombre, i.apellido1, i.apellido2, i.cedula, i.codigo_ingeniero, i.numero_telefono, i.id_especialidad, i.id };
+
+            return Ok(nuser);
+
+        }
         // Este método permite retonar una respuesta a las peticiones, evitando cualquier problema de CORS
         public IHttpActionResult Options()
         {

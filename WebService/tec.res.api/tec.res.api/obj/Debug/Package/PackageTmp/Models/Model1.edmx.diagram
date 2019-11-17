@@ -33,6 +33,7 @@
         <AssociationConnector Association="TEConstruyeModel.fk_obra3" />
         <AssociationConnector Association="TEConstruyeModel.fk_obraubicacion" />
         <AssociationConnector Association="TEConstruyeModel.fk_etaparequiere" />
+        <EntityTypeShape EntityType="TEConstruyeModel.admin" Width="1.5" PointX="0.75" PointY="6.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

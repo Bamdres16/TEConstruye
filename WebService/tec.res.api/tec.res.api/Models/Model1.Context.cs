@@ -39,5 +39,6 @@ namespace tec.res.api.Models
         public virtual DbSet<requiere> requiere { get; set; }
         public virtual DbSet<tiene> tiene { get; set; }
         public virtual DbSet<trabaja_en> trabaja_en { get; set; }
+        public virtual DbSet<admin> admin { get; set; }
     }
 }
