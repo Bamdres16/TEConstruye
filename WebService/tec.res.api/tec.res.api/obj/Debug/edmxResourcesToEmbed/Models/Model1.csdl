@@ -204,6 +204,7 @@
     <Property Name="horas_laboradas" Type="Double" />
     <NavigationProperty Name="empleado" Relationship="TEConstruyeModel.fk_empleado" FromRole="labora_en" ToRole="empleado" />
     <NavigationProperty Name="obra" Relationship="TEConstruyeModel.fk_obra1" FromRole="labora_en" ToRole="obra" />
+    <Property Name="semana" Type="Int32" />
   </EntityType>
   <EntityType Name="material">
     <Key>

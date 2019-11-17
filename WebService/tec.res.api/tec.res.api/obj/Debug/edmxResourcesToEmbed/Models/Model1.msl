@@ -95,6 +95,7 @@
     <EntitySetMapping Name="labora_en">
       <EntityTypeMapping TypeName="TEConstruyeModel.labora_en">
         <MappingFragment StoreEntitySet="labora_en">
+          <ScalarProperty Name="semana" ColumnName="semana" />
           <ScalarProperty Name="horas_laboradas" ColumnName="horas_laboradas" />
           <ScalarProperty Name="id_obra" ColumnName="id_obra" />
           <ScalarProperty Name="id_empleado" ColumnName="id_empleado" />

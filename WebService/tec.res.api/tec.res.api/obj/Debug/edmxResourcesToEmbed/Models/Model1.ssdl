@@ -92,6 +92,7 @@
     <Property Name="id_empleado" Type="int4" Nullable="false" />
     <Property Name="id_obra" Type="int4" Nullable="false" />
     <Property Name="horas_laboradas" Type="float8" />
+    <Property Name="semana" Type="int4" />
   </EntityType>
   <EntityType Name="material">
     <Key>

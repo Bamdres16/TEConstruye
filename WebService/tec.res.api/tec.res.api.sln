@@ -5,10 +5,6 @@ VisualStudioVersion = 16.0.29509.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tec.res.api", "tec.res.api\tec.res.api.csproj", "{22C5BD89-918F-4BB7-ADE0-6E063341DA5F}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PostgreSQL", "PostgreSQL", "{3163ED7A-13B0-455E-BD4D-3506EB28F835}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataModel", "DataModel\DataModel.csproj", "{93DE27BF-38D8-44CC-91CA-F95241C1DA0B}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,16 +15,9 @@ Global
 		{22C5BD89-918F-4BB7-ADE0-6E063341DA5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{22C5BD89-918F-4BB7-ADE0-6E063341DA5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{22C5BD89-918F-4BB7-ADE0-6E063341DA5F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{93DE27BF-38D8-44CC-91CA-F95241C1DA0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{93DE27BF-38D8-44CC-91CA-F95241C1DA0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{93DE27BF-38D8-44CC-91CA-F95241C1DA0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{93DE27BF-38D8-44CC-91CA-F95241C1DA0B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{93DE27BF-38D8-44CC-91CA-F95241C1DA0B} = {3163ED7A-13B0-455E-BD4D-3506EB28F835}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {708A2111-7D0A-4674-83D2-4872C612DF38}
