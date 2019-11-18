@@ -268,3 +268,17 @@ Entrada:
 		  "propietario": 1
 		}
 	```
+2) Para asignar una etapa a una obra
+	- PUT http://teconstruyeapi.azurewebsites.net/api/Proyecto/asignaretapa
+	##### Entradas
+	```json
+		{
+			"id_etapa": 2,
+			"id_obra": 2,
+			"fecha_incio": "2019-11-17",
+			"fecha_finalizacion": "2019-11-17"
+		}
+	```
+	##### Para obtener la lista de etapas asociadas a un proyecto
+	- GET http://teconstruyeapi.azurewebsites.net/api/Proyecto/etapas/{id_obra}
+	

@@ -208,6 +208,7 @@
     <Compile Include="Controllers\ingenierosController.cs" />
     <Compile Include="Controllers\materialController.cs" />
     <Compile Include="Controllers\obrasController.cs" />
+    <Compile Include="Controllers\ProyectoController.cs" />
     <Compile Include="Controllers\ubicacionController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">

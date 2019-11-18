@@ -146,6 +146,7 @@ D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.res.api\tec.res.api\bin\Ant
 D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.res.api\tec.res.api\bin\EntityFramework.dll
 D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.res.api\tec.res.api\bin\EntityFramework.SqlServer.dll
 D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.res.api\tec.res.api\bin\EntityFramework6.Npgsql.dll
+D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.res.api\tec.res.api\bin\Microsoft.Bcl.AsyncInterfaces.dll
 D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.res.api\tec.res.api\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.res.api\tec.res.api\bin\Microsoft.Web.Infrastructure.dll
 D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.res.api\tec.res.api\bin\Newtonsoft.Json.dll
@@ -155,6 +156,8 @@ D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.res.api\tec.res.api\bin\Sys
 D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.res.api\tec.res.api\bin\System.Net.Http.Formatting.dll
 D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.res.api\tec.res.api\bin\System.Numerics.Vectors.dll
 D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.res.api\tec.res.api\bin\System.Runtime.CompilerServices.Unsafe.dll
+D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.res.api\tec.res.api\bin\System.Text.Encodings.Web.dll
+D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.res.api\tec.res.api\bin\System.Text.Json.dll
 D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.res.api\tec.res.api\bin\System.Threading.Tasks.Extensions.dll
 D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.res.api\tec.res.api\bin\System.ValueTuple.dll
 D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.res.api\tec.res.api\bin\System.Web.Helpers.dll
@@ -170,12 +173,15 @@ D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.res.api\tec.res.api\bin\Web
 D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.res.api\tec.res.api\bin\EntityFramework.xml
 D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.res.api\tec.res.api\bin\EntityFramework.SqlServer.xml
 D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.res.api\tec.res.api\bin\EntityFramework6.Npgsql.xml
+D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.res.api\tec.res.api\bin\Microsoft.Bcl.AsyncInterfaces.xml
 D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.res.api\tec.res.api\bin\Npgsql.pdb
 D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.res.api\tec.res.api\bin\Npgsql.xml
 D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.res.api\tec.res.api\bin\System.Buffers.xml
 D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.res.api\tec.res.api\bin\System.Memory.xml
 D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.res.api\tec.res.api\bin\System.Numerics.Vectors.xml
 D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.res.api\tec.res.api\bin\System.Runtime.CompilerServices.Unsafe.xml
+D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.res.api\tec.res.api\bin\System.Text.Encodings.Web.xml
+D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.res.api\tec.res.api\bin\System.Text.Json.xml
 D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.res.api\tec.res.api\bin\System.Threading.Tasks.Extensions.xml
 D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.res.api\tec.res.api\bin\System.ValueTuple.xml
 D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.res.api\tec.res.api\bin\Newtonsoft.Json.xml
@@ -205,9 +211,3 @@ D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.res.api\tec.res.api\obj\Deb
 D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.res.api\tec.res.api\obj\Debug\tec.res.api.csproj.CopyComplete
 D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.res.api\tec.res.api\obj\Debug\tec.res.api.dll
 D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.res.api\tec.res.api\obj\Debug\tec.res.api.pdb
-D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.res.api\tec.res.api\bin\Microsoft.Bcl.AsyncInterfaces.dll
-D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.res.api\tec.res.api\bin\System.Text.Encodings.Web.dll
-D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.res.api\tec.res.api\bin\System.Text.Json.dll
-D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.res.api\tec.res.api\bin\Microsoft.Bcl.AsyncInterfaces.xml
-D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.res.api\tec.res.api\bin\System.Text.Encodings.Web.xml
-D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.res.api\tec.res.api\bin\System.Text.Json.xml
