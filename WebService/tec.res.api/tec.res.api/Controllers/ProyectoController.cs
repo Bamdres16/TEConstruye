@@ -40,6 +40,33 @@ namespace tec.res.api.Controllers
             return Ok();
             
         }
+
+        // Este método permite asignar las horas de un empleado
+        [Route("api/Proyecto/asignarhoras")]
+        [HttpPut]
+        public async Task<IHttpActionResult> putAsignarHoras(labora_en labora)
+        {
+
+            db.labora_en.Add(labora);
+            try
+            {
+                await db.SaveChangesAsync();
+
+            }
+            catch (Exception)
+            {
+                if (semanaEmpleado(labora.id_obra, labora.id_empleado, (int) labora.semana))
+                {
+                    return Content(HttpStatusCode.Conflict, "El empleado ya tiene horas asignadas en esa semana para el proyecto actual");
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return Ok();
+
+        }
         // Este método permite asignar las etapas a un proyecto
         [Route("api/Proyecto/etapas/{obra}")]
         [HttpGet]
@@ -58,6 +85,11 @@ namespace tec.res.api.Controllers
         {
             return db.tiene.Count(e => ((e.id_obra == id_obra) && (e.id_etapa == id_etapa))) > 0;
         }
+
+        private bool semanaEmpleado(int id_obra, int id_empleado, int semana)
+        {
+            return db.labora_en.Count(e => ((e.id_obra == id_obra) && (e.id_empleado == id_empleado) && (e.semana == semana))) > 0;
+        }
         // Este método permite retonar una respuesta a las peticiones, evitando cualquier problema de CORS
         [Route("api/Proyecto/asignaretapa")]
         public IHttpActionResult Options()
@@ -65,7 +97,12 @@ namespace tec.res.api.Controllers
             HttpContext.Current.Response.AppendHeader("Allow", "GET,DELETE,PUT,POST,OPTIONS");
             return Ok();
         }
-        
+        [Route("api/Proyecto/asignarhoras")]
+        public IHttpActionResult Options_1()
+        {
+            HttpContext.Current.Response.AppendHeader("Allow", "GET,DELETE,PUT,POST,OPTIONS");
+            return Ok();
+        }
 
     }
 }

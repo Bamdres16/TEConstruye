@@ -282,3 +282,18 @@ Entrada:
 	##### Para obtener la lista de etapas asociadas a un proyecto
 	- GET http://teconstruyeapi.azurewebsites.net/api/Proyecto/etapas/{id_obra}
 	
+## Métodos extra
+
+### Metodos
+
+#### Para asignar las horas de un empleado
+
+- PUT http://teconstruyeapi.azurewebsites.net/api/Proyecto/asignarhoras
+```json
+{
+  "id_empleado": 1,
+  "id_obra": 2,
+  "horas_laboradas": 1.1,
+  "semana": 1
+}
+```
