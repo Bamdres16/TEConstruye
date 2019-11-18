@@ -6,7 +6,7 @@ import {Router, ActivatedRoute} from '@angular/router';
   selector: 'app-ing-arqpage',
   templateUrl: './ing-arqpage.component.html',
   styleUrls: ['./ing-arqpage.component.scss']
-})
+}) 
 export class IngArqpageComponent implements OnInit {
 
 
@@ -32,7 +32,7 @@ export class IngArqpageComponent implements OnInit {
     element.scrollIntoView({ behavior: "smooth" });
   }
 
-  public etapas: any = null;
+  etapas:Array<any>=[];
 
   ngOnInit() {
     var body = document.getElementsByTagName("body")[0];
@@ -66,9 +66,10 @@ export class IngArqpageComponent implements OnInit {
   }
 
   getEtapas(){
-    this.data.getEtapa().subscribe(datos => this.etapas = datos);
-    console.log(this.etapas);
+    this.data.getEtapa().subscribe(datos => {console.log(datos); this.etapas = datos});
+    //console.log(this.etapas);
     
   }
+
 
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
 import noUiSlider from "nouislider";
-import { PeticionesService } from 'C:/Users/Franklin/Desktop/TEConstruye/Web/blk-design-system-angular-master/blk-design-system-angular-master/src/app/peticiones.service';
+import { PeticionesService } from 'src/app/peticiones.service';
 import {Router, ActivatedRoute} from '@angular/router';
 
 @Component({
