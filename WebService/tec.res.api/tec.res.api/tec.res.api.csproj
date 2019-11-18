@@ -201,11 +201,13 @@
     <Compile Include="Controllers\adminController.cs" />
     <Compile Include="Controllers\arquitectosController.cs" />
     <Compile Include="Controllers\ClientesController.cs" />
+    <Compile Include="Controllers\empleadosController.cs" />
     <Compile Include="Controllers\especialidadController.cs" />
     <Compile Include="Controllers\etapasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ingenierosController.cs" />
     <Compile Include="Controllers\materialController.cs" />
+    <Compile Include="Controllers\obrasController.cs" />
     <Compile Include="Controllers\ubicacionController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">

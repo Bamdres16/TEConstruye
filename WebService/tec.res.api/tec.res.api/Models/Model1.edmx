@@ -58,7 +58,7 @@
           <Property Name="cedula" Type="varchar" MaxLength="30" />
           <Property Name="numero_telefono" Type="varchar" MaxLength="30" />
           <Property Name="pago_hora" Type="float8" />
-          <Property Name="id" Type="int4" Nullable="false" />
+          <Property Name="id" Type="int4" Nullable="false" StoreGeneratedPattern="Identity" />
         </EntityType>
         <EntityType Name="especialidad">
           <Key>
@@ -594,7 +594,7 @@
           <Property Name="cedula" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="numero_telefono" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="pago_hora" Type="Double" />
-          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="labora_en" Relationship="TEConstruyeModel.fk_empleado" FromRole="empleado" ToRole="labora_en" />
         </EntityType>
         <EntityType Name="labora_en">

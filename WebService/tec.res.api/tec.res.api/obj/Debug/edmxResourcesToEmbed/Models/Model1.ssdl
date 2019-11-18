@@ -53,7 +53,7 @@
     <Property Name="cedula" Type="varchar" MaxLength="30" />
     <Property Name="numero_telefono" Type="varchar" MaxLength="30" />
     <Property Name="pago_hora" Type="float8" />
-    <Property Name="id" Type="int4" Nullable="false" />
+    <Property Name="id" Type="int4" Nullable="false" StoreGeneratedPattern="Identity" />
   </EntityType>
   <EntityType Name="especialidad">
     <Key>
