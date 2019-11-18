@@ -1581,3 +1581,16 @@ VALUES ('Ascensor 12 Pasajeros UND',42781018.00,'FDR657483');
 
 INSERT INTO Material (nombre, precio_unitario, codigo)
 VALUES ('Alambre galvanizado NO 16 Kg',849.40,'FDR540912');
+
+-- PARA EMPLEADO
+
+INSERT INTO Empleado (nombre, apellido1, apellido2, cedula, numero_telefono, pago_hora)
+VALUES ('Brayan', 'Muñoz', 'Mora', '2017042094','62856458',4500);
+
+INSERT INTO Empleado (nombre, apellido1, apellido2, cedula, numero_telefono, pago_hora)
+VALUES ('Edgar','Chavez','Gonzalez','2017239281','454568218',4500);
+
+-- PARA OBRA
+
+INSERT INTO Obra (nombre_obra, ubicacion, cantidad_habitaciones, cantidad_banos, cantidad_pisos, area_construccion, area_lote, propietario)
+VALUES ('Casa de Brayan',5,5,2,3,2350,5000,1);

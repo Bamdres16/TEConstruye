@@ -219,4 +219,52 @@ Entrada:
 #### Para eliminar un material se debe proveer el código de material
 - DELETE http://teconstruyeapi.azurewebsites.net/api/Material/{id}
 
+## Empleados
 
+### Métodos implementados
+
+#### Para obtener la lista de todos los empleados
+- GET http://teconstruyeapi.azurewebsites.net/api/Empleados
+
+#### Para registrar un nuevo empleado
+- POST http://teconstruyeapi.azurewebsites.net/api/Empleados
+
+#### Entradas:
+
+```json
+{
+  "nombre": "sample string 1",
+  "apellido1": "sample string 2",
+  "apellido2": "sample string 3",
+  "cedula": "sample string 4",
+  "numero_telefono": "sample string 5",
+  "pago_hora": 1.1
+}
+```
+
+#### Para eliminar un empleado se debe colocar el id
+- DELETE http://teconstruyeapi.azurewebsites.net/api/Empleados/{id}
+
+## Obra
+
+### Métodos implementados
+
+#### Para obtener la lista de todas las obras existentes en la base de datos
+- GET http://teconstruyeapi.azurewebsites.net/api/Obras
+
+#### Para registrar una obra se siguen los siguientes pasos
+1) Se registran las descripciones de la obra con
+	-- POST http://teconstruyeapi.azurewebsites.net/api/Obras
+	##### Entradas
+	```json
+		{
+		  "nombre_obra": "sample string 1",
+		  "ubicacion": 1,
+		  "cantidad_habitaciones": 1,
+		  "cantidad_banos": 1,
+		  "cantidad_pisos": 1,
+		  "area_construccion": 1.1,
+		  "area_lote": 1,
+		  "propietario": 1
+		}
+	```
