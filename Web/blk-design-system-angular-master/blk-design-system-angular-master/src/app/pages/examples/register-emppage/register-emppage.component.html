@@ -82,28 +82,52 @@
               </div>
               <div class="card-body">
                 <form (ngSubmit)="add_empleado()" class="form">
-                  <div
-                    class="input-group"
-                    [ngClass]="{ 'input-group-focus': focus === true }"
-                  >
+                  
 
                   <!--Caja de texto para el nombre-->
-                    <div class="input-group-prepend">
-                      <div class="input-group-text">
-                        <i class="tim-icons icon-single-02"> </i>
-                      </div>
+                  <div
+                  class="input-group"
+                  [ngClass]="{ 'input-group-focus': focus === true }"
+                >
+
+                <!--Caja de texto para el nombre completo-->
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">
+                      <i class="tim-icons icon-single-02"> </i>
                     </div>
-                    <input
-                      class="form-control"
-                      placeholder="Nombre"
-                      type="text"
-                      (focus)="focus = true"
-                      (blur)="focus = false"
-                      name="nombre"
-                      [(ngModel)]="empleado.nombre"
-                    />
-                                     
                   </div>
+                  <!--Caja de texto nombre-->
+                  <input
+                    class="form-control"
+                    placeholder="Nombre"
+                    type="text"
+                    (focus)="focus = true"
+                    (blur)="focus = false"
+                    name="nombre"
+                    [(ngModel)]="empleado.nombre"
+                  />
+                   <!--Caja de texto primer apellido-->
+                  <input
+                    class="form-control"
+                    placeholder="Primer apellido"
+                    type="text"
+                    (focus)="focus = true"
+                    (blur)="focus = false"
+                    name="apellido1"
+                    [(ngModel)]="empleado.apellido1"
+                  />
+                   <!--Caja de texto segundo apellido-->
+                  <input
+                    class="form-control"
+                    placeholder="Segundo apellido"
+                    type="text"
+                    (focus)="focus = true"
+                    (blur)="focus = false"
+                    name="apellido2"
+                    [(ngModel)]="empleado.apellido2"
+                  />
+                                   
+                </div>
 
                   <!--Caja de texto para Cédula-->
                   <div
@@ -143,8 +167,8 @@
                       type="number"
                       (focus)="focus1 = true"
                       (blur)="focus1 = false"
-                      name="telefono"
-                      [(ngModel)]="empleado.telefono"
+                      name="numero_telefono"
+                      [(ngModel)]="empleado.numero_telefono"
                     />
                   </div>
 
@@ -164,8 +188,8 @@
                       type="number"
                       (focus)="focus1 = true"
                       (blur)="focus1 = false"
-                      name="pagohora"
-                      [(ngModel)]="empleado.pagohora"
+                      name="pago_hora"
+                      [(ngModel)]="empleado.pago_hora"
                     />
                   </div>
            

@@ -121,10 +121,23 @@
                         class="form-control"
                         placeholder="Nombre"
                         type="text"
+                        id="material_nombre"
                         value=""
                       />
                     </div>
                   </div>
+                  <div class="row">
+                      <div class="col-sm-8 col-lg-3">
+                        <div class="form-group">
+                          <input
+                            class="form-control"
+                            placeholder="Codigo"
+                            type="text"
+                            id="material_codigo"
+                            value=""
+                          />
+                        </div>
+                      </div>
                  
                   <!--caja de texto precio unitario-->
                   <div class="col-sm-8 col-lg-3">
@@ -132,7 +145,8 @@
                       <input
                         class="form-control"
                         placeholder="Precio unitario"
-                        type="text"
+                        id="material_precio_unitario"
+                        type="number"
                       />
       
                       <div class="input-group-append">
@@ -145,10 +159,12 @@
                
                   <!--Termina caja de texto precio unitario-->
                   <!--Botón de guardar material-->
-                  <div class="col-sm-6 col-lg-3">
-                  <button class="btn btn-primary btn-sm mr-1  mb-3">Agregar</button>
-                </div>
+                  
+                <div class="col-sm-6 col-lg-3">
+                    <button class="btn btn-primary btn-sm mr-1 mb-3" (click) ="add_material()">Agregar</button>
+                   </div>
                   <!--Termina botón de guardar material-->
+                </div>
                 </div>
       
               <!----Fin formulario mini -->

@@ -15,7 +15,7 @@ export class RegisterEmppageComponent implements OnInit {
 
   add_empleado(){
     console.log(this.empleado);
-    this.data.addCliente(this.empleado).subscribe(
+    this.data.addEmpleado(this.empleado).subscribe(
       res => {
         console.log(res);
         this.empleado= res;

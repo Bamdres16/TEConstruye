@@ -18,12 +18,29 @@ export class AdminpageComponent implements OnInit {
   pagination = 3;
   pagination1 = 1;
   etapa: any ={};
+  material: any ={};
   add_etapa(){
-    console.log("Activado");
     this.etapa.nombre = (<HTMLInputElement>document.getElementById("etapa_nombre")).value;
     this.etapa.descripcion = (<HTMLInputElement>document.getElementById("etapa_descripcion")).value;
     console.log(this.etapa);
       this.data.addEtapa(this.etapa).subscribe(
+        res => {
+          
+          this.etapa= res;
+         },
+         error => {
+           console.error(error);
+           alert(error.error);
+         }
+      );
+  
+  }
+  add_material(){
+    this.material.nombre = (<HTMLInputElement>document.getElementById("material_nombre")).value;
+    this.material.precio_unitario = (<HTMLInputElement>document.getElementById("material_precio_unitario")).value;
+    this.material.codigo = (<HTMLInputElement>document.getElementById("material_codigo")).value;
+    console.log(this.material);
+      this.data.addMaterial(this.material).subscribe(
         res => {
           
           this.etapa= res;

@@ -30,9 +30,15 @@ export class PeticionesService {
 addIngeniero(cliente:void){
   return this._http.post<any>(this.ID+'/Ingenieros',cliente)
 }
+addEmpleado(cliente:void){
+  return this._http.post<any>(this.ID+'/Empleados',cliente)
+}
  addEtapa(etapa:void){
   return this._http.post<any>(this.ID+'/Etapas',etapa)
   }
+  addMaterial(material:void){
+    return this._http.post<any>(this.ID+'/Material',material)
+    }
 
 
 loginIngeniero(ingeniero:void){
