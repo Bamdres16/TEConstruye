@@ -254,7 +254,7 @@ Entrada:
 
 #### Para registrar una obra se siguen los siguientes pasos
 1) Se registran las descripciones de la obra con
-	-- POST http://teconstruyeapi.azurewebsites.net/api/Obras
+	- POST http://teconstruyeapi.azurewebsites.net/api/Obras
 	##### Entradas
 	```json
 		{
