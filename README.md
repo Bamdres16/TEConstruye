@@ -297,3 +297,14 @@ Entrada:
   "semana": 1
 }
 ```
+
+#### Para asignar los materiales en una etapa
+
+- PUT http://teconstruyeapi.azurewebsites.net/api/Proyecto/asignarmaterial
+```json
+{
+  "id_etapa": 1,
+  "codigo_material": "sample string 1",
+  "cantidad": 1
+}
+```

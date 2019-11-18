@@ -67,7 +67,36 @@ namespace tec.res.api.Controllers
             return Ok();
 
         }
-        // Este método permite asignar las etapas a un proyecto
+
+        // Este método permite asignar los materiales en cada etapa
+        [Route("api/Proyecto/asignarmaterial")]
+        [HttpPut]
+        public async Task<IHttpActionResult> putAsignarMaterial(requiere requiere)
+        {
+
+            db.requiere.Add(requiere);
+            try
+            {
+                await db.SaveChangesAsync();
+
+            }
+            catch (Exception)
+            {
+                // Valida si ya existe una material en una etapa
+                if (db.requiere.Count(e => ((e.id_etapa == requiere.id_etapa) && (e.codigo_material == requiere.codigo_material))) > 0)
+                {
+                    return Content(HttpStatusCode.Conflict, "El material ya está asociado con esta etapa");
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return Ok();
+
+        }
+
+        // Este método permite obtener las etapas de un proyecto
         [Route("api/Proyecto/etapas/{obra}")]
         [HttpGet]
         public  IHttpActionResult getEtapas(int obra)
@@ -85,12 +114,14 @@ namespace tec.res.api.Controllers
         {
             return db.tiene.Count(e => ((e.id_obra == id_obra) && (e.id_etapa == id_etapa))) > 0;
         }
-
+        
         private bool semanaEmpleado(int id_obra, int id_empleado, int semana)
         {
             return db.labora_en.Count(e => ((e.id_obra == id_obra) && (e.id_empleado == id_empleado) && (e.semana == semana))) > 0;
         }
-        // Este método permite retonar una respuesta a las peticiones, evitando cualquier problema de CORS
+
+        // Metodos options para cada ruta nueva en proyecto
+        // Estos métodos permiten retonar una respuesta a las peticiones, evitando cualquier problema de CORS
         [Route("api/Proyecto/asignaretapa")]
         public IHttpActionResult Options()
         {
@@ -99,6 +130,12 @@ namespace tec.res.api.Controllers
         }
         [Route("api/Proyecto/asignarhoras")]
         public IHttpActionResult Options_1()
+        {
+            HttpContext.Current.Response.AppendHeader("Allow", "GET,DELETE,PUT,POST,OPTIONS");
+            return Ok();
+        }
+        [Route("api/Proyecto/asignarmaterial")]
+        public IHttpActionResult Options_2()
         {
             HttpContext.Current.Response.AppendHeader("Allow", "GET,DELETE,PUT,POST,OPTIONS");
             return Ok();
