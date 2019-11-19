@@ -72,4 +72,25 @@ loginArquitecto(arquitecto:void){
   getEmpleados(){
     return this._http.get<void[]>(this.ID + '/Empleados');
   }
+  getProyecto(proyecto:void){
+    return this._http.get<void[]>('http://teconstruyeapi.azurewebsites.net/api/obras');
+  }
+
+  addEtapaObra(etapa_obra:any){
+    return this._http.put<any>("http://teconstruyeapi.azurewebsites.net/api/Proyecto/asignaretapa", etapa_obra,httpOptions);
+  }
+
+  etapaProyecto(idP:any){
+    return this._http.get<void[]>('http://teconstruyeapi.azurewebsites.net/api/Proyecto/etapas/' + idP);
+    
+  }
+
+  getMateriales(){
+    return this._http.get<void[]>('http://teconstruyeapi.azurewebsites.net/api/Material');
+  }
+
+
+  addMatEtapa(matEtapa:any){
+    return this._http.put<any>("http://teconstruyeapi.azurewebsites.net/api/Proyecto/asignarmaterial", matEtapa,httpOptions);
+  }
 }
