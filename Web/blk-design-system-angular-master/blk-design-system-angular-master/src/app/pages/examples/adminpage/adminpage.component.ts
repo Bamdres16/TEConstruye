@@ -18,7 +18,41 @@ export class AdminpageComponent implements OnInit {
   pagination = 3;
   pagination1 = 1;
   etapa: any ={};
+  publicar: any ={};
   material: any ={};
+  pubProyecto: any ={};
+  obras:Array<any>;
+  empleados:Array<any>;
+  presupuesto: any ={};
+  presupuesto2: any ={};
+  pres:Array<any>;
+  num:number;
+ 
+  get_obras(){
+ 
+    this.data.getObras().subscribe(datos => this.obras= datos);
+
+}
+get_empleados(){
+ 
+  this.data.getEmpleados().subscribe(datos => this.empleados= datos);
+  console.log( this.empleados);
+
+}
+
+get_presupuesto(){
+  var proyecto = (<HTMLInputElement>document.getElementById("proy4")).value;
+  for(var i = 0; i<this.obras.length; i++){
+    if(this.obras[i]["nombre_obra"] == proyecto){
+      this.presupuesto.id_obra = this.obras[i]["id"]*1;
+    }
+  }
+  this.data.getPresupuesto(this.presupuesto).subscribe(datos => this.presupuesto2= datos);
+  console.log( this.presupuesto2.Total);
+  document.getElementById("label1").innerHTML=this.presupuesto2.Total;
+ 
+
+}
   add_etapa(){
     this.etapa.nombre = (<HTMLInputElement>document.getElementById("etapa_nombre")).value;
     this.etapa.descripcion = (<HTMLInputElement>document.getElementById("etapa_descripcion")).value;
@@ -52,11 +86,58 @@ export class AdminpageComponent implements OnInit {
       );
   
   }
-  constructor(private data:PeticionesService) {}
+  add_empProy(){
+    var proyecto = (<HTMLInputElement>document.getElementById("proy1")).value;
+    var empleado = (<HTMLInputElement>document.getElementById("emp1")).value;
+    this.pubProyecto.horas_laboradas=(<HTMLInputElement>document.getElementById("horas3")).valueAsNumber;
+    this.pubProyecto.semana=(<HTMLInputElement>document.getElementById("semanas3")).valueAsNumber;
+    for(var i = 0; i<this.obras.length; i++){
+      if(this.obras[i]["nombre_obra"] == proyecto){
+       this.pubProyecto.id_obra = this.obras[i]["id"]*1;
+      }
+    }
+    for(var i = 0; i<this.empleados.length; i++){
+     if(this.empleados[i]["cedula"] == empleado){
+       this.pubProyecto.id_empleado = this.empleados[i]["id"]*1;
+     }
+   }
+   
+      this.data.addPemp(this.pubProyecto).subscribe(
+        res => { 
+          this.etapa= res;
+         },
+         error => {
+           console.error(error);
+           alert(error.error);
+         }
+      );
+      console.log(this.pubProyecto);
+  }
+
+  add_publicarProy(){
+    this.pubProyecto.proyecto = (<HTMLInputElement>document.getElementById("proy2")).value;
+    console.log(this.pubProyecto);
+      this.data.addPProyecto(this.pubProyecto).subscribe(
+        res => { 
+          this.etapa= res;
+         },
+         error => {
+           console.error(error);
+           alert(error.error);
+         }
+      );
+  
+  }
+  constructor(private data:PeticionesService) {
+  
+  }
   scrollToDownload(element: any) {
     element.scrollIntoView({ behavior: "smooth" });
+   
   }
   ngOnInit() {
+    this.get_obras();
+    this.get_empleados();
     var body = document.getElementsByTagName("body")[0];
     body.classList.add("index-page");
 

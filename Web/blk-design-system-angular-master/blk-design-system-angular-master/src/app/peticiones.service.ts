@@ -21,6 +21,9 @@ export class PeticionesService {
     
     return this._http.get<void[]>('http://teconstruyeapi.azurewebsites.net/api/Especialidad');
   }
+  getPresupuesto(Obj:any){
+    return this._http.get<void[]>(this.ID+'/Proyecto/Presupuesto/'+ Obj.id_obra);
+  }
   addCliente(cliente:void){
     return this._http.post<any>(this.ID+'/Clientes',cliente)
  }
@@ -40,6 +43,14 @@ addEmpleado(cliente:void){
     return this._http.post<any>(this.ID+'/Material',material)
     }
 
+  addPProyecto(obj:void){
+      return this._http.post<any>(this.ID+'/Material',obj)
+      }
+  addPemp(obj:void){
+      return this._http.post<any>(this.ID+'/Proyecto/asignarhoras',obj)
+      }
+     
+  
 
 loginIngeniero(ingeniero:void){
   return this._http.post<any>('http://teconstruyeapi.azurewebsites.net/api/Ingenieros/login',ingeniero)
@@ -53,5 +64,12 @@ loginArquitecto(arquitecto:void){
 
   getEtapa(etapa:void){
     return this._http.get<void[]>('http://teconstruyeapi.azurewebsites.net/api/Etapas');
+  }
+
+  getObras(){
+    return this._http.get<void[]>(this.ID + '/Obras');
+  }
+  getEmpleados(){
+    return this._http.get<void[]>(this.ID + '/Empleados');
   }
 }

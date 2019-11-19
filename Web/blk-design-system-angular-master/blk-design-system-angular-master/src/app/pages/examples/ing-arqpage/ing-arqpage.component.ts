@@ -48,6 +48,8 @@ export class IngArqpageComponent implements OnInit {
          
   }
 
+  
+
   scrollToDownload(element: any) {
     element.scrollIntoView({ behavior: "smooth" });
   }

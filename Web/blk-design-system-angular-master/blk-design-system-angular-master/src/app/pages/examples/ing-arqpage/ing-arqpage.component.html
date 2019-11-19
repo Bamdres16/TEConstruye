@@ -252,7 +252,7 @@
         
                        <!--Botón de guardar material-->
                        <div class="col-sm-6 col-lg-3">
-                       <button class="btn btn-primary btn-sm mr-1 mb-3" (click) ="add_etapa()">Agregar</button>
+                       <button class="btn btn-primary btn-sm mr-1 mb-3" (onclick) = "addEtapa()">Agregar</button>
                       </div>
                       </div>
                  
@@ -393,7 +393,7 @@
                          <div class="" >
                             <label style="width: 5cm;" for="inputState">Etapa</label>
                           <select class="  dropdown-item text-muted"
-                          (change) = "getEtapas()">
+                          ng-click = "getEtapas()">
                           <option  *ngFor="let etapa of etapas"  > {{etapa.nombre}}</option></select>
                              
                         </div>
