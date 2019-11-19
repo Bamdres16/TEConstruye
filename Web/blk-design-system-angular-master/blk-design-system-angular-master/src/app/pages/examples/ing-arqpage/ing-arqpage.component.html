@@ -198,6 +198,7 @@
                   <div class="col-sm-6 col-lg-3">
                     <div class="input-group">
                       <input
+                        id = "etapa_nombre"
                         class="form-control"
                         placeholder="Nombre"
                         type="text"
@@ -214,6 +215,7 @@
                       <div class="col-sm-6 col-lg-3">
                         <div class="input-group">
                           <input
+                            id = "etapa_descripcion"
                             class="form-control"
                             placeholder="Descripción"
                             type="text"
@@ -250,7 +252,7 @@
         
                        <!--Botón de guardar material-->
                        <div class="col-sm-6 col-lg-3">
-                       <button class="btn btn-primary btn-sm mr-1 mb-3">Agregar</button>
+                       <button class="btn btn-primary btn-sm mr-1 mb-3" (click) ="add_etapa()">Agregar</button>
                       </div>
                       </div>
                  
@@ -264,6 +266,157 @@
                   </div>
                 </div>
               </div>
+          </div>
+
+          <!----Seccion Asignar -->
+          <div class="section section-tabs">
+            <div class="container">
+              <div class="title"><h3 class="mb-3">Asignar</h3></div>
+              <div class="row">
+                <div class="col-md-12 ml-auto col-xl-12 mr-auto">
+                  <div class="mb-3">
+                   
+                  </div>
+                  <div class="card">
+                    <div class="card-header">
+                      <tabset class="nav-tabs-danger">
+                        <tab>
+                          <ng-template tabHeading>
+                            <i class="tim-icons icon-settings"> </i> Horas
+                          </ng-template>
+                          
+      
+              <!--Formulario mini para asignar horas-->
+              <div class="row">
+                
+               <!--Dropdown empleados-->
+               <div class="col-sm-6 col-lg-3">
+                    <div
+                    class="input-group"
+                    [ngClass]="{ 'input-group-focus': focus1 === true }"
+                  >
+                    
+                     <div class="dropdown nav-item" dropdown>
+                      <a
+                        class="dropdown-toggle nav-link dropdown-toggle"
+                        data-toggle="dropdown"
+                        dropdownToggle
+                        href="javascript:void(0)"
+                      >
+                      <i class="tim-icons icon-single-02"> </i> Empleado
+                      </a>
+                      <div class="dropdown-menu dropdown-with-icons" *dropdownMenu>
+                        <a class="dropdown-item"
+                        *ngFor="let fase of fases, index as i" > {{fases[i]}}</a>            
+                      </div>
+                    </div>
+                  </div>
+               </div>
+      
+                    <!--Dropdown proyecto-->
+                    <div class="col-sm-6 col-lg-3">
+                    <div
+                    class="input-group"
+                    [ngClass]="{ 'input-group-focus': focus1 === true }"
+                  >
+                    
+                     <div class="dropdown nav-item" dropdown>
+                      <a
+                        class="dropdown-toggle nav-link dropdown-toggle"
+                        data-toggle="dropdown"
+                        dropdownToggle
+                        href="javascript:void(0)"
+                      >
+                      <i class="tim-icons icon-single-copy-04"> </i> Proyecto
+                      </a>
+                      <div class="dropdown-menu dropdown-with-icons" *dropdownMenu>
+                        <a class="dropdown-item"
+                        *ngFor="let fase of fases, index as i" > {{fases[i]}}</a>            
+                      </div>
+                    </div>
+                  </div>
+                </div>
+               
+                  <!--Botón de asignar empleado-->
+                  
+                  <div class="col-sm-6 col-lg-3">
+                  <button class="btn btn-primary btn-sm mr-1  mb-3">Asignar</button>
+                </div>
+              </div>
+              <!----Fin formulario mini -->
+                
+                        </tab>
+                        <tab>
+                          <ng-template tabHeading>
+                            <i class="tim-icons icon-components"> </i> Gastos
+                          </ng-template>
+      
+                <!--Formulario mini etapa-->
+                <!--Caja de texto Nombre-->
+                <div class="row">
+                <div class="col-sm-6 col-lg-3">
+                  <div class="input-group">
+                    <input
+                      class="form-control"
+                      placeholder="Nombre"
+                      type="text"
+                    />
+                    <div class="input-group-append">
+                      <span class="input-group-text">
+                        
+                      </span>
+                    </div>
+                  </div>
+                </div>
+      
+                    <!--Caja de texto descripción-->
+                    <div class="col-sm-6 col-lg-3">
+                      <div class="input-group">
+                        <input
+                          class="form-control"
+                          placeholder="Descripción"
+                          type="text"
+                        />
+                        <div class="input-group-append">
+                          <span class="input-group-text">
+                            <i class="tim-icons icon-paper"> </i>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <!--Dropdown de etapas-->
+                    <div class="col-sm-6 col-lg-3">
+                        <div
+                        class="input-group " 
+                      >
+                         <div class="" >
+                            <label style="width: 5cm;" for="inputState">Etapa</label>
+                          <select class="  dropdown-item text-muted"
+                          (change) = "getEtapas()">
+                          <option  *ngFor="let etapa of etapas"  > {{etapa.nombre}}</option></select>
+                             
+                        </div>
+                      </div>
+                   </div>
+                   
+      
+                     <!--Botón de guardar material-->
+                     <div class="col-sm-6 col-lg-3">
+                     <button class="btn btn-primary btn-sm mr-1 mb-3">Agregar</button>
+                    </div>
+                    </div>
+               
+        
+                <!----Fin formulario mini-->
+                        
+                        </tab>
+                      </tabset>
+                    </div>
+                  
+                </div>
+              </div>
+            </div>
           </div>
 
           <!----Seccion Publicar-->

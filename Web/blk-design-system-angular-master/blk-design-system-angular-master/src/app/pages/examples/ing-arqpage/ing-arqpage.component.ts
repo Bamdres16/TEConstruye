@@ -9,12 +9,12 @@ import {Router, ActivatedRoute} from '@angular/router';
 }) 
 export class IngArqpageComponent implements OnInit {
 
-
+  etapas:Array<any>=[];
   isCollapsed = true;
-  fases:Array<any>=['Trabajo preliminar','Cimientos', 'Paredes', 'Concreto reforzdo', 'Techos', 'Cielos', 'Repello','Entrepisos', 'Pisos', 'Enchapes'];
   focus;
   focus1;
   focus2;
+  etapa:any = {};
   date = new Date();
   pagination = 3;
   pagination1 = 1;
@@ -23,16 +23,36 @@ export class IngArqpageComponent implements OnInit {
     this.ruta.queryParams.subscribe(params =>{
       this.tipo= params['tipo'];
       console.log("EL TIPO ES" + this.tipo);
-    
+      this.getEtapas();
       }
       
    );
   }
+
+  add_etapa(){
+    this.etapa.nombre = (<HTMLInputElement>document.getElementById("etapa_nombre")).value;
+    this.etapa.descripcion = (<HTMLInputElement>document.getElementById("etapa_descripcion")).value;
+    (<HTMLInputElement>document.getElementById("etapa_descripcion")).value = "";
+    (<HTMLInputElement>document.getElementById("etapa_nombre")).value = "";
+    console.log(this.etapa);
+      this.data.addEtapa(this.etapa).subscribe(
+        res => {
+          this.etapa= res;
+          window.location.reload()
+         },
+         error => {
+           console.error(error);
+           alert(error.error);
+         }
+      );
+         
+  }
+
   scrollToDownload(element: any) {
     element.scrollIntoView({ behavior: "smooth" });
   }
 
-  etapas:Array<any>=[];
+ 
 
   ngOnInit() {
     var body = document.getElementsByTagName("body")[0];
@@ -67,7 +87,7 @@ export class IngArqpageComponent implements OnInit {
 
   getEtapas(){
     this.data.getEtapa().subscribe(datos => {console.log(datos); this.etapas = datos});
-    //console.log(this.etapas);
+    console.log(this.etapas);
     
   }
 
