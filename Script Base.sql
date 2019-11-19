@@ -108,8 +108,9 @@
     create table Requiere(
 	 id_etapa int,
 	 codigo_material varchar(25),
+	 id_obra int,
 	 cantidad int,
-	 PRIMARY KEY(id_etapa,codigo_material)
+	 PRIMARY KEY(id_etapa,codigo_material,id_obra)
  );
  
     create table Tiene(
@@ -154,6 +155,9 @@ ADD CONSTRAINT FK_MATERIAL FOREIGN KEY (codigo_material) REFERENCES material(cod
 
 ALTER TABLE requiere
 ADD CONSTRAINT FK_ETAPAREQUIERE FOREIGN KEY (id_etapa ) REFERENCES etapa(id);
+
+ALTER TABLE requiere
+ADD CONSTRAINT FK_OBRAREQUIERE FOREIGN KEY (id_obra) REFERENCES obra(id);
 
  ALTER TABLE diseña	
 ADD CONSTRAINT FK_INGENIERO FOREIGN KEY (id_ingeniero) REFERENCES ingeniero(id);	

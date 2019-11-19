@@ -21,6 +21,7 @@ namespace tec.res.api.Models
             this.labora_en = new HashSet<labora_en>();
             this.trabaja_en = new HashSet<trabaja_en>();
             this.tiene = new HashSet<tiene>();
+            this.requiere = new HashSet<requiere>();
         }
     
         public string nombre_obra { get; set; }
@@ -43,5 +44,7 @@ namespace tec.res.api.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tiene> tiene { get; set; }
         public virtual ubicacion ubicacion1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<requiere> requiere { get; set; }
     }
 }

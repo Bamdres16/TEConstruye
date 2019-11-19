@@ -129,6 +129,7 @@
     <EntitySetMapping Name="requiere">
       <EntityTypeMapping TypeName="TEConstruyeModel.requiere">
         <MappingFragment StoreEntitySet="requiere">
+          <ScalarProperty Name="id_obra" ColumnName="id_obra" />
           <ScalarProperty Name="cantidad" ColumnName="cantidad" />
           <ScalarProperty Name="codigo_material" ColumnName="codigo_material" />
           <ScalarProperty Name="id_etapa" ColumnName="id_etapa" />

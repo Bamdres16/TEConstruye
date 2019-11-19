@@ -305,6 +305,15 @@ Entrada:
 {
   "id_etapa": 1,
   "codigo_material": "sample string 1",
+  "id_obra" : 1,
   "cantidad": 1
 }
 ```
+
+## Reportes
+
+### Metodos implementados
+
+#### Para obtener el presupuesto por etapa y obtener el total
+- GET http://teconstruyeapi.azurewebsites.net/api/Proyecto/Presupuesto/{id_obra}
+

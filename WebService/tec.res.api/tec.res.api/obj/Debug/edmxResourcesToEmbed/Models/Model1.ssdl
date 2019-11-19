@@ -124,6 +124,7 @@
     <Property Name="id_etapa" Type="int4" Nullable="false" />
     <Property Name="codigo_material" Type="varchar" MaxLength="25" Nullable="false" />
     <Property Name="cantidad" Type="int4" />
+    <Property Name="id_obra" Type="int4" />
   </EntityType>
   <EntityType Name="tiene">
     <Key>
@@ -297,6 +298,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="fk_obrarequiere">
+    <End Role="obra" Type="Self.obra" Multiplicity="0..1" />
+    <End Role="requiere" Type="Self.requiere" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="obra">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="requiere">
+        <PropertyRef Name="id_obra" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="fk_obraubicacion">
     <End Role="ubicacion" Type="Self.ubicacion" Multiplicity="0..1" />
     <End Role="obra" Type="Self.obra" Multiplicity="*" />
@@ -384,6 +397,10 @@
     <AssociationSet Name="fk_obra3" Association="Self.fk_obra3">
       <End Role="obra" EntitySet="obra" />
       <End Role="tiene" EntitySet="tiene" />
+    </AssociationSet>
+    <AssociationSet Name="fk_obrarequiere" Association="Self.fk_obrarequiere">
+      <End Role="obra" EntitySet="obra" />
+      <End Role="requiere" EntitySet="requiere" />
     </AssociationSet>
     <AssociationSet Name="fk_obraubicacion" Association="Self.fk_obraubicacion">
       <End Role="ubicacion" EntitySet="ubicacion" />

@@ -17,8 +17,10 @@ namespace tec.res.api.Models
         public int id_etapa { get; set; }
         public string codigo_material { get; set; }
         public Nullable<int> cantidad { get; set; }
+        public Nullable<int> id_obra { get; set; }
     
         public virtual material material { get; set; }
         public virtual etapa etapa { get; set; }
+        public virtual obra obra { get; set; }
     }
 }

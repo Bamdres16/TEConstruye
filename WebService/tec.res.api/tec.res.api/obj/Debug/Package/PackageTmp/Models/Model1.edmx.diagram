@@ -34,6 +34,7 @@
         <AssociationConnector Association="TEConstruyeModel.fk_obraubicacion" />
         <AssociationConnector Association="TEConstruyeModel.fk_etaparequiere" />
         <EntityTypeShape EntityType="TEConstruyeModel.admin" Width="1.5" PointX="0.75" PointY="6.75" />
+        <AssociationConnector Association="TEConstruyeModel.fk_obrarequiere" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

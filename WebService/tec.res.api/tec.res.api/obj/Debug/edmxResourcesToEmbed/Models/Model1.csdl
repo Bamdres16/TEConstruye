@@ -113,6 +113,10 @@
       <End Role="requiere" EntitySet="requiere" />
     </AssociationSet>
     <EntitySet Name="admin" EntityType="TEConstruyeModel.admin" />
+    <AssociationSet Name="fk_obrarequiere" Association="TEConstruyeModel.fk_obrarequiere">
+      <End Role="obra" EntitySet="obra" />
+      <End Role="requiere" EntitySet="requiere" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="arquitecto">
     <Key>
@@ -234,6 +238,7 @@
     <NavigationProperty Name="trabaja_en" Relationship="TEConstruyeModel.fk_obra2" FromRole="obra" ToRole="trabaja_en" />
     <NavigationProperty Name="tiene" Relationship="TEConstruyeModel.fk_obra3" FromRole="obra" ToRole="tiene" />
     <NavigationProperty Name="ubicacion1" Relationship="TEConstruyeModel.fk_obraubicacion" FromRole="obra" ToRole="ubicacion" />
+    <NavigationProperty Name="requiere" Relationship="TEConstruyeModel.fk_obrarequiere" FromRole="obra" ToRole="requiere" />
   </EntityType>
   <EntityType Name="requiere">
     <Key>
@@ -245,6 +250,8 @@
     <Property Name="cantidad" Type="Int32" />
     <NavigationProperty Name="material" Relationship="TEConstruyeModel.fk_material" FromRole="requiere" ToRole="material" />
     <NavigationProperty Name="etapa" Relationship="TEConstruyeModel.fk_etaparequiere" FromRole="requiere" ToRole="etapa" />
+    <Property Name="id_obra" Type="Int32" />
+    <NavigationProperty Name="obra" Relationship="TEConstruyeModel.fk_obrarequiere" FromRole="requiere" ToRole="obra" />
   </EntityType>
   <EntityType Name="tiene">
     <Key>
@@ -422,4 +429,16 @@
     <Property Name="correo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="id" Type="Int32" Nullable="false" />
   </EntityType>
+  <Association Name="fk_obrarequiere">
+    <End Type="TEConstruyeModel.obra" Role="obra" Multiplicity="0..1" />
+    <End Type="TEConstruyeModel.requiere" Role="requiere" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="obra">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="requiere">
+        <PropertyRef Name="id_obra" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

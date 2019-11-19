@@ -129,6 +129,7 @@
           <Property Name="id_etapa" Type="int4" Nullable="false" />
           <Property Name="codigo_material" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="cantidad" Type="int4" />
+          <Property Name="id_obra" Type="int4" />
         </EntityType>
         <EntityType Name="tiene">
           <Key>
@@ -302,6 +303,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_obrarequiere">
+          <End Role="obra" Type="Self.obra" Multiplicity="0..1" />
+          <End Role="requiere" Type="Self.requiere" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="obra">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="requiere">
+              <PropertyRef Name="id_obra" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fk_obraubicacion">
           <End Role="ubicacion" Type="Self.ubicacion" Multiplicity="0..1" />
           <End Role="obra" Type="Self.obra" Multiplicity="*" />
@@ -326,6 +339,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        
+        
+        
         <EntityContainer Name="TEConstruyeModelStoreContainer">
           <EntitySet Name="admin" EntityType="Self.admin" Schema="public" store:Type="Tables" />
           <EntitySet Name="arquitecto" EntityType="Self.arquitecto" Schema="public" store:Type="Tables" />
@@ -389,6 +405,10 @@
           <AssociationSet Name="fk_obra3" Association="Self.fk_obra3">
             <End Role="obra" EntitySet="obra" />
             <End Role="tiene" EntitySet="tiene" />
+          </AssociationSet>
+          <AssociationSet Name="fk_obrarequiere" Association="Self.fk_obrarequiere">
+            <End Role="obra" EntitySet="obra" />
+            <End Role="requiere" EntitySet="requiere" />
           </AssociationSet>
           <AssociationSet Name="fk_obraubicacion" Association="Self.fk_obraubicacion">
             <End Role="ubicacion" EntitySet="ubicacion" />
@@ -516,6 +536,10 @@
             <End Role="requiere" EntitySet="requiere" />
           </AssociationSet>
           <EntitySet Name="admin" EntityType="TEConstruyeModel.admin" />
+          <AssociationSet Name="fk_obrarequiere" Association="TEConstruyeModel.fk_obrarequiere">
+            <End Role="obra" EntitySet="obra" />
+            <End Role="requiere" EntitySet="requiere" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="arquitecto">
           <Key>
@@ -637,6 +661,7 @@
           <NavigationProperty Name="trabaja_en" Relationship="TEConstruyeModel.fk_obra2" FromRole="obra" ToRole="trabaja_en" />
           <NavigationProperty Name="tiene" Relationship="TEConstruyeModel.fk_obra3" FromRole="obra" ToRole="tiene" />
           <NavigationProperty Name="ubicacion1" Relationship="TEConstruyeModel.fk_obraubicacion" FromRole="obra" ToRole="ubicacion" />
+          <NavigationProperty Name="requiere" Relationship="TEConstruyeModel.fk_obrarequiere" FromRole="obra" ToRole="requiere" />
         </EntityType>
         <EntityType Name="requiere">
           <Key>
@@ -648,6 +673,8 @@
           <Property Name="cantidad" Type="Int32" />
           <NavigationProperty Name="material" Relationship="TEConstruyeModel.fk_material" FromRole="requiere" ToRole="material" />
           <NavigationProperty Name="etapa" Relationship="TEConstruyeModel.fk_etaparequiere" FromRole="requiere" ToRole="etapa" />
+          <Property Name="id_obra" Type="Int32" />
+          <NavigationProperty Name="obra" Relationship="TEConstruyeModel.fk_obrarequiere" FromRole="requiere" ToRole="obra" />
         </EntityType>
         <EntityType Name="tiene">
           <Key>
@@ -825,6 +852,18 @@
           <Property Name="correo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="id" Type="Int32" Nullable="false" />
         </EntityType>
+        <Association Name="fk_obrarequiere">
+          <End Type="TEConstruyeModel.obra" Role="obra" Multiplicity="0..1" />
+          <End Type="TEConstruyeModel.requiere" Role="requiere" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="obra">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="requiere">
+              <PropertyRef Name="id_obra" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -959,6 +998,7 @@
           <EntitySetMapping Name="requiere">
             <EntityTypeMapping TypeName="TEConstruyeModel.requiere">
               <MappingFragment StoreEntitySet="requiere">
+                <ScalarProperty Name="id_obra" ColumnName="id_obra" />
                 <ScalarProperty Name="cantidad" ColumnName="cantidad" />
                 <ScalarProperty Name="codigo_material" ColumnName="codigo_material" />
                 <ScalarProperty Name="id_etapa" ColumnName="id_etapa" />
