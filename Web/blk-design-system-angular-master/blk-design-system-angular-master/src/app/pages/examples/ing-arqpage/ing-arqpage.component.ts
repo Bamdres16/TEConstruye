@@ -10,6 +10,9 @@ import {Router, ActivatedRoute} from '@angular/router';
 export class IngArqpageComponent implements OnInit {
 
   etapas:Array<any>=[];
+  etapasP:Array<any>=[];
+  materiales:Array<any>=[];
+  etapasPNames:Array<any>=[];
   proyectos:Array<any>=[];
   isCollapsed = true;
   focus;
@@ -27,7 +30,9 @@ export class IngArqpageComponent implements OnInit {
       console.log("EL TIPO ES" + this.tipo);
       this.getEtapas();
       this.getProyectos();
+      this.getMateriales();
       }
+      
       
    );
   }
@@ -143,6 +148,78 @@ export class IngArqpageComponent implements OnInit {
     );
 
     console.log(this.etapas);
+  }
+
+  getEtapasProyecto(){
+
+    var nombreP = (<HTMLInputElement>document.getElementById("proyecto_nombreGastos")).value;
+    var idP;
+
+    for(var i = 0; i<this.proyectos.length; i++){
+      if(this.proyectos[i]["nombre_obra"] == nombreP){
+        idP = this.proyectos[i]["id"];
+      }
+    }
+
+    this.data.etapaProyecto(idP).subscribe(datos => {console.log(datos); this.etapasP = datos});
+    for(var i = 0; i < this.etapasP.length; i++){
+      this.etapasPNames.push(this.etapas[this.etapasP[i]["id_etapa"]]["nombre"]);
+   
+    }
+  }
+
+  getMateriales(){
+    this.data.getMateriales().subscribe(datos => {console.log(datos); this.materiales = datos});
+    console.log(this.materiales);
+  }
+
+  addMatEtapa(){
+    var nombreP = (<HTMLInputElement>document.getElementById("proyecto_nombreGastos")).value;
+    var nombreE = (<HTMLInputElement>document.getElementById("etapa_anadirMat")).value;
+    var mat = (<HTMLInputElement>document.getElementById("material_etapa")).value;
+    var cantidad = (<HTMLInputElement>document.getElementById("cantidad_mats")).value;
+    var idP;
+    var idE;
+    var CodigoMat;
+
+    for(var i = 0; i < this.proyectos.length; i++){
+      if(this.proyectos[i]["nombre_obra"] == nombreP){
+        idP = this.proyectos[i]["id"];
+      }
+    }
+
+    for(var i = 0; i < this.etapas.length; i++){
+      if(this.etapas[i]["nombre"] == nombreE){
+        idE = this.etapas[i]["id"];
+      }
+    }
+
+    for(var i = 0; i < this.materiales.length; i++){
+      if(this.materiales[i]["nombre"] == mat){
+        CodigoMat = this.materiales[i]["codigo"];
+      }
+    }
+
+    var matEtapa ={};
+    matEtapa["id_etapa"] = idE;
+    matEtapa["codigo_material"] = CodigoMat;
+    matEtapa["id_obra"] = idP;
+    matEtapa["cantidad"] = cantidad;
+
+    this.anadirMaterialesEtapa(matEtapa);
+    
+  }
+
+  anadirMaterialesEtapa(matEtapa:any){
+    this.data.addMatEtapa(matEtapa).subscribe(
+      res => {
+        this.trash= res;
+       },
+       error => {
+         console.error(error);
+         alert(error.error);
+       }
+    );
   }
 
 }
