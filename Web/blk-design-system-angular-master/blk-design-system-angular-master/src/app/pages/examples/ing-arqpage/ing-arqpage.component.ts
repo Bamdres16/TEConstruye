@@ -16,6 +16,7 @@ export class IngArqpageComponent implements OnInit {
   focus1;
   focus2;
   trash:any = {};
+  etapa:any = {};
   date = new Date();
   pagination = 3;
   pagination1 = 1;
