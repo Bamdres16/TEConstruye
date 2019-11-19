@@ -54,4 +54,12 @@ loginArquitecto(arquitecto:void){
   getEtapa(etapa:void){
     return this._http.get<void[]>('http://teconstruyeapi.azurewebsites.net/api/Etapas');
   }
+
+  getProyecto(proyecto:void){
+    return this._http.get<void[]>('http://teconstruyeapi.azurewebsites.net/api/obras');
+  }
+
+  addEtapaObra(etapa_obra:any){
+    return this._http.put<any>("http://teconstruyeapi.azurewebsites.net/api/Proyecto/asignaretapa", etapa_obra,httpOptions);
+  }
 }

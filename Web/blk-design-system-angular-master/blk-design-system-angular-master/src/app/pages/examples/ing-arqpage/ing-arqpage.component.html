@@ -411,6 +411,80 @@
                 <!----Fin formulario mini-->
                         
                         </tab>
+
+                        <tab>
+                          <ng-template tabHeading>
+                            <i class="tim-icons icon-components"> </i> Etapa
+                          </ng-template>
+      
+                <!--Formulario mini etapa-->
+                <!--Caja de texto Nombre-->
+                <div class="row">
+                    
+                    <!--Dropdown de etapas-->
+                    <div class="col-sm-6 col-lg-3">
+                      <div
+                      class="input-group " 
+                    >
+                       <div class="" >
+                          <label style="width: 5cm;" for="inputState">Proyecto</label>
+                        <select class="dropdown-item text-muted"
+                        id = "proyecto_nombre"
+                        >
+                        <option  *ngFor="let proyecto of proyectos"  > {{proyecto.nombre_obra}}</option></select>
+                           
+                      </div>
+                    </div>
+                 </div>
+
+                    <div class="col-sm-6 col-lg-3">
+                        <div
+                        class="input-group " 
+                      >
+                         <div class="" >
+                            <label style="width: 5cm;" for="inputState">Etapa</label>
+                          <select class="dropdown-item text-muted"
+                          id = "etapa_anadir"
+                          >
+                          <option  *ngFor="let etapa of etapas"  > {{etapa.nombre}}</option></select>
+                             
+                        </div>
+                      </div>
+                   </div>
+
+                      <div><label style="width: 5cm;" ></label></div>
+                      <div><label style="width: 5cm;" ></label></div>
+                      <div><label style="width: 4cm;" ></label></div>
+                      
+                      
+                   <div>
+                    <label style="width: 5cm;" for="inputState">Fecha de Inicio</label>
+                    <input type="date" id = "fecha_inicio">
+                   </div>
+
+                   <div><label style="width: 5cm;" ></label></div>
+
+                   <div>
+                    <label style="width: 5cm;" for="inputState">Fecha de Finalización</label>
+                    <input type="date" id = "fecha_fin">
+                   </div>
+                   
+      
+                     <!--Botón de guardar material-->
+                     <div class="col-sm-6 col-lg-3">
+                     <button class="btn btn-primary btn-sm mr-1 mb-3" (click) = "etapaObraJSON()">Agregar</button>
+                    </div>
+                  
+                    
+          
+                  </div>
+               
+        
+                <!----Fin formulario mini-->
+                        
+                        </tab>
+
+
                       </tabset>
                     </div>
                   
