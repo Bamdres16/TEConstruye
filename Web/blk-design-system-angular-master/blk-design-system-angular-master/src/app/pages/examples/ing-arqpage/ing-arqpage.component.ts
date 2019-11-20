@@ -31,6 +31,7 @@ export class IngArqpageComponent implements OnInit {
       this.getEtapas();
       this.getProyectos();
       this.getMateriales();
+      
       }
       
       
@@ -112,6 +113,7 @@ export class IngArqpageComponent implements OnInit {
     var nombreP = (<HTMLInputElement>document.getElementById("proyecto_nombre")).value;
     var nombreE = (<HTMLInputElement>document.getElementById("etapa_anadir")).value;
     var fechaI = (<HTMLInputElement>document.getElementById("fecha_inicio")).value;
+
     var fechaF = (<HTMLInputElement>document.getElementById("fecha_fin")).value;
     var idP;
     var idE;
@@ -131,7 +133,7 @@ export class IngArqpageComponent implements OnInit {
     var etapaobra ={};
     etapaobra["id_etapa"] = idE;
     etapaobra["id_obra"] = idP;
-    etapaobra["fecha_inicio"] = fechaI;
+    etapaobra["fecha_incio"] = fechaI;
     etapaobra["fecha_finalizacion"] = fechaF;
     console.log(etapaobra);
     this.addEtapaProyecto(etapaobra);
@@ -149,12 +151,12 @@ export class IngArqpageComponent implements OnInit {
        }
     );
 
-    console.log(this.etapas);
   }
 
   getEtapasProyecto(){
 
     var nombreP = (<HTMLInputElement>document.getElementById("proyecto_nombreGastos")).value;
+        
     var idP;
 
     for(var i = 0; i<this.proyectos.length; i++){
@@ -162,11 +164,17 @@ export class IngArqpageComponent implements OnInit {
         idP = this.proyectos[i]["id"];
       }
     }
-
     this.data.etapaProyecto(idP).subscribe(datos => {console.log(datos); this.etapasP = datos});
+
+    this.etapasPNames = [];
     for(var i = 0; i < this.etapasP.length; i++){
-      this.etapasPNames.push(this.etapas[this.etapasP[i]["id_etapa"]]["nombre"]);
-   
+      var id = this.etapasP[i]["id_etapa"];
+
+      for(var p = 0; p < this.etapas.length; p++){
+        if(this.etapas[p]["id"] == id){
+          this.etapasPNames.push(this.etapas[p]["nombre"]);
+        }
+      }
     }
   }
 
