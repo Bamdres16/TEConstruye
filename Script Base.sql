@@ -143,6 +143,34 @@
 	 PRIMARY KEY (id_ingeniero, id_obra)
  );
  
+ create table Gasto (
+	 proveedor varchar (40) not null,
+	 foto varchar(150) not null,
+	 numero_factura varchar(30) not null,
+	 id_compra int GENERATED ALWAYS AS IDENTITY,
+	 id_etapa int not null,
+	 semana int,
+	 id_obra int not null,
+	 PRIMARY KEY (id_compra)
+ );
+ create table compra (
+	 id_compra int,
+	 codigo_material varchar(25),
+	 PRIMARY KEY (id_compra, codigo_material)
+ );
+ 
+ALTER TABLE Gasto
+ADD CONSTRAINT FK_ETAPAGASTO FOREIGN KEY (id_etapa) REFERENCES Etapa(id);
+
+ALTER TABLE Gasto
+ADD CONSTRAINT FK_GASTOBRA FOREIGN KEY (id_obra) REFERENCES Obra(id);
+
+ALTER TABLE Compra
+ADD CONSTRAINT FK_COMPRAID FOREIGN KEY (id_compra) REFERENCES Gasto(id_compra);
+
+ALTER TABLE Compra
+ADD CONSTRAINT FK_COMPRAMATERIAL FOREIGN KEY (codigo_material) REFERENCES Material(codigo);
+ 
  
 ALTER TABLE ingeniero
 ADD CONSTRAINT FK_ESPECIALIDAD FOREIGN KEY (id_especialidad) REFERENCES especialidad(id);
