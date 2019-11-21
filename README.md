@@ -281,7 +281,32 @@ Entrada:
 	```
 	##### Para obtener la lista de etapas asociadas a un proyecto
 	- GET http://teconstruyeapi.azurewebsites.net/api/Proyecto/etapas/{id_obra}
-	
+
+## Diseña
+
+### Metodos implementados
+
+#### Para asignar una lista de ingenieros a una obra
+
+- POST http://teconstruyeapi.azurewebsites.net/api/disena
+
+``` json
+[
+	{
+		"id_ingeniero": 1,
+    	"id_obra": 1,
+    	"horas_laboradas": 1.1
+	},
+	{
+		"id_ingeniero": 2,
+    	"id_obra": 1,
+    	"horas_laboradas": 1.1
+	}
+]
+```
+
+Si algun elemento de la lista no se puede añadir genera un código 409 Conflict, y genera el mensaje "El ingeniero id_ingeniero ya tiene horas asignadas en esa semana para el proyecto actual"
+
 ## Métodos extra
 
 ### Metodos

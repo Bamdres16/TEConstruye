@@ -69,6 +69,8 @@ namespace tec.res.api.Controllers
 
         }
 
+        
+
         // Este método permite asignar los materiales en cada etapa
         [Route("api/Proyecto/asignarmaterial")]
         [HttpPut]
