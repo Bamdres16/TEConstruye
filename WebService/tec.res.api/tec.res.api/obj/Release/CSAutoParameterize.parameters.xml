@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
-  <parameter name="TEConstruyeEntities-Web.config Connection String" description="TEConstruyeEntities Cadena de conexión que usa la aplicación en web.config para obtener acceso a la base de datos." defaultValue="metadata=res://*/Models.Model1.csdl|res://*/Models.Model1.ssdl|res://*/Models.Model1.msl;provider=Npgsql;provider connection string=&quot;Port=5432;Host=dbteconstruye.postgres.database.azure.com;Username=su@dbteconstruye;Password=T3construye;Database=TEConstruye;Persist Security Info=True&quot;" tags="SqlConnectionString">
+  <parameter name="TEConstruyeEntities-Web.config Connection String" description="TEConstruyeEntities Cadena de conexión que usa la aplicación en web.config para obtener acceso a la base de datos." defaultValue="metadata=res://*/Models.Model1.csdl|res://*/Models.Model1.ssdl|res://*/Models.Model1.msl;provider=Npgsql;provider connection string=&quot;Host=dbteconstruyeb.postgres.database.azure.com;Database=TEConstruye;Username=su@dbteconstruyeb;Password=T3construye;Persist Security Info=True&quot;" tags="SqlConnectionString">
     <parameterEntry kind="XmlFile" scope="D:\\Escritorio\\TEConstruye\\TEConstruye\\WebService\\tec\.res\.api\\tec\.res\.api\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='TEConstruyeEntities']/@connectionString" />
   </parameter>
 </parameters>

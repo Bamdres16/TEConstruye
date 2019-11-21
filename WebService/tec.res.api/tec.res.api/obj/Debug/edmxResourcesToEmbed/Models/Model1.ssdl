@@ -7,7 +7,7 @@
     <Property Name="usuario" Type="varchar" MaxLength="30" />
     <Property Name="contrasena" Type="varchar" MaxLength="100" />
     <Property Name="correo" Type="varchar" MaxLength="100" />
-    <Property Name="id" Type="int4" Nullable="false" />
+    <Property Name="id" Type="int4" Nullable="false" StoreGeneratedPattern="Identity" />
   </EntityType>
   <EntityType Name="arquitecto">
     <Key>
@@ -33,6 +33,14 @@
     <Property Name="cedula" Type="varchar" MaxLength="15" />
     <Property Name="numero_telefono" Type="varchar" MaxLength="15" />
     <Property Name="id" Type="int4" Nullable="false" StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="compra">
+    <Key>
+      <PropertyRef Name="id_compra" />
+      <PropertyRef Name="codigo_material" />
+    </Key>
+    <Property Name="id_compra" Type="int4" Nullable="false" />
+    <Property Name="codigo_material" Type="varchar" MaxLength="25" Nullable="false" />
   </EntityType>
   <EntityType Name="diseña">
     <Key>
@@ -70,6 +78,18 @@
     <Property Name="descripcion" Type="varchar" MaxLength="250" />
     <Property Name="id" Type="int4" Nullable="false" StoreGeneratedPattern="Identity" />
   </EntityType>
+  <EntityType Name="gasto">
+    <Key>
+      <PropertyRef Name="id_compra" />
+    </Key>
+    <Property Name="proveedor" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="foto" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="numero_factura" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="id_compra" Type="int4" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="id_etapa" Type="int4" Nullable="false" />
+    <Property Name="semana" Type="int4" />
+    <Property Name="id_obra" Type="int4" Nullable="false" />
+  </EntityType>
   <EntityType Name="ingeniero">
     <Key>
       <PropertyRef Name="id" />
@@ -91,8 +111,8 @@
     </Key>
     <Property Name="id_empleado" Type="int4" Nullable="false" />
     <Property Name="id_obra" Type="int4" Nullable="false" />
-    <Property Name="horas_laboradas" Type="float8" />
     <Property Name="semana" Type="int4" />
+    <Property Name="horas_laboradas" Type="float8" />
   </EntityType>
   <EntityType Name="material">
     <Key>
@@ -120,11 +140,12 @@
     <Key>
       <PropertyRef Name="id_etapa" />
       <PropertyRef Name="codigo_material" />
+      <PropertyRef Name="id_obra" />
     </Key>
     <Property Name="id_etapa" Type="int4" Nullable="false" />
     <Property Name="codigo_material" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="id_obra" Type="int4" Nullable="false" />
     <Property Name="cantidad" Type="int4" />
-    <Property Name="id_obra" Type="int4" />
   </EntityType>
   <EntityType Name="tiene">
     <Key>
@@ -163,6 +184,30 @@
       </Principal>
       <Dependent Role="trabaja_en">
         <PropertyRef Name="id_arquitecto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_compraid">
+    <End Role="gasto" Type="Self.gasto" Multiplicity="1" />
+    <End Role="compra" Type="Self.compra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="gasto">
+        <PropertyRef Name="id_compra" />
+      </Principal>
+      <Dependent Role="compra">
+        <PropertyRef Name="id_compra" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_compramaterial">
+    <End Role="material" Type="Self.material" Multiplicity="1" />
+    <End Role="compra" Type="Self.compra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="material">
+        <PropertyRef Name="codigo" />
+      </Principal>
+      <Dependent Role="compra">
+        <PropertyRef Name="codigo_material" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -214,6 +259,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="fk_etapagasto">
+    <End Role="etapa" Type="Self.etapa" Multiplicity="1" />
+    <End Role="gasto" Type="Self.gasto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="etapa">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="gasto">
+        <PropertyRef Name="id_etapa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="fk_etaparequiere">
     <End Role="etapa" Type="Self.etapa" Multiplicity="1" />
     <End Role="requiere" Type="Self.requiere" Multiplicity="*" />
@@ -223,6 +280,18 @@
       </Principal>
       <Dependent Role="requiere">
         <PropertyRef Name="id_etapa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_gastobra">
+    <End Role="obra" Type="Self.obra" Multiplicity="1" />
+    <End Role="gasto" Type="Self.gasto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="obra">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="gasto">
+        <PropertyRef Name="id_obra" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -299,7 +368,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="fk_obrarequiere">
-    <End Role="obra" Type="Self.obra" Multiplicity="0..1" />
+    <End Role="obra" Type="Self.obra" Multiplicity="1" />
     <End Role="requiere" Type="Self.requiere" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="obra">
@@ -338,10 +407,12 @@
     <EntitySet Name="admin" EntityType="Self.admin" Schema="public" store:Type="Tables" />
     <EntitySet Name="arquitecto" EntityType="Self.arquitecto" Schema="public" store:Type="Tables" />
     <EntitySet Name="cliente" EntityType="Self.cliente" Schema="public" store:Type="Tables" />
+    <EntitySet Name="compra" EntityType="Self.compra" Schema="public" store:Type="Tables" />
     <EntitySet Name="diseña" EntityType="Self.diseña" Schema="public" store:Type="Tables" />
     <EntitySet Name="empleado" EntityType="Self.empleado" Schema="public" store:Type="Tables" />
     <EntitySet Name="especialidad" EntityType="Self.especialidad" Schema="public" store:Type="Tables" />
     <EntitySet Name="etapa" EntityType="Self.etapa" Schema="public" store:Type="Tables" />
+    <EntitySet Name="gasto" EntityType="Self.gasto" Schema="public" store:Type="Tables" />
     <EntitySet Name="ingeniero" EntityType="Self.ingeniero" Schema="public" store:Type="Tables" />
     <EntitySet Name="labora_en" EntityType="Self.labora_en" Schema="public" store:Type="Tables" />
     <EntitySet Name="material" EntityType="Self.material" Schema="public" store:Type="Tables" />
@@ -353,6 +424,14 @@
     <AssociationSet Name="fk_arquitecto" Association="Self.fk_arquitecto">
       <End Role="arquitecto" EntitySet="arquitecto" />
       <End Role="trabaja_en" EntitySet="trabaja_en" />
+    </AssociationSet>
+    <AssociationSet Name="fk_compraid" Association="Self.fk_compraid">
+      <End Role="gasto" EntitySet="gasto" />
+      <End Role="compra" EntitySet="compra" />
+    </AssociationSet>
+    <AssociationSet Name="fk_compramaterial" Association="Self.fk_compramaterial">
+      <End Role="material" EntitySet="material" />
+      <End Role="compra" EntitySet="compra" />
     </AssociationSet>
     <AssociationSet Name="fk_empleado" Association="Self.fk_empleado">
       <End Role="empleado" EntitySet="empleado" />
@@ -370,9 +449,17 @@
       <End Role="etapa" EntitySet="etapa" />
       <End Role="tiene" EntitySet="tiene" />
     </AssociationSet>
+    <AssociationSet Name="fk_etapagasto" Association="Self.fk_etapagasto">
+      <End Role="etapa" EntitySet="etapa" />
+      <End Role="gasto" EntitySet="gasto" />
+    </AssociationSet>
     <AssociationSet Name="fk_etaparequiere" Association="Self.fk_etaparequiere">
       <End Role="etapa" EntitySet="etapa" />
       <End Role="requiere" EntitySet="requiere" />
+    </AssociationSet>
+    <AssociationSet Name="fk_gastobra" Association="Self.fk_gastobra">
+      <End Role="obra" EntitySet="obra" />
+      <End Role="gasto" EntitySet="gasto" />
     </AssociationSet>
     <AssociationSet Name="fk_ingeniero" Association="Self.fk_ingeniero">
       <End Role="ingeniero" EntitySet="ingeniero" />

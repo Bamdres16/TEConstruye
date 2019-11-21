@@ -18,6 +18,7 @@ namespace tec.res.api.Models
         public obra()
         {
             this.diseña = new HashSet<diseña>();
+            this.gasto = new HashSet<gasto>();
             this.labora_en = new HashSet<labora_en>();
             this.trabaja_en = new HashSet<trabaja_en>();
             this.tiene = new HashSet<tiene>();
@@ -38,13 +39,15 @@ namespace tec.res.api.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<diseña> diseña { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<gasto> gasto { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<labora_en> labora_en { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<trabaja_en> trabaja_en { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tiene> tiene { get; set; }
-        public virtual ubicacion ubicacion1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<requiere> requiere { get; set; }
+        public virtual ubicacion ubicacion1 { get; set; }
     }
 }

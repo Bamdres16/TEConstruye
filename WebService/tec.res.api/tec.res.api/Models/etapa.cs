@@ -18,6 +18,7 @@ namespace tec.res.api.Models
         public etapa()
         {
             this.tiene = new HashSet<tiene>();
+            this.gasto = new HashSet<gasto>();
             this.requiere = new HashSet<requiere>();
         }
     
@@ -27,6 +28,8 @@ namespace tec.res.api.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tiene> tiene { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<gasto> gasto { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<requiere> requiere { get; set; }
     }

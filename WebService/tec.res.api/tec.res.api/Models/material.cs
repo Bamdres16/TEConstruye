@@ -18,6 +18,7 @@ namespace tec.res.api.Models
         public material()
         {
             this.requiere = new HashSet<requiere>();
+            this.gasto = new HashSet<gasto>();
         }
     
         public string nombre { get; set; }
@@ -26,5 +27,7 @@ namespace tec.res.api.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<requiere> requiere { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<gasto> gasto { get; set; }
     }
 }

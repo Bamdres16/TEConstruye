@@ -27,6 +27,7 @@ namespace tec.res.api.Controllers
             {
                 return BadRequest();
             }
+            
             var user = from i in db.admin
                        where i.usuario == login.usuario
                        select new { i.contrasena };

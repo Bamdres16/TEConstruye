@@ -99,7 +99,7 @@ namespace tec.res.api.Controllers
             }
 
             db.cliente.Add(cliente);
-
+            
             try
             {
                 await db.SaveChangesAsync();

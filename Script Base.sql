@@ -217,3 +217,25 @@ $especialidad_default$ LANGUAGE plpgsql;
 
 CREATE TRIGGER especialidad_default BEFORE DELETE OR UPDATE ON especialidad
     FOR EACH ROW EXECUTE PROCEDURE especialidad_default();
+
+
+CREATE OR REPLACE FUNCTION Presupuesto1(IN idObra INT) 
+RETURNS TABLE (
+	Nombre varchar (60),
+	Precio_Etapa float
+)
+AS $$
+BEGIN
+RETURN QUERY
+    SELECT E.nombre, SUM(R.cantidad * M.precio_unitario) as Precio_Etapa
+	FROM Requiere R
+	INNER JOIN Obra O
+	ON R.id_obra = O.id
+	INNER JOIN Material M
+	ON M.codigo = R.codigo_material
+	INNER JOIN Etapa E
+	ON E.id = R.id_etapa
+	WHERE O.id = idObra
+	GROUP BY E.nombre;
+END; $$
+LANGUAGE 'plpgsql';

@@ -1594,3 +1594,6 @@ VALUES ('Edgar','Chavez','Gonzalez','2017239281','454568218',4500);
 
 INSERT INTO Obra (nombre_obra, ubicacion, cantidad_habitaciones, cantidad_banos, cantidad_pisos, area_construccion, area_lote, propietario)
 VALUES ('Casa de Brayan',5,5,2,3,2350,5000,1);
+
+-- PARA REQUIERE
+

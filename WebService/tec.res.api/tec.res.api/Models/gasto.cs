@@ -12,26 +12,25 @@ namespace tec.res.api.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class ingeniero
+    public partial class gasto
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ingeniero()
+        public gasto()
         {
-            this.diseña = new HashSet<diseña>();
+            this.material = new HashSet<material>();
         }
     
-        public string nombre { get; set; }
-        public string apellido1 { get; set; }
-        public string apellido2 { get; set; }
-        public string cedula { get; set; }
-        public string numero_telefono { get; set; }
-        public string codigo_ingeniero { get; set; }
-        public Nullable<int> id_especialidad { get; set; }
-        public string contrasena { get; set; }
-        public int id { get; set; }
+        public string proveedor { get; set; }
+        public string foto { get; set; }
+        public string numero_factura { get; set; }
+        public int id_compra { get; set; }
+        public int id_etapa { get; set; }
+        public Nullable<int> semana { get; set; }
+        public int id_obra { get; set; }
     
+        public virtual etapa etapa { get; set; }
+        public virtual obra obra { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<diseña> diseña { get; set; }
-        public virtual especialidad especialidad { get; set; }
+        public virtual ICollection<material> material { get; set; }
     }
 }

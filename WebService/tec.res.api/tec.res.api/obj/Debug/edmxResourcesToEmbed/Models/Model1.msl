@@ -1,6 +1,31 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="TEConstruyeModelStoreContainer" CdmEntityContainer="TEConstruyeEntities">
+    <EntitySetMapping Name="admin">
+      <EntityTypeMapping TypeName="TEConstruyeModel.admin">
+        <MappingFragment StoreEntitySet="admin">
+          <ScalarProperty Name="usuario" ColumnName="usuario" />
+          <ScalarProperty Name="contrasena" ColumnName="contrasena" />
+          <ScalarProperty Name="correo" ColumnName="correo" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="arquitecto">
+      <EntityTypeMapping TypeName="TEConstruyeModel.arquitecto">
+        <MappingFragment StoreEntitySet="arquitecto">
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="apellido1" ColumnName="apellido1" />
+          <ScalarProperty Name="apellido2" ColumnName="apellido2" />
+          <ScalarProperty Name="cedula" ColumnName="cedula" />
+          <ScalarProperty Name="numero_telefono" ColumnName="numero_telefono" />
+          <ScalarProperty Name="codigo_arquitecto" ColumnName="codigo_arquitecto" />
+          <ScalarProperty Name="id_especialidad" ColumnName="id_especialidad" />
+          <ScalarProperty Name="contrasena" ColumnName="contrasena" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="cliente">
       <EntityTypeMapping TypeName="TEConstruyeModel.cliente">
         <MappingFragment StoreEntitySet="cliente">
@@ -9,6 +34,28 @@
           <ScalarProperty Name="apellido2" ColumnName="apellido2" />
           <ScalarProperty Name="cedula" ColumnName="cedula" />
           <ScalarProperty Name="numero_telefono" ColumnName="numero_telefono" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="diseña">
+      <EntityTypeMapping TypeName="TEConstruyeModel.diseña">
+        <MappingFragment StoreEntitySet="diseña">
+          <ScalarProperty Name="id_ingeniero" ColumnName="id_ingeniero" />
+          <ScalarProperty Name="id_obra" ColumnName="id_obra" />
+          <ScalarProperty Name="horas_laboradas" ColumnName="horas_laboradas" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="empleado">
+      <EntityTypeMapping TypeName="TEConstruyeModel.empleado">
+        <MappingFragment StoreEntitySet="empleado">
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="apellido1" ColumnName="apellido1" />
+          <ScalarProperty Name="apellido2" ColumnName="apellido2" />
+          <ScalarProperty Name="cedula" ColumnName="cedula" />
+          <ScalarProperty Name="numero_telefono" ColumnName="numero_telefono" />
+          <ScalarProperty Name="pago_hora" ColumnName="pago_hora" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -30,6 +77,97 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="gasto">
+      <EntityTypeMapping TypeName="TEConstruyeModel.gasto">
+        <MappingFragment StoreEntitySet="gasto">
+          <ScalarProperty Name="proveedor" ColumnName="proveedor" />
+          <ScalarProperty Name="foto" ColumnName="foto" />
+          <ScalarProperty Name="numero_factura" ColumnName="numero_factura" />
+          <ScalarProperty Name="id_compra" ColumnName="id_compra" />
+          <ScalarProperty Name="id_etapa" ColumnName="id_etapa" />
+          <ScalarProperty Name="semana" ColumnName="semana" />
+          <ScalarProperty Name="id_obra" ColumnName="id_obra" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ingeniero">
+      <EntityTypeMapping TypeName="TEConstruyeModel.ingeniero">
+        <MappingFragment StoreEntitySet="ingeniero">
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="apellido1" ColumnName="apellido1" />
+          <ScalarProperty Name="apellido2" ColumnName="apellido2" />
+          <ScalarProperty Name="cedula" ColumnName="cedula" />
+          <ScalarProperty Name="numero_telefono" ColumnName="numero_telefono" />
+          <ScalarProperty Name="codigo_ingeniero" ColumnName="codigo_ingeniero" />
+          <ScalarProperty Name="id_especialidad" ColumnName="id_especialidad" />
+          <ScalarProperty Name="contrasena" ColumnName="contrasena" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="labora_en">
+      <EntityTypeMapping TypeName="TEConstruyeModel.labora_en">
+        <MappingFragment StoreEntitySet="labora_en">
+          <ScalarProperty Name="id_empleado" ColumnName="id_empleado" />
+          <ScalarProperty Name="id_obra" ColumnName="id_obra" />
+          <ScalarProperty Name="semana" ColumnName="semana" />
+          <ScalarProperty Name="horas_laboradas" ColumnName="horas_laboradas" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="material">
+      <EntityTypeMapping TypeName="TEConstruyeModel.material">
+        <MappingFragment StoreEntitySet="material">
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="precio_unitario" ColumnName="precio_unitario" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="obra">
+      <EntityTypeMapping TypeName="TEConstruyeModel.obra">
+        <MappingFragment StoreEntitySet="obra">
+          <ScalarProperty Name="nombre_obra" ColumnName="nombre_obra" />
+          <ScalarProperty Name="ubicacion" ColumnName="ubicacion" />
+          <ScalarProperty Name="cantidad_habitaciones" ColumnName="cantidad_habitaciones" />
+          <ScalarProperty Name="cantidad_banos" ColumnName="cantidad_banos" />
+          <ScalarProperty Name="cantidad_pisos" ColumnName="cantidad_pisos" />
+          <ScalarProperty Name="area_construccion" ColumnName="area_construccion" />
+          <ScalarProperty Name="area_lote" ColumnName="area_lote" />
+          <ScalarProperty Name="propietario" ColumnName="propietario" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="requiere">
+      <EntityTypeMapping TypeName="TEConstruyeModel.requiere">
+        <MappingFragment StoreEntitySet="requiere">
+          <ScalarProperty Name="id_etapa" ColumnName="id_etapa" />
+          <ScalarProperty Name="codigo_material" ColumnName="codigo_material" />
+          <ScalarProperty Name="id_obra" ColumnName="id_obra" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tiene">
+      <EntityTypeMapping TypeName="TEConstruyeModel.tiene">
+        <MappingFragment StoreEntitySet="tiene">
+          <ScalarProperty Name="id_etapa" ColumnName="id_etapa" />
+          <ScalarProperty Name="id_obra" ColumnName="id_obra" />
+          <ScalarProperty Name="fecha_incio" ColumnName="fecha_incio" />
+          <ScalarProperty Name="fecha_finalizacion" ColumnName="fecha_finalizacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="trabaja_en">
+      <EntityTypeMapping TypeName="TEConstruyeModel.trabaja_en">
+        <MappingFragment StoreEntitySet="trabaja_en">
+          <ScalarProperty Name="id_arquitecto" ColumnName="id_arquitecto" />
+          <ScalarProperty Name="id_obra" ColumnName="id_obra" />
+          <ScalarProperty Name="horas_laboradas" ColumnName="horas_laboradas" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="ubicacion">
       <EntityTypeMapping TypeName="TEConstruyeModel.ubicacion">
         <MappingFragment StoreEntitySet="ubicacion">
@@ -40,130 +178,13 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="arquitecto">
-      <EntityTypeMapping TypeName="TEConstruyeModel.arquitecto">
-        <MappingFragment StoreEntitySet="arquitecto">
-          <ScalarProperty Name="contrasena" ColumnName="contrasena" />
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="id_especialidad" ColumnName="id_especialidad" />
-          <ScalarProperty Name="codigo_arquitecto" ColumnName="codigo_arquitecto" />
-          <ScalarProperty Name="numero_telefono" ColumnName="numero_telefono" />
-          <ScalarProperty Name="cedula" ColumnName="cedula" />
-          <ScalarProperty Name="apellido2" ColumnName="apellido2" />
-          <ScalarProperty Name="apellido1" ColumnName="apellido1" />
-          <ScalarProperty Name="nombre" ColumnName="nombre" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="ingeniero">
-      <EntityTypeMapping TypeName="TEConstruyeModel.ingeniero">
-        <MappingFragment StoreEntitySet="ingeniero">
-          <ScalarProperty Name="contrasena" ColumnName="contrasena" />
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="id_especialidad" ColumnName="id_especialidad" />
-          <ScalarProperty Name="codigo_ingeniero" ColumnName="codigo_ingeniero" />
-          <ScalarProperty Name="numero_telefono" ColumnName="numero_telefono" />
-          <ScalarProperty Name="cedula" ColumnName="cedula" />
-          <ScalarProperty Name="apellido2" ColumnName="apellido2" />
-          <ScalarProperty Name="apellido1" ColumnName="apellido1" />
-          <ScalarProperty Name="nombre" ColumnName="nombre" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="diseña">
-      <EntityTypeMapping TypeName="TEConstruyeModel.diseña">
-        <MappingFragment StoreEntitySet="diseña">
-          <ScalarProperty Name="horas_laboradas" ColumnName="horas_laboradas" />
-          <ScalarProperty Name="id_obra" ColumnName="id_obra" />
-          <ScalarProperty Name="id_ingeniero" ColumnName="id_ingeniero" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="empleado">
-      <EntityTypeMapping TypeName="TEConstruyeModel.empleado">
-        <MappingFragment StoreEntitySet="empleado">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="pago_hora" ColumnName="pago_hora" />
-          <ScalarProperty Name="numero_telefono" ColumnName="numero_telefono" />
-          <ScalarProperty Name="cedula" ColumnName="cedula" />
-          <ScalarProperty Name="apellido2" ColumnName="apellido2" />
-          <ScalarProperty Name="apellido1" ColumnName="apellido1" />
-          <ScalarProperty Name="nombre" ColumnName="nombre" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="labora_en">
-      <EntityTypeMapping TypeName="TEConstruyeModel.labora_en">
-        <MappingFragment StoreEntitySet="labora_en">
-          <ScalarProperty Name="semana" ColumnName="semana" />
-          <ScalarProperty Name="horas_laboradas" ColumnName="horas_laboradas" />
-          <ScalarProperty Name="id_obra" ColumnName="id_obra" />
-          <ScalarProperty Name="id_empleado" ColumnName="id_empleado" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="material">
-      <EntityTypeMapping TypeName="TEConstruyeModel.material">
-        <MappingFragment StoreEntitySet="material">
-          <ScalarProperty Name="codigo" ColumnName="codigo" />
-          <ScalarProperty Name="precio_unitario" ColumnName="precio_unitario" />
-          <ScalarProperty Name="nombre" ColumnName="nombre" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="obra">
-      <EntityTypeMapping TypeName="TEConstruyeModel.obra">
-        <MappingFragment StoreEntitySet="obra">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="propietario" ColumnName="propietario" />
-          <ScalarProperty Name="area_lote" ColumnName="area_lote" />
-          <ScalarProperty Name="area_construccion" ColumnName="area_construccion" />
-          <ScalarProperty Name="cantidad_pisos" ColumnName="cantidad_pisos" />
-          <ScalarProperty Name="cantidad_banos" ColumnName="cantidad_banos" />
-          <ScalarProperty Name="cantidad_habitaciones" ColumnName="cantidad_habitaciones" />
-          <ScalarProperty Name="ubicacion" ColumnName="ubicacion" />
-          <ScalarProperty Name="nombre_obra" ColumnName="nombre_obra" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="requiere">
-      <EntityTypeMapping TypeName="TEConstruyeModel.requiere">
-        <MappingFragment StoreEntitySet="requiere">
-          <ScalarProperty Name="id_obra" ColumnName="id_obra" />
-          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
-          <ScalarProperty Name="codigo_material" ColumnName="codigo_material" />
-          <ScalarProperty Name="id_etapa" ColumnName="id_etapa" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="tiene">
-      <EntityTypeMapping TypeName="TEConstruyeModel.tiene">
-        <MappingFragment StoreEntitySet="tiene">
-          <ScalarProperty Name="fecha_finalizacion" ColumnName="fecha_finalizacion" />
-          <ScalarProperty Name="fecha_incio" ColumnName="fecha_incio" />
-          <ScalarProperty Name="id_obra" ColumnName="id_obra" />
-          <ScalarProperty Name="id_etapa" ColumnName="id_etapa" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="trabaja_en">
-      <EntityTypeMapping TypeName="TEConstruyeModel.trabaja_en">
-        <MappingFragment StoreEntitySet="trabaja_en">
-          <ScalarProperty Name="horas_laboradas" ColumnName="horas_laboradas" />
-          <ScalarProperty Name="id_obra" ColumnName="id_obra" />
-          <ScalarProperty Name="id_arquitecto" ColumnName="id_arquitecto" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="admin">
-      <EntityTypeMapping TypeName="TEConstruyeModel.admin">
-        <MappingFragment StoreEntitySet="admin">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="correo" ColumnName="correo" />
-          <ScalarProperty Name="contrasena" ColumnName="contrasena" />
-          <ScalarProperty Name="usuario" ColumnName="usuario" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
+    <AssociationSetMapping Name="compra" TypeName="TEConstruyeModel.compra" StoreEntitySet="compra">
+      <EndProperty Name="gasto">
+        <ScalarProperty Name="id_compra" ColumnName="id_compra" />
+      </EndProperty>
+      <EndProperty Name="material">
+        <ScalarProperty Name="codigo" ColumnName="codigo_material" />
+      </EndProperty>
+    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping>

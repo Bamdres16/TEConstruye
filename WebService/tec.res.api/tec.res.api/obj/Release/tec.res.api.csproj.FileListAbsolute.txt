@@ -205,3 +205,9 @@ D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.res.api\tec.res.api\obj\Rel
 D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.res.api\tec.res.api\obj\Release\tec.res.api.csproj.CopyComplete
 D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.res.api\tec.res.api\obj\Release\tec.res.api.dll
 D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.res.api\tec.res.api\obj\Release\tec.res.api.pdb
+D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.res.api\tec.res.api\bin\Microsoft.Bcl.AsyncInterfaces.dll
+D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.res.api\tec.res.api\bin\System.Text.Encodings.Web.dll
+D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.res.api\tec.res.api\bin\System.Text.Json.dll
+D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.res.api\tec.res.api\bin\Microsoft.Bcl.AsyncInterfaces.xml
+D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.res.api\tec.res.api\bin\System.Text.Encodings.Web.xml
+D:\Escritorio\TEConstruye\TEConstruye\WebService\tec.res.api\tec.res.api\bin\System.Text.Json.xml

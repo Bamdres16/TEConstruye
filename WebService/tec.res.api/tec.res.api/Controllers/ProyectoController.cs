@@ -116,16 +116,47 @@ namespace tec.res.api.Controllers
                 total += (double) p.Precio_Etapa;
             }
                         
-            return new { Etapas = pres, Total = total };
-
-           
-            
-            
+            return new { Etapas = pres, Total = total };                    
+        }
+        // Struct para publicar un propiedad en TECres
+        struct Propiedad
+        {
+            public double tamano_construccion { get; set; }
+            public double tamano_terreno { get; set; }
+            public int niveles { get; set; }
+            public string tipo_piso { get; set; }
+            public bool piscina { get; set; }
+            public bool gimnasio { get; set; }
+            public int cantidad_banos { get; set; }
+            public int cant_habitaciones { get; set; }
+            public int espacios_parqueo { get; set; }
+            public bool parqueo_visitas { get; set; }
+            public string titulo { get; set; }
+            public int ubicacion { get; set; }
+            public int id_dueno { get; set; }
+            public string inmueble { get; set; }
 
         }
 
-        // Este método permite obtener las etapas de un proyecto
-        [Route("api/Proyecto/etapas/{obra}")]
+
+
+        //// Este método permite publicar una obra de TEConstruye en TECres
+        //// URL de TEConstruye
+        //readonly string URL = "https://tecrescliente.azurewebsites.net/api/Propiedad";
+        //[Route("api/Proyecto/publicar")]
+        //[HttpPost]
+        //public async Task<IHttpActionResult> PostProyecto(obra obra)
+        //{
+        //    Propiedad propiedad = new Propiedad();
+        //    propiedad.tamano_construccion = (double)obra.area_construccion;
+        //    propiedad.tamano_terreno = obra.
+            
+        //}
+
+
+
+       // Este método permite obtener las etapas de un proyecto
+       [Route("api/Proyecto/etapas/{obra}")]
         [HttpGet]
         public  IHttpActionResult GetEtapas(int obra)
         {
@@ -157,13 +188,13 @@ namespace tec.res.api.Controllers
             return Ok();
         }
         [Route("api/Proyecto/asignarhoras")]
-        public IHttpActionResult Options_1()
+        public IHttpActionResult OptionsHoras()
         {
             HttpContext.Current.Response.AppendHeader("Allow", "GET,DELETE,PUT,POST,OPTIONS");
             return Ok();
         }
         [Route("api/Proyecto/asignarmaterial")]
-        public IHttpActionResult Options_2()
+        public IHttpActionResult OptionsMaterial()
         {
             HttpContext.Current.Response.AppendHeader("Allow", "GET,DELETE,PUT,POST,OPTIONS");
             return Ok();
