@@ -52,10 +52,8 @@ export class AdminpageComponent implements OnInit {
 
 }
 get_empleados(){
- 
-  this.data.getEmpleados().subscribe(datos => this.empleados= datos);
+   this.data.getEmpleados().subscribe(datos => this.empleados= datos);
   console.log( this.empleados);
-
 }
 
 get_presupuesto(){

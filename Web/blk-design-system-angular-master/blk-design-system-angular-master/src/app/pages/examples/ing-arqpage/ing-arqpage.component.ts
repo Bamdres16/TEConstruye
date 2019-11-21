@@ -17,6 +17,18 @@ export class IngArqpageComponent implements OnInit {
   isCollapsed = true;
   focus;
   focus1;
+  obj: any ={};
+  compra: any ={};
+  paquete: Array<any>=[];
+  inmuebles: Array<any> = [
+
+    {Tipo: 'Lote', cedulaAdmin:123},
+    {Tipo: "Casa", cedulaAdmin:123},
+    {Tipo: "Apartamento", cedulaAdmin:123},
+   
+  ];
+  image: string | ArrayBuffer;
+
   focus2;
   trash:any = {};
   etapa:any = {};
@@ -231,5 +243,50 @@ export class IngArqpageComponent implements OnInit {
        }
     );
   }
+
+
+  agregar(Tipo1:any){
+    var cant = (<HTMLInputElement>document.getElementById('inp1')).value;
+
+  for (var indice = 0; indice < this.inmuebles.length; indice++){
+    if(this.inmuebles[indice].Tipo == Tipo1){
+      this.inmuebles.splice(indice, 1);
+      this.obj.nombre = this.inmuebles[indice].Tipo;
+      this.obj.cantidad= cant;
+      this.paquete.push(this.obj);
+      this.obj={};
+    }
+  }
+}
+
+agregar_gastos(){
+  this.compra.foto= this.image;
+  this.compra.proveedor= (<HTMLInputElement>document.getElementById("proveedor")).value;
+  this.compra.numero_factura=(<HTMLInputElement>document.getElementById("numero_factura")).value;
+  this.compra.materiales= this.paquete; 
+  console.log(this.compra);
+}
+
+changeListener($event) : void {
+  this.readThis($event.target);
+}
+
+readThis(inputValue: any): void {
+  var file:File = inputValue.files[0];
+  var myReader:FileReader = new FileReader();
+
+  myReader.onloadend = (e) => {
+    this.image = myReader.result;
+ 
+  }
+  myReader.readAsDataURL(file);
+}
+
+get_materiales(){
+
+  this.data.getMateriales().subscribe(datos => this.materiales= datos);
+  console.log( this.materiales);
+
+}
 
 }
