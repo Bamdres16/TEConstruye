@@ -46,6 +46,8 @@ export class AdminpageComponent implements OnInit {
   num:number;
 
   gastos:Array<any>=[];
+  estado:Array<any>=[];
+  estadoS:Array<any>=[];
   paqueteMat: Array<any>=[];
   etapas:Array<any>=[];
   obras:Array<any>=[];
@@ -170,6 +172,52 @@ get_presupuesto(){
          }
       );
   
+  }
+
+  generarReporteEstado(){
+    this.data.getEstado().subscribe(datos => {
+      this.estado= datos;
+    });
+    console.log()
+    var pdf = new jsPDF();
+
+    pdf.setFontStyle("times");
+    pdf.setFontSize(30);
+    pdf.text(75,20,"TEConstruye");
+    pdf.text(75 ,30,"Reporte de Estado");
+
+    
+    var columns = ["Obra","Etapa", "Monto Gastado", "Presupuesto"];
+    var data = [];
+    var i = 0;
+    for(var v = 0; v < this.estado.length; v++){
+      for(var p = 0; p < this.estado[v]["porSemana"].length; p++){
+        var i = 1;
+        var temp = [];
+        temp.push(this.estado[v]["porSemana"][p]["nombre_obra"]);
+        temp.push(this.estado[v]["porSemana"][p]["nombre_etapa"]);
+        temp.push(this.estado[v]["porSemana"][p]["monto_gastado"]);
+        temp.push(this.estado[v]["porSemana"][p]["presupuesto"]);
+        data.push(temp);
+    }
+        var temp = [];
+        temp.push("");
+        temp.push("");
+        temp.push("Gastado Total: "+ this.estado[v]["total_semana_monto"]);
+        temp.push("Presupuesto Total: "+ this.estado[v]["total_semana_presupuesto"]);
+        data.push(temp);
+      
+    }
+      
+    
+      pdf.autoTable(columns,data,
+        { margin:{ top: 50 }, theme : 'grid'}
+        );
+        if(i == 1){
+          pdf.save('Reporte de Estado.pdf');
+        }    
+
+
   }
   
   scrollToDownload(element: any) {

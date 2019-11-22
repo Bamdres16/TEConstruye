@@ -138,4 +138,8 @@ loginArquitecto(arquitecto:void){
   getGastos(){
     return this._http.get<void[]>("http://teconstruyeapi.azurewebsites.net/api/Reporte/Gastos");
   }
+
+  getEstado(){
+    return this._http.get<void[]>("http://teconstruyeapi.azurewebsites.net/api/Reporte/Estado");
+  }
 }
