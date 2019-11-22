@@ -16,7 +16,7 @@ namespace tec.res.api.Models
     {
         public int id_empleado { get; set; }
         public int id_obra { get; set; }
-        public Nullable<int> semana { get; set; }
+        public int semana { get; set; }
         public Nullable<double> horas_laboradas { get; set; }
     
         public virtual empleado empleado { get; set; }

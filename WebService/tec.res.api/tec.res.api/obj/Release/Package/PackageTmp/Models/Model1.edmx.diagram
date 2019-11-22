@@ -5,40 +5,40 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="1509777fdafb40a59e00f8262bc58cf3" Name="Diagram1" ZoomLevel="81">
-        <EntityTypeShape EntityType="TEConstruyeModel.admin" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="TEConstruyeModel.arquitecto" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TEConstruyeModel.cliente" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="TEConstruyeModel.diseña" Width="1.5" PointX="5.25" PointY="8.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="TEConstruyeModel.empleado" Width="1.5" PointX="3" PointY="13" IsExpanded="true" />
-        <EntityTypeShape EntityType="TEConstruyeModel.especialidad" Width="1.5" PointX="3.75" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="TEConstruyeModel.etapa" Width="1.5" PointX="6" PointY="14.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="TEConstruyeModel.gasto" Width="1.5" PointX="8.25" PointY="7.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="TEConstruyeModel.ingeniero" Width="1.5" PointX="3" PointY="17.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TEConstruyeModel.labora_en" Width="1.5" PointX="5.25" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="TEConstruyeModel.material" Width="1.5" PointX="10.5" PointY="8.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="TEConstruyeModel.obra" Width="1.5" PointX="3" PointY="7.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="TEConstruyeModel.requiere" Width="1.5" PointX="12.75" PointY="8.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="TEConstruyeModel.tiene" Width="1.5" PointX="5.25" PointY="11.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="TEConstruyeModel.trabaja_en" Width="1.5" PointX="8.25" PointY="4.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="TEConstruyeModel.ubicacion" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
-        <AssociationConnector Association="TEConstruyeModel.fk_arquitecto" ManuallyRouted="false" />
-        <AssociationConnector Association="TEConstruyeModel.fk_especialidad1" ManuallyRouted="false" />
-        <AssociationConnector Association="TEConstruyeModel.fk_propietario_obra" ManuallyRouted="false" />
-        <AssociationConnector Association="TEConstruyeModel.fk_ingeniero" ManuallyRouted="false" />
-        <AssociationConnector Association="TEConstruyeModel.fk_obra" ManuallyRouted="false" />
-        <AssociationConnector Association="TEConstruyeModel.fk_empleado" ManuallyRouted="false" />
-        <AssociationConnector Association="TEConstruyeModel.fk_especialidad" ManuallyRouted="false" />
-        <AssociationConnector Association="TEConstruyeModel.fk_etapa" ManuallyRouted="false" />
-        <AssociationConnector Association="TEConstruyeModel.fk_etapagasto" ManuallyRouted="false" />
-        <AssociationConnector Association="TEConstruyeModel.fk_etaparequiere" ManuallyRouted="false" />
-        <AssociationConnector Association="TEConstruyeModel.fk_gastobra" ManuallyRouted="false" />
-        <AssociationConnector Association="TEConstruyeModel.fk_obra1" ManuallyRouted="false" />
-        <AssociationConnector Association="TEConstruyeModel.fk_material" ManuallyRouted="false" />
-        <AssociationConnector Association="TEConstruyeModel.fk_obra2" ManuallyRouted="false" />
-        <AssociationConnector Association="TEConstruyeModel.fk_obra3" ManuallyRouted="false" />
-        <AssociationConnector Association="TEConstruyeModel.fk_obrarequiere" ManuallyRouted="false" />
-        <AssociationConnector Association="TEConstruyeModel.fk_obraubicacion" ManuallyRouted="false" />
-        <AssociationConnector Association="TEConstruyeModel.compra" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="TEConstruyeModel.admin" Width="1.5" PointX="0.75" PointY="1.125" />
+        <EntityTypeShape EntityType="TEConstruyeModel.arquitecto" Width="1.5" PointX="3" PointY="12.5" />
+        <EntityTypeShape EntityType="TEConstruyeModel.cliente" Width="1.5" PointX="0.75" PointY="7.875" />
+        <EntityTypeShape EntityType="TEConstruyeModel.diseña" Width="1.5" PointX="5.25" PointY="11" />
+        <EntityTypeShape EntityType="TEConstruyeModel.empleado" Width="1.5" PointX="6" PointY="0.75" />
+        <EntityTypeShape EntityType="TEConstruyeModel.especialidad" Width="1.5" PointX="0.75" PointY="13.125" />
+        <EntityTypeShape EntityType="TEConstruyeModel.etapa" Width="1.5" PointX="3" PointY="4" />
+        <EntityTypeShape EntityType="TEConstruyeModel.gasto" Width="1.5" PointX="8.25" PointY="7.5" />
+        <EntityTypeShape EntityType="TEConstruyeModel.ingeniero" Width="1.5" PointX="3" PointY="16.5" />
+        <EntityTypeShape EntityType="TEConstruyeModel.labora_en" Width="1.5" PointX="8.25" PointY="4" />
+        <EntityTypeShape EntityType="TEConstruyeModel.material" Width="1.5" PointX="10.5" PointY="8" />
+        <EntityTypeShape EntityType="TEConstruyeModel.obra" Width="1.5" PointX="3" PointY="6.875" />
+        <EntityTypeShape EntityType="TEConstruyeModel.requiere" Width="1.5" PointX="12.75" PointY="7.875" />
+        <EntityTypeShape EntityType="TEConstruyeModel.tiene" Width="1.5" PointX="5.25" PointY="5" />
+        <EntityTypeShape EntityType="TEConstruyeModel.trabaja_en" Width="1.5" PointX="5.25" PointY="8" />
+        <EntityTypeShape EntityType="TEConstruyeModel.ubicacion" Width="1.5" PointX="0.75" PointY="5" />
+        <AssociationConnector Association="TEConstruyeModel.fk_arquitecto" />
+        <AssociationConnector Association="TEConstruyeModel.fk_especialidad1" />
+        <AssociationConnector Association="TEConstruyeModel.fk_propietario_obra" />
+        <AssociationConnector Association="TEConstruyeModel.fk_ingeniero" />
+        <AssociationConnector Association="TEConstruyeModel.fk_obra" />
+        <AssociationConnector Association="TEConstruyeModel.fk_empleado" />
+        <AssociationConnector Association="TEConstruyeModel.fk_especialidad" />
+        <AssociationConnector Association="TEConstruyeModel.fk_etapa" />
+        <AssociationConnector Association="TEConstruyeModel.fk_etapagasto" />
+        <AssociationConnector Association="TEConstruyeModel.fk_etaparequiere" />
+        <AssociationConnector Association="TEConstruyeModel.fk_gastobra" />
+        <AssociationConnector Association="TEConstruyeModel.fk_obra3" />
+        <AssociationConnector Association="TEConstruyeModel.fk_material" />
+        <AssociationConnector Association="TEConstruyeModel.fk_obra1" />
+        <AssociationConnector Association="TEConstruyeModel.fk_obra2" />
+        <AssociationConnector Association="TEConstruyeModel.fk_obrarequiere" />
+        <AssociationConnector Association="TEConstruyeModel.fk_obraubicacion" />
+        <AssociationConnector Association="TEConstruyeModel.compra" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

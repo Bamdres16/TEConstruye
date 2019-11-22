@@ -367,3 +367,6 @@ Si algun elemento de la lista no se puede añadir genera un código 409 Conflict
 #### Para obtener el presupuesto por etapa y obtener el total
 - GET http://teconstruyeapi.azurewebsites.net/api/Proyecto/Presupuesto/{id_obra}
 
+#### Para obtener el reporte de la planilla
+- GET http://teconstruyeapi.azurewebsites.net/api/Reporte/Planilla
+

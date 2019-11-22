@@ -46,7 +46,7 @@ namespace tec.res.api.Controllers
         {
             var ubicaciones = from u in db.ubicacion
                               where (u.provincia == Provincia) & (u.canton == Canton)
-                              select new { u.distrito };
+                              select new { u.distrito , u.id};
 
             return ubicaciones.Distinct();
         }

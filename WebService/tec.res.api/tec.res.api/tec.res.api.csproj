@@ -211,6 +211,7 @@
     <Compile Include="Controllers\materialController.cs" />
     <Compile Include="Controllers\obrasController.cs" />
     <Compile Include="Controllers\ProyectoController.cs" />
+    <Compile Include="Controllers\ReporteController.cs" />
     <Compile Include="Controllers\trabaja_enController.cs" />
     <Compile Include="Controllers\ubicacionController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />

@@ -267,3 +267,25 @@ RETURN QUERY
 	GROUP BY E.nombre;
 END; $$
 LANGUAGE 'plpgsql';
+
+CREATE OR REPLACE FUNCTION Planilla() 
+RETURNS TABLE (
+	nombre_obra varchar (60),
+	id int,
+	nombre varchar(60),
+	semana int,
+	pago_semana float
+)
+AS $$
+BEGIN
+	RETURN QUERY
+	SELECT	O.nombre_obra, O.id, E.nombre,L.semana,(E.pago_hora * L.horas_laboradas) as Pago_Semana
+	FROM Labora_en L
+	INNER JOIN Empleado E
+	ON L.id_empleado = E.id
+	INNER JOIN Obra O
+	ON O.id = L.id_obra;
+END;
+$$ LANGUAGE 'plpgsql';	
+
+
