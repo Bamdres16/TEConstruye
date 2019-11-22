@@ -15,7 +15,7 @@ namespace tec.res.api.Controllers
     {
         // Se añade la base de datos
         private TEConstruyeEntities db = new TEConstruyeEntities();
-
+        readonly string ConnectionString = "Server=dbteconstruyeb.postgres.database.azure.com;Database=TEConstruye;Port=5432;User Id=su@dbteconstruyeb;Password=T3construye;Ssl Mode=Require;";
 
 
         // Este método permite asignar las etapas a un proyecto
@@ -100,25 +100,24 @@ namespace tec.res.api.Controllers
         }
         
         // Este método permite generar el presupuesto de un proyecto
-        [Route("api/Proyecto/presupuesto/{id}")]
+        [Route("api/Proyecto/presupuesto")]
         [HttpGet]
-        public object GetPresupuesto (int id)
+        public object GetPresupuesto ()
         {
-            var pres = from R in db.requiere
-                       join O in db.obra on R.id_obra equals O.id
-                       join M in db.material on R.codigo_material equals M.codigo
-                       join E in db.etapa on R.id_etapa equals E.id
-                       where O.id == id
-                       group new { E.nombre, Precio_Etapa = M.precio_unitario * R.cantidad } by new { E.nombre } into G
-                       select new { Nombre = G.Select(e => e.nombre).FirstOrDefault(), Precio_Etapa = G.Sum(e => e.Precio_Etapa) };
+            var conn = new NpgsqlConnection(ConnectionString);
+            var sql = "Select * from Presupuesto1()";
+            List<object> reporte1 = new List<object>();
 
-            double total = 0;
-            foreach (var p in pres)
+            NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
+            conn.Open();
+            NpgsqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
             {
-                total += (double) p.Precio_Etapa;
+                reporte1.Add(new { nombre_etapa = reader[0], nombre_obra = reader[1], precio_etapa = reader[2]});
             }
-                        
-            return new { Etapas = pres, Total = total };                    
+            conn.Close();
+
+            return reporte1;
         }
         // Struct para publicar un propiedad en TECres
         struct Propiedad

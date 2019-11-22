@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
+using System.Web.Mvc;
 using tec.res.api.Models;
 
 namespace tec.res.api.Controllers
@@ -16,7 +18,7 @@ namespace tec.res.api.Controllers
     public class gastosController : ApiController
     {
         private TEConstruyeEntities db = new TEConstruyeEntities();
-
+        private string path = @"D:\Escritorio\TEConstruye\TEConstruye\Facturas\";
         // GET: api/gastos
         public object Getgasto()
         {
@@ -71,35 +73,63 @@ namespace tec.res.api.Controllers
 
             return StatusCode(HttpStatusCode.NoContent);
         }
-
-        //// POST: api/gastos
-       
-        //[ResponseType(typeof(gasto))]
-        //public async Task<IHttpActionResult> Postgasto(gasto gasto)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-                
-
-
-        //        return BadRequest(ModelState);
-        //    }
-
-        //    db.gasto.Add(gasto);
-        //    await db.SaveChangesAsync();
-
-        //    return CreatedAtRoute("DefaultApi", new { id = gasto.id_compra }, gasto);
-        //}
-        public async Task<IHttpActionResult> PostGastos(List<gasto> gastos)
+        public struct Gastos
         {
-            foreach (gasto gastoi in gastos)
-            {
-                db.gasto.Add(gastoi);
-                await db.SaveChangesAsync();
-            }
-            return Ok();
-            
+            public string proveedor { get; set; }
+            public string foto { get; set; }
+            public string numero_factura { get; set; }
+            public int id_compra { get; set; }
+            public int id_etapa { get; set; }
+            public int semana { get; set; }
+            public int id_obra { get; set; }
+            public List<string> material { get; set; }
         }
+        // POST: api/gastos
+        
+        [ResponseType(typeof(gasto))]
+        public async Task<IHttpActionResult> Postgasto(Gastos gasto)
+        {
+            List<material> materiales = new List<material>();
+            foreach (string codigo in gasto.material)
+            {
+                material material = db.material.Find(codigo);
+                materiales.Add(material);
+            }
+            var bytes = Convert.FromBase64String(gasto.foto);
+            string rute = path + gasto.id_compra + ".jpg";
+            using (var imageFile = new FileStream(rute, FileMode.Create))
+            {
+                imageFile.Write(bytes, 0, bytes.Length);
+                imageFile.Flush();
+            }
+            gasto gasto1 = new gasto();
+            gasto1 = new gasto
+            {
+                id_compra = gasto.id_compra,
+                id_etapa = gasto.id_etapa,
+                id_obra = gasto.id_obra,
+                numero_factura = gasto.numero_factura,
+                foto = gasto.id_compra + ".jpg",
+                proveedor = gasto.proveedor,
+                semana = gasto.semana
+            };
+            gasto1.material = materiales;
+
+            db.gasto.Add(gasto1);
+            await db.SaveChangesAsync();
+
+            return Ok();
+        }
+        //public async Task<IHttpActionResult> PostGastos(List<gasto> gastos)
+        //{
+        //    foreach (gasto gastoi in gastos)
+        //    {
+        //        db.gasto.Add(gastoi);
+        //        await db.SaveChangesAsync();
+        //    }
+        //    return Ok();
+            
+        //}
         // DELETE: api/gastos/5
         [ResponseType(typeof(gasto))]
         public async Task<IHttpActionResult> Deletegasto(int id)
@@ -115,7 +145,7 @@ namespace tec.res.api.Controllers
 
             return Ok(gasto);
         }
-
+      
         protected override void Dispose(bool disposing)
         {
             if (disposing)

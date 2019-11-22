@@ -12,7 +12,7 @@
           <Property Name="usuario" Type="varchar" MaxLength="30" />
           <Property Name="contrasena" Type="varchar" MaxLength="100" />
           <Property Name="correo" Type="varchar" MaxLength="100" />
-          <Property Name="id" Type="int4" Nullable="false" />
+          <Property Name="id" Type="int4" Nullable="false" StoreGeneratedPattern="Identity" />
         </EntityType>
         <EntityType Name="arquitecto">
           <Key>
@@ -26,7 +26,7 @@
           <Property Name="codigo_arquitecto" Type="varchar" MaxLength="20" />
           <Property Name="id_especialidad" Type="int4" />
           <Property Name="contrasena" Type="varchar" MaxLength="100" />
-          <Property Name="id" Type="int4" Nullable="false" />
+          <Property Name="id" Type="int4" Nullable="false" StoreGeneratedPattern="Identity" />
         </EntityType>
         <EntityType Name="cliente">
           <Key>
@@ -37,7 +37,7 @@
           <Property Name="apellido2" Type="varchar" MaxLength="40" />
           <Property Name="cedula" Type="varchar" MaxLength="15" />
           <Property Name="numero_telefono" Type="varchar" MaxLength="15" />
-          <Property Name="id" Type="int4" Nullable="false" />
+          <Property Name="id" Type="int4" Nullable="false" StoreGeneratedPattern="Identity" />
         </EntityType>
         <EntityType Name="compra">
           <Key>
@@ -66,14 +66,14 @@
           <Property Name="cedula" Type="varchar" MaxLength="30" />
           <Property Name="numero_telefono" Type="varchar" MaxLength="30" />
           <Property Name="pago_hora" Type="float8" />
-          <Property Name="id" Type="int4" Nullable="false" />
+          <Property Name="id" Type="int4" Nullable="false" StoreGeneratedPattern="Identity" />
         </EntityType>
         <EntityType Name="especialidad">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="nombre" Type="varchar" MaxLength="40" />
-          <Property Name="id" Type="int4" Nullable="false" />
+          <Property Name="id" Type="int4" Nullable="false" StoreGeneratedPattern="Identity" />
         </EntityType>
         <EntityType Name="etapa">
           <Key>
@@ -81,7 +81,7 @@
           </Key>
           <Property Name="nombre" Type="varchar" MaxLength="60" />
           <Property Name="descripcion" Type="varchar" MaxLength="250" />
-          <Property Name="id" Type="int4" Nullable="false" />
+          <Property Name="id" Type="int4" Nullable="false" StoreGeneratedPattern="Identity" />
         </EntityType>
         <EntityType Name="gasto">
           <Key>
@@ -90,7 +90,7 @@
           <Property Name="proveedor" Type="varchar" MaxLength="40" Nullable="false" />
           <Property Name="foto" Type="varchar" MaxLength="150" Nullable="false" />
           <Property Name="numero_factura" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="id_compra" Type="int4" Nullable="false" />
+          <Property Name="id_compra" Type="int4" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="id_etapa" Type="int4" Nullable="false" />
           <Property Name="semana" Type="int4" />
           <Property Name="id_obra" Type="int4" Nullable="false" />
@@ -107,7 +107,7 @@
           <Property Name="codigo_ingeniero" Type="varchar" MaxLength="20" />
           <Property Name="id_especialidad" Type="int4" />
           <Property Name="contrasena" Type="varchar" MaxLength="100" />
-          <Property Name="id" Type="int4" Nullable="false" />
+          <Property Name="id" Type="int4" Nullable="false" StoreGeneratedPattern="Identity" />
         </EntityType>
         <EntityType Name="labora_en">
           <Key>
@@ -140,7 +140,7 @@
           <Property Name="area_construccion" Type="float8" />
           <Property Name="area_lote" Type="int4" />
           <Property Name="propietario" Type="int4" />
-          <Property Name="id" Type="int4" Nullable="false" />
+          <Property Name="id" Type="int4" Nullable="false" StoreGeneratedPattern="Identity" />
         </EntityType>
         <EntityType Name="requiere">
           <Key>
@@ -179,7 +179,7 @@
           <Property Name="provincia" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="canton" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="distrito" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="id" Type="int4" Nullable="false" />
+          <Property Name="id" Type="int4" Nullable="false" StoreGeneratedPattern="Identity" />
         </EntityType>
         <Association Name="fk_arquitecto">
           <End Role="arquitecto" Type="Self.arquitecto" Multiplicity="1" />
@@ -605,7 +605,7 @@
           <Property Name="usuario" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="contrasena" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="correo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
         </EntityType>
         <EntityType Name="arquitecto">
           <Key>
@@ -619,7 +619,7 @@
           <Property Name="codigo_arquitecto" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="id_especialidad" Type="Int32" />
           <Property Name="contrasena" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="trabaja_en" Relationship="TEConstruyeModel.fk_arquitecto" FromRole="arquitecto" ToRole="trabaja_en" />
           <NavigationProperty Name="especialidad" Relationship="TEConstruyeModel.fk_especialidad1" FromRole="arquitecto" ToRole="especialidad" />
         </EntityType>
@@ -632,7 +632,7 @@
           <Property Name="apellido2" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
           <Property Name="cedula" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="numero_telefono" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="obra" Relationship="TEConstruyeModel.fk_propietario_obra" FromRole="cliente" ToRole="obra" />
         </EntityType>
         <EntityType Name="diseña">
@@ -656,7 +656,7 @@
           <Property Name="cedula" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="numero_telefono" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="pago_hora" Type="Double" />
-          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="labora_en" Relationship="TEConstruyeModel.fk_empleado" FromRole="empleado" ToRole="labora_en" />
         </EntityType>
         <EntityType Name="especialidad">
@@ -664,7 +664,7 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="nombre" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
-          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="arquitecto" Relationship="TEConstruyeModel.fk_especialidad1" FromRole="especialidad" ToRole="arquitecto" />
           <NavigationProperty Name="ingeniero" Relationship="TEConstruyeModel.fk_especialidad" FromRole="especialidad" ToRole="ingeniero" />
         </EntityType>
@@ -674,7 +674,7 @@
           </Key>
           <Property Name="nombre" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
           <Property Name="descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="tiene" Relationship="TEConstruyeModel.fk_etapa" FromRole="etapa" ToRole="tiene" />
           <NavigationProperty Name="gasto" Relationship="TEConstruyeModel.fk_etapagasto" FromRole="etapa" ToRole="gasto" />
           <NavigationProperty Name="requiere" Relationship="TEConstruyeModel.fk_etaparequiere" FromRole="etapa" ToRole="requiere" />
@@ -686,7 +686,7 @@
           <Property Name="proveedor" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
           <Property Name="foto" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="numero_factura" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="id_compra" Type="Int32" Nullable="false" />
+          <Property Name="id_compra" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="id_etapa" Type="Int32" Nullable="false" />
           <Property Name="semana" Type="Int32" />
           <Property Name="id_obra" Type="Int32" Nullable="false" />
@@ -706,7 +706,7 @@
           <Property Name="codigo_ingeniero" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="id_especialidad" Type="Int32" />
           <Property Name="contrasena" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="diseña" Relationship="TEConstruyeModel.fk_ingeniero" FromRole="ingeniero" ToRole="diseña" />
           <NavigationProperty Name="especialidad" Relationship="TEConstruyeModel.fk_especialidad" FromRole="ingeniero" ToRole="especialidad" />
         </EntityType>
@@ -745,7 +745,7 @@
           <Property Name="area_construccion" Type="Double" />
           <Property Name="area_lote" Type="Int32" />
           <Property Name="propietario" Type="Int32" />
-          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="cliente" Relationship="TEConstruyeModel.fk_propietario_obra" FromRole="obra" ToRole="cliente" />
           <NavigationProperty Name="diseña" Relationship="TEConstruyeModel.fk_obra" FromRole="obra" ToRole="diseña" />
           <NavigationProperty Name="gasto" Relationship="TEConstruyeModel.fk_gastobra" FromRole="obra" ToRole="gasto" />
@@ -799,7 +799,7 @@
           <Property Name="provincia" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="canton" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="distrito" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="obra" Relationship="TEConstruyeModel.fk_obraubicacion" FromRole="ubicacion" ToRole="obra" />
         </EntityType>
         <Association Name="fk_arquitecto">

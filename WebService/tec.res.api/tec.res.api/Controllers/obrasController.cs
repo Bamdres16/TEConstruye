@@ -89,20 +89,63 @@ namespace tec.res.api.Controllers
 
             return StatusCode(HttpStatusCode.NoContent);
         }
+        public struct Obras
+        {
+            public string nombre_obra { get; set; }
+            public int ubicacion { get; set; }
+            public int cantidad_habitaciones { get; set; }
+            public int cantidad_banos { get; set; }
+            public int cantidad_pisos { get; set; }
+            public double area_construccion { get; set; }
+            public int area_lote { get; set; }
+            public int propietario { get; set; }
+            public List<int> arquitectos { get; set; }
+            public List<int> ingenieros { get; set; }
+        }
         // Almacena los datos de una obra
         // POST: api/obras
         [ResponseType(typeof(obra))]
-        public async Task<IHttpActionResult> Postobra(obra obra)
+        public async Task<IHttpActionResult> Postobra(Obras obra)
         {
-            if (!ModelState.IsValid)
+            obra obra1 = new obra
             {
-                return BadRequest(ModelState);
-            }
+                nombre_obra = obra.nombre_obra,
+                ubicacion = obra.ubicacion,
+                cantidad_habitaciones = obra.cantidad_habitaciones,
+                cantidad_banos = obra.cantidad_banos,
+                cantidad_pisos = obra.cantidad_pisos,
+                area_construccion = obra.area_construccion,
+                area_lote =obra.area_lote,
+                propietario = obra.propietario
+            };
 
-            db.obra.Add(obra);
+            db.obra.Add(obra1);
             await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = obra.id }, obra);
+            foreach (int arquitecto in obra.arquitectos)
+            {
+                trabaja_en t = new trabaja_en
+                {
+                    id_arquitecto = arquitecto,
+                    id_obra = obra1.id,
+                    horas_laboradas = 0.0
+                };
+                db.trabaja_en.Add(t);
+                
+            }
+            foreach (int ingeniero in obra.ingenieros)
+            {
+                diseña d = new diseña
+                {
+                    id_ingeniero = ingeniero,
+                    id_obra = obra1.id,
+                    horas_laboradas = 0.0
+                };
+                db.diseña.Add(d);
+
+            }
+            await db.SaveChangesAsync();
+            return CreatedAtRoute("DefaultApi", new { id = obra1.id }, obra);
         }
         // Eliminar una obra por su identificador
         // DELETE: api/obras/5

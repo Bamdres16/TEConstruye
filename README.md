@@ -258,15 +258,21 @@ Entrada:
 	##### Entradas
 	```json
 		{
-		  "nombre_obra": "sample string 1",
-		  "ubicacion": 1,
-		  "cantidad_habitaciones": 1,
-		  "cantidad_banos": 1,
-		  "cantidad_pisos": 1,
-		  "area_construccion": 1.1,
-		  "area_lote": 1,
-		  "propietario": 1
-		}
+			"nombre_obra": "sample string 1",
+			"ubicacion": 2,
+			"cantidad_habitaciones": 3,
+			"cantidad_banos": 4,
+			"cantidad_pisos": 5,
+			"area_construccion": 6.1,
+			"area_lote": 7,
+			"propietario": 2,
+			"arquitectos": [
+				1
+			],
+			"ingenieros": [
+				1
+			]
+	}
 	```
 2) Para asignar una etapa a una obra
 	- PUT http://teconstruyeapi.azurewebsites.net/api/Proyecto/asignaretapa
@@ -331,6 +337,27 @@ Si algun elemento de la lista no se puede añadir genera un código 409 Conflict
 ```
 Si algun elemento de la lista no se puede añadir genera un código 409 Conflict, y genera el mensaje "El arquitecto id_arquitecto ya tiene horas asignadas en el proyecto actual"
 
+## Gastos
+
+### Metodos implementados
+
+#### Para asignar una nueva compra
+- POST 
+
+```json
+{
+  "proveedor": "sample string 1",
+  "foto": "sample string 2",
+  "numero_factura": "sample string 3",
+  "id_etapa": 1,
+  "semana": 2,
+  "id_obra": 1,
+  "material" : 
+  [
+  	"FDR765479","FDR476589"
+  ]    
+}
+```
 
 ## Métodos extra
 
