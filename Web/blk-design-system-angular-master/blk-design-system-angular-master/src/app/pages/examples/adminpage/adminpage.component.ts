@@ -44,7 +44,7 @@ export class AdminpageComponent implements OnInit {
   pres:Array<any>;
   num:number;
 
-  
+  gastos:Array<any>=[];
   etapas:Array<any>=[];
   obras:Array<any>=[];
   proyectos:Array<any>=[];
@@ -324,6 +324,65 @@ get_presupuesto(){
       }  
   }
 
+  generarGastos(){
+
+    this.getGastos();
+
+    var pdf = new jsPDF();
+
+    pdf.setFontStyle("times");
+    pdf.setFontSize(30);
+    pdf.text(75,20,"TEConstruye");
+    pdf.text(67 ,30,"Reporte de Gastos");
+   
+    var data = [];
+    var datagastos = [];
+    var columns = ["Semana", "Proyecto","Etapa","Gasto"];
+    for(var i = 0; i < this.gastos.length ; i++){
+      if(this.listExists(datagastos, this.gastos[i]["semana"]) == false){
+       
+        var tempName = this.gastos[i]["semana"];
+        datagastos.push(tempName);
+
+        var total = 0;
+        for(var p = 0; p < this.gastos.length; p++){
+          if(this.gastos[p]["semana"] == tempName){
+            var temp = [];
+            temp.push(this.gastos[p]["semana"]);
+            temp.push(this.gastos[p]["nombre_obra"]);
+            temp.push(this.gastos[p]["nombre_etapa"]);
+            temp.push(this.gastos[p]["monto_gastado"]);
+            //total = total + parseInt((this.gastos[i]["monto_gastado"]));
+            data.push(temp);
+
+          }
+          if(p+1 == this.gastos.length){
+            var temp = [];
+            temp.push("");
+            temp.push("");
+            temp.push("");
+            temp.push("");
+            //temp.push("Gasto Total: "+ total);
+            data.push(temp);
+          }
+        }
+      
+    }
+
+    }
+
+    pdf.autoTable(columns,data,
+      { margin:{ top: 50 }, theme : 'grid'}
+      );
+      if(datagastos.length > 0){
+        pdf.save('Reporte de Gastos.pdf');
+        datagastos = [];
+      }  
+  }
+
+  getGastos(){
+    this.data.getGastos().subscribe(datos => this.gastos = datos);
+  }
   getPlanilla(){
     this.data.getPlanillas().subscribe(datos => this.planillas = datos);
   }

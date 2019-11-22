@@ -543,8 +543,6 @@
               <!--Formulario mini para asignar horas-->
               <div class="row">
                 
-          
-               
                   <!--Botón de generar Presupuesto-->
                   
                   <div class="col-sm-6 col-lg-3">
@@ -589,59 +587,12 @@
         
                 <!--Formulario mini para asignar horas-->
                 <div class="row">
-                  
-                 <!--Dropdown empleados-->
-                 <div class="col-sm-6 col-lg-3">
-                      <div
-                      class="input-group"
-                      [ngClass]="{ 'input-group-focus': focus1 === true }"
-                    >
-                      
-                       <div class="dropdown nav-item" dropdown>
-                        <a
-                          class="dropdown-toggle nav-link dropdown-toggle"
-                          data-toggle="dropdown"
-                          dropdownToggle
-                          href="javascript:void(0)"
-                        >
-                        <i class="tim-icons icon-single-02"> </i> Empleado
-                        </a>
-                        <div class="dropdown-menu dropdown-with-icons" *dropdownMenu>
-                          <a class="dropdown-item"
-                          *ngFor="let fase of fases, index as i" > {{fases[i]}}</a>            
-                        </div>
-                      </div>
-                    </div>
-                 </div>
-        
-                      <!--Dropdown proyecto-->
-                      <div class="col-sm-6 col-lg-3">
-                      <div
-                      class="input-group"
-                      [ngClass]="{ 'input-group-focus': focus1 === true }"
-                    >
-                      
-                       <div class="dropdown nav-item" dropdown>
-                        <a
-                          class="dropdown-toggle nav-link dropdown-toggle"
-                          data-toggle="dropdown"
-                          dropdownToggle
-                          href="javascript:void(0)"
-                        >
-                        <i class="tim-icons icon-single-copy-04"> </i> Proyecto
-                        </a>
-                        <div class="dropdown-menu dropdown-with-icons" *dropdownMenu>
-                          <a class="dropdown-item"
-                          *ngFor="let fase of fases, index as i" > {{fases[i]}}</a>            
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                         
                  
                     <!--Botón de asignar empleado-->
                     
                     <div class="col-sm-6 col-lg-3">
-                    <button class="btn btn-primary btn-sm mr-1  mb-3">Asignar</button>
+                    <button class="btn btn-primary btn-sm mr-1  mb-3" (click) = "generarGastos()">Generar Reporte Gastos</button>
                   </div>
                 </div>
                 <!----Fin formulario mini -->

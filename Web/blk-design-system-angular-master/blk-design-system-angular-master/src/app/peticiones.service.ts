@@ -134,4 +134,8 @@ loginArquitecto(arquitecto:void){
   getPlanillas(){
     return this._http.get<void[]>("http://teconstruyeapi.azurewebsites.net/api/Reporte/Planilla");
   }
+
+  getGastos(){
+    return this._http.get<void[]>("http://teconstruyeapi.azurewebsites.net/api/Reporte/Gastos");
+  }
 }
