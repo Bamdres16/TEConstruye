@@ -126,6 +126,12 @@ loginArquitecto(arquitecto:void){
   }
 
   AsignarMateriales(usuarios:any){
-    return this._http.put<any>(this.ID+'/Proyecto/asignarmaterial', usuarios, httpOptions)
+    return this._http.put<any>(this.ID+'/Proyecto/asignarmaterial', usuarios, httpOptions)}
+  getPresupuestoEtapas(){
+    return this._http.get<void[]>('http://teconstruyeapi.azurewebsites.net/api/Proyecto/Presupuesto');
+  }
+
+  getPlanillas(){
+    return this._http.get<void[]>("http://teconstruyeapi.azurewebsites.net/api/Reporte/Planilla");
   }
 }

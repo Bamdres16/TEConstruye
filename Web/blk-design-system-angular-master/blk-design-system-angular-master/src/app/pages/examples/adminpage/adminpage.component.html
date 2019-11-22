@@ -160,7 +160,7 @@
                   <!--Botón de guardar material-->
                   
                 <div class="col-sm-6 col-lg-3">
-                    <button class="btn btn-primary btn-sm mr-1 mb-3" (click) ="add_material()">Agregar</button>
+                    <button class="btn btn-primary btn-sm mr-1 mb-3" (click) ="generarReportePresupuestoTEST()">Agregar</button>
                    </div>
                   <!--Termina botón de guardar material-->
                 </div>
@@ -449,6 +449,7 @@
                    <button (click)= "add_publicarProy()" class="btn btn-primary btn-sm mr-1  mb-3">Publicar</button>
                  </div>
                </div> 
+              
                       </tabset>
                     </div>
                   </div>
@@ -488,7 +489,7 @@
                         id="proy4"
                         (change) = "getEtapas()">
                         <option  *ngFor="let obra of obras"  > {{obra.nombre_obra}}</option></select>
-                           
+                            
                       </div>
                     </div>
                  </div>
@@ -542,59 +543,12 @@
               <!--Formulario mini para asignar horas-->
               <div class="row">
                 
-               <!--Dropdown empleados-->
-               <div class="col-sm-6 col-lg-3">
-                    <div
-                    class="input-group"
-                    [ngClass]="{ 'input-group-focus': focus1 === true }"
-                  >
-                    
-                     <div class="dropdown nav-item" dropdown>
-                      <a
-                        class="dropdown-toggle nav-link dropdown-toggle"
-                        data-toggle="dropdown"
-                        dropdownToggle
-                        href="javascript:void(0)"
-                      >
-                      <i class="tim-icons icon-single-02"> </i> Empleado
-                      </a>
-                      <div class="dropdown-menu dropdown-with-icons" *dropdownMenu>
-                        <a class="dropdown-item"
-                        *ngFor="let fase of fases, index as i" > {{fases[i]}}</a>            
-                      </div>
-                    </div>
-                  </div>
-               </div>
-      
-                    <!--Dropdown proyecto-->
-                    <div class="col-sm-6 col-lg-3">
-                    <div
-                    class="input-group"
-                    [ngClass]="{ 'input-group-focus': focus1 === true }"
-                  >
-                    
-                     <div class="dropdown nav-item" dropdown>
-                      <a
-                        class="dropdown-toggle nav-link dropdown-toggle"
-                        data-toggle="dropdown"
-                        dropdownToggle
-                        href="javascript:void(0)"
-                      >
-                      <i class="tim-icons icon-single-copy-04"> </i> Proyecto
-                      </a>
-                      <div class="dropdown-menu dropdown-with-icons" *dropdownMenu>
-                        <a class="dropdown-item"
-                        *ngFor="let fase of fases, index as i" > {{fases[i]}}</a>            
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
+          
                
-                  <!--Botón de asignar empleado-->
+                  <!--Botón de generar Presupuesto-->
                   
                   <div class="col-sm-6 col-lg-3">
-                  <button class="btn btn-primary btn-sm mr-1  mb-3">Asignar</button>
+                  <button class="btn btn-primary btn-sm mr-1  mb-3" (click) = "generarReportePresupuesto()">Generar Reporte</button>
                 </div>
               </div>
 
@@ -609,42 +563,15 @@
                 <!--Formulario planilla-->
                 <!--Caja de texto Nombre-->
                 <div class="row">
-                <div class="col-sm-6 col-lg-3">
-                  <div class="input-group">
-                    <input
-                      class="form-control"
-                      placeholder="Nombre"
-                      type="text"
-                    />
-                    <div class="input-group-append">
-                      <span class="input-group-text">
-                        
-                      </span>
-                    </div>
-                  </div>
-                </div>
+                
       
-                    <!--Caja de texto descripción-->
-                    <div class="col-sm-6 col-lg-3">
-                      <div class="input-group">
-                        <input
-                          class="form-control"
-                          placeholder="Descripción"
-                          type="text"
-                        />
-                        <div class="input-group-append">
-                          <span class="input-group-text">
-                            <i class="tim-icons icon-paper"> </i>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
+                    
                    
                    
       
                      <!--Botón de guardar material-->
                      <div class="col-sm-6 col-lg-3">
-                     <button class="btn btn-primary btn-sm mr-1 mb-3">Agregar</button>
+                     <button class="btn btn-primary btn-sm mr-1 mb-3" (click) = "generarPlanillas()">Generar Planilla</button>
                     </div>
                     </div>
                

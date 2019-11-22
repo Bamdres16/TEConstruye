@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/9173ec4b-7769-43ec-922e-5424bca83f56/resourceGroups/appsvc_windows_centralus/providers/Microsoft.Web/sites/TEConstruye",
+    "appService.deploySubpath": "dist"
+}

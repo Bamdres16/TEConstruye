@@ -1,6 +1,9 @@
-import { Component, OnInit, OnDestroy } from "@angular/core";
+import { Component, OnInit, OnDestroy, ɵConsole } from "@angular/core";
 import noUiSlider from "nouislider";
 import { PeticionesService } from 'src/app/peticiones.service';
+import * as jsPDF from 'jspdf';
+import 'jspdf-autotable';
+import { listLazyRoutes } from '@angular/compiler/src/aot/lazy_routes';
 import {Router, ActivatedRoute} from '@angular/router';
 
 @Component({
@@ -35,12 +38,19 @@ export class AdminpageComponent implements OnInit {
   publicar: any ={};
   material: any ={};
   pubProyecto: any ={};
-  obras:Array<any>;
   empleados:Array<any>;
   presupuesto: any ={};
   presupuesto2: any ={Total:0};
   pres:Array<any>;
   num:number;
+
+  
+
+  obras:Array<any>=[];
+  proyectos:Array<any>=[];
+  presupuestoEtapas:Array<any>=[];
+  presupuestoEtapas2:Array<any>=[];
+  planillas:Array<any>=[];
   obj: any ={};
   compra: any ={};
   paquete: Array<any>=[]; 
@@ -59,6 +69,7 @@ export class AdminpageComponent implements OnInit {
   get_obras(){
  
     this.data.getObras().subscribe(datos => this.obras= datos);
+    console.log(this.obras);
 
 }
 get_empleados(){
@@ -113,7 +124,7 @@ get_presupuesto(){
            console.error(error);
            alert(error.error);
          }
-      );
+      ); 
   
   }
   AsignarHoras(){
@@ -158,6 +169,7 @@ get_presupuesto(){
       );
   
   }
+  
   scrollToDownload(element: any) {
     element.scrollIntoView({ behavior: "smooth" });
    
@@ -165,6 +177,7 @@ get_presupuesto(){
   ngOnInit() {
     this.get_obras();
     this.get_empleados();
+    
     var body = document.getElementsByTagName("body")[0];
     body.classList.add("index-page");
 
@@ -190,6 +203,131 @@ get_presupuesto(){
       }
     });
   }
+
+  generarReportePresupuesto(){
+
+    this.data.getPresupuestoEtapas().subscribe(datos => {
+      this.presupuestoEtapas2= datos;
+    });
+
+    var pdf = new jsPDF();
+
+    pdf.setFontStyle("times");
+    pdf.setFontSize(30);
+    pdf.text(75,20,"TEConstruye");
+    pdf.text(50 ,30,"Reporte de Presupuesto");
+
+    
+    var columns = ["Obra","Etapa", "Costo"];
+    var data = [];
+    var dataProyectos = [];
+
+    for(var i = 0; i < this.presupuestoEtapas2.length ; i++){
+      if(this.listExists(dataProyectos, this.presupuestoEtapas2[i]["nombre_obra"]) == false){
+       
+        var tempName = this.presupuestoEtapas2[i]["nombre_obra"];
+        dataProyectos.push(tempName);
+
+        var total = 0;
+        for(var p = 0; p < this.presupuestoEtapas2.length; p++){
+          if(this.presupuestoEtapas2[p]["nombre_obra"] == tempName){
+            var temp = [];
+            temp.push(this.presupuestoEtapas2[p]["nombre_obra"]);
+            temp.push(this.presupuestoEtapas2[p]["nombre_etapa"]);
+            temp.push(this.presupuestoEtapas2[p]["precio_etapa"]);
+            total = total + this.presupuestoEtapas2[i]["precio_etapa"];
+            data.push(temp);
+
+          }
+          if(p+1 == this.presupuestoEtapas2.length){
+            var temp = [];
+            temp.push("");
+            temp.push("");
+            temp.push("Costo Total: "+ total);
+            data.push(temp);
+          }
+        }
+      
+    }
+
+    }
+      pdf.autoTable(columns,data,
+        { margin:{ top: 50 }, theme : 'grid'}
+        );
+        if(dataProyectos.length > 0){
+          pdf.save('Reporte de Presupuesto.pdf');
+        }    
+
+  }
+ 
+  listExists(lista:Array<any>,elemento){
+    
+    for(var i = 0; i < lista.length; i++){
+      if(lista[i] == elemento){
+        return true;
+      }
+    }return false;
+  }
+
+  generarPlanillas(){
+
+    this.getPlanilla();
+
+    var pdf = new jsPDF();
+
+    pdf.setFontStyle("times");
+    pdf.setFontSize(30);
+    pdf.text(75,20,"TEConstruye");
+    pdf.text(65 ,30,"Reporte de Planilla");
+   
+    var data = [];
+    var dataSemana = [];
+    var columns = ["Semana", "Proyecto","Empleado","Pago Semanal"];
+    for(var i = 0; i < this.planillas.length ; i++){
+      if(this.listExists(dataSemana, this.planillas[i]["semana"]) == false){
+       
+        var tempName = this.planillas[i]["semana"];
+        dataSemana.push(tempName);
+
+        var total = 0;
+        for(var p = 0; p < this.planillas.length; p++){
+          if(this.planillas[p]["semana"] == tempName){
+            var temp = [];
+            temp.push(this.planillas[p]["semana"]);
+            temp.push(this.planillas[p]["nombre_obra"]);
+            temp.push(this.planillas[p]["nombre_empleado"]);
+            temp.push(this.planillas[p]["pago_semana"]);
+            total = total + this.planillas[i]["pago_semana"];
+            data.push(temp);
+
+          }
+          if(p+1 == this.planillas.length){
+            var temp = [];
+            temp.push("");
+            temp.push("");
+            temp.push("");
+            temp.push("Pago Total: "+ total);
+            data.push(temp);
+          }
+        }
+      
+    }
+
+    }
+
+    pdf.autoTable(columns,data,
+      { margin:{ top: 50 }, theme : 'grid'}
+      );
+      if(dataSemana.length > 0){
+        pdf.save('Reporte de Planilla.pdf');
+        dataSemana = [];
+      }  
+  }
+
+  getPlanilla(){
+    this.data.getPlanillas().subscribe(datos => this.planillas = datos);
+  }
+
   ngOnDestroy() {
     var body = document.getElementsByTagName("body")[0];
     body.classList.remove("index-page");

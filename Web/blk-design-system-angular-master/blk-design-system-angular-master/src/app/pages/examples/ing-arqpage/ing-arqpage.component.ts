@@ -38,6 +38,8 @@ export class IngArqpageComponent implements OnInit {
     {Tipo: "Apartamento", cedulaAdmin:123},
    
   ];
+
+  
   image: string | ArrayBuffer;
 
   focus2;
@@ -124,6 +126,9 @@ export class IngArqpageComponent implements OnInit {
   ngOnInit() {
     var body = document.getElementsByTagName("body")[0];
     body.classList.add("index-page");
+    this.getEtapas();
+    this.getProyectos();
+    this.getMateriales();
 
     var slider = document.getElementById("sliderRegular");
 
@@ -153,15 +158,12 @@ export class IngArqpageComponent implements OnInit {
   }
 
   getEtapas(){
-    this.data.getEtapa().subscribe(datos => {console.log(datos); this.etapas = datos});
-    console.log(this.etapas);
-    
+    this.data.getEtapa().subscribe(datos => {console.log(datos); this.etapas = datos});   
   }
 
   getProyectos(){
     this.data.getProyecto().subscribe(datos => {console.log(datos); this.proyectos = datos});
-    console.log(this.etapas);
-    
+   
   }
   getProvincias(){
     this.data.getProvincias().subscribe(datos => { this.provincias= datos});
