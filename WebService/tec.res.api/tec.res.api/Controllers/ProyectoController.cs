@@ -98,7 +98,12 @@ namespace tec.res.api.Controllers
             return Ok();
 
         }
-        
+        public struct Pres
+        {
+            public string nombre_etapa { get; set; }
+            public string nombre_obra { get; set; }
+            public double precio_etapa { get; set; }
+        }
         // Este método permite generar el presupuesto de un proyecto
         [Route("api/Proyecto/presupuesto")]
         [HttpGet]
@@ -118,6 +123,40 @@ namespace tec.res.api.Controllers
             conn.Close();
 
             return reporte1;
+        }
+
+        // Este método permite generar el presupuesto de un proyecto
+        [Route("api/Proyecto/presupuesto/{id}")]
+        [HttpGet]
+        public object GetPresupuesto(int id)
+        {
+            var conn = new NpgsqlConnection(ConnectionString);
+            var sql = "Select * from Presupuesto("+id+")";
+            List<Pres> reporte1 = new List<Pres>();
+
+            NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
+            conn.Open();
+            NpgsqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                Pres p = new Pres
+                {
+                    nombre_etapa = (string)reader[0],
+                    nombre_obra = (string)reader[1],
+                    precio_etapa = (double)reader[2]
+
+                };
+                reporte1.Add(p);
+            }
+            double total = 0;
+            foreach (Pres p in reporte1)
+            {
+                total += p.precio_etapa;
+            }
+
+            conn.Close();
+
+            return new { etapas = reporte1, Total = total};
         }
         // Struct para publicar un propiedad en TECres
         struct Propiedad

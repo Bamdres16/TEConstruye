@@ -289,4 +289,66 @@ BEGIN
 END;
 $$ LANGUAGE 'plpgsql';	
 
+CREATE OR REPLACE FUNCTION Presupuesto(idObra int) 
+RETURNS TABLE (
+	Nombre_etapa varchar (60),
+	nombre_obra varchar(60),
+	Precio_Etapa float
+)
+AS $$
+BEGIN
+RETURN QUERY
+    SELECT E.nombre, O.nombre_obra,SUM(R.cantidad * M.precio_unitario) as Precio_Etapa
+	FROM Requiere R
+	INNER JOIN Obra O
+	ON R.id_obra = O.id
+	INNER JOIN Material M
+	ON M.codigo = R.codigo_material
+	INNER JOIN Etapa E
+	ON E.id = R.id_etapa
+	WHERE O.id = idObra
+	GROUP BY O.id, E.nombre;
+END; $$
+LANGUAGE 'plpgsql';
+
+CREATE OR REPLACE FUNCTION Gastos() 
+RETURNS TABLE (
+	semana int,
+	nombre_obra varchar(80),
+	monto_gastado varchar(30),
+	nombre_etapa varchar(60)
+)
+AS $$
+BEGIN
+	RETURN QUERY
+	SELECT G.Semana, O.nombre_obra, G.monto monto_gastado, E.nombre Nombre_etapa
+	FROM Gasto G
+	INNER JOIN Obra O
+	On G.id_obra = O.id
+	INNER JOIN Etapa E
+	ON E.id = G.id_etapa
+	ORDER BY Semana;     
+END; $$
+LANGUAGE 'plpgsql';
+
+CREATE OR REPLACE FUNCTION Estado() 
+RETURNS TABLE (
+	semana int,
+	nombre_obra varchar(80),
+	monto_gastado varchar(30),
+	presupuesto varchar(30),
+	nombre_etapa varchar(60)
+)
+AS $$
+BEGIN
+	RETURN QUERY
+	SELECT G.Semana, O.nombre_obra, G.monto monto_gastado, G.presupuesto, E.nombre Nombre_etapa
+	FROM Gasto G
+	INNER JOIN Obra O
+	On G.id_obra = O.id
+	INNER JOIN Etapa E
+	ON E.id = G.id_etapa
+	ORDER BY Semana;     
+END; $$
+LANGUAGE 'plpgsql';
 

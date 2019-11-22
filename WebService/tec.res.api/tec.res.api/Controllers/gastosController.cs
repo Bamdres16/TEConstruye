@@ -8,6 +8,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Http;
 using System.Web.Http.Description;
 using System.Web.Mvc;
@@ -18,7 +19,7 @@ namespace tec.res.api.Controllers
     public class gastosController : ApiController
     {
         private TEConstruyeEntities db = new TEConstruyeEntities();
-        private string path = @"D:\Escritorio\TEConstruye\TEConstruye\Facturas\";
+        private string path = @"..\Facturas\";
         // GET: api/gastos
         public object Getgasto()
         {
@@ -124,16 +125,22 @@ namespace tec.res.api.Controllers
             gasto1.foto = gasto1.id_compra + ".jpg";
             db.Entry(gasto1).State = EntityState.Modified;
             await db.SaveChangesAsync();
+            // Para almacenar un foto en base64
+            //var bytes = Convert.FromBase64String(gasto.foto);
+            
+            //using (var imageFile = new FileStream(path, FileMode.Create))
+            //{
+            //    imageFile.Write(bytes, 0, bytes.Length);
+            //    imageFile.Flush();
+            //}
 
-            var bytes = Convert.FromBase64String(gasto.foto);
-            string rute = path + gasto1.id_compra + ".jpg";
-            using (var imageFile = new FileStream(rute, FileMode.Create))
-            {
-                imageFile.Write(bytes, 0, bytes.Length);
-                imageFile.Flush();
-            }
 
-
+            return Ok();
+        }
+        // Este método permite retonar una respuesta a las peticiones, evitando cualquier problema de CORS
+        public IHttpActionResult Options()
+        {
+            HttpContext.Current.Response.AppendHeader("Allow", "GET,DELETE,PUT,POST,OPTIONS");
             return Ok();
         }
         //public async Task<IHttpActionResult> PostGastos(List<gasto> gastos)
@@ -144,7 +151,7 @@ namespace tec.res.api.Controllers
         //        await db.SaveChangesAsync();
         //    }
         //    return Ok();
-            
+
         //}
         // DELETE: api/gastos/5
         [ResponseType(typeof(gasto))]
