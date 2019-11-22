@@ -89,6 +89,8 @@
     <Property Name="id_etapa" Type="int4" Nullable="false" />
     <Property Name="semana" Type="int4" />
     <Property Name="id_obra" Type="int4" Nullable="false" />
+    <Property Name="monto" Type="varchar" MaxLength="30" />
+    <Property Name="presupuesto" Type="varchar" MaxLength="30" />
   </EntityType>
   <EntityType Name="ingeniero">
     <Key>

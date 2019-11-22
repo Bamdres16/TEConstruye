@@ -27,6 +27,8 @@ namespace tec.res.api.Models
         public int id_etapa { get; set; }
         public Nullable<int> semana { get; set; }
         public int id_obra { get; set; }
+        public string monto { get; set; }
+        public string presupuesto { get; set; }
     
         public virtual etapa etapa { get; set; }
         public virtual obra obra { get; set; }

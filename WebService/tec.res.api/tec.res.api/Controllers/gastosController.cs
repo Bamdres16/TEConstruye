@@ -78,10 +78,11 @@ namespace tec.res.api.Controllers
             public string proveedor { get; set; }
             public string foto { get; set; }
             public string numero_factura { get; set; }
-            public int id_compra { get; set; }
             public int id_etapa { get; set; }
             public int semana { get; set; }
             public int id_obra { get; set; }
+            public string monto { get; set; }
+            public string presupuesto { get; set; }
             public List<string> material { get; set; }
         }
         // POST: api/gastos
@@ -95,28 +96,43 @@ namespace tec.res.api.Controllers
                 material material = db.material.Find(codigo);
                 materiales.Add(material);
             }
+            
+            gasto gasto1 = new gasto();
+            gasto1 = new gasto
+            {
+
+                id_etapa = gasto.id_etapa,
+                id_obra = gasto.id_obra,
+                numero_factura = gasto.numero_factura,
+                proveedor = gasto.proveedor,
+                foto = "",
+                semana = gasto.semana,
+                monto  = gasto.monto,
+                presupuesto =gasto.presupuesto
+            };
+            gasto1.material = materiales;
+
+            db.gasto.Add(gasto1);
+            try
+            {
+                await db.SaveChangesAsync();
+            }
+            catch (Exception e)
+            {
+                return Content(HttpStatusCode.Conflict, e);
+            }
+            gasto1.foto = gasto1.id_compra + ".jpg";
+            db.Entry(gasto1).State = EntityState.Modified;
+            await db.SaveChangesAsync();
+
             var bytes = Convert.FromBase64String(gasto.foto);
-            string rute = path + gasto.id_compra + ".jpg";
+            string rute = path + gasto1.id_compra + ".jpg";
             using (var imageFile = new FileStream(rute, FileMode.Create))
             {
                 imageFile.Write(bytes, 0, bytes.Length);
                 imageFile.Flush();
             }
-            gasto gasto1 = new gasto();
-            gasto1 = new gasto
-            {
-                id_compra = gasto.id_compra,
-                id_etapa = gasto.id_etapa,
-                id_obra = gasto.id_obra,
-                numero_factura = gasto.numero_factura,
-                foto = gasto.id_compra + ".jpg",
-                proveedor = gasto.proveedor,
-                semana = gasto.semana
-            };
-            gasto1.material = materiales;
 
-            db.gasto.Add(gasto1);
-            await db.SaveChangesAsync();
 
             return Ok();
         }

@@ -151,6 +151,7 @@
 	 id_etapa int not null,
 	 semana int,
 	 id_obra int not null,
+	 monto varchar(30),
 	 PRIMARY KEY (id_compra)
  );
  create table compra (
