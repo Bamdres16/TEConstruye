@@ -29,7 +29,8 @@ export class AdminpageComponent implements OnInit {
   ];
   inmuebleNuevo:Array<any>= [{Tipo:'Default', cedulaAdmin: 0}];
   focus1;
-
+  etapasP:Array<any>=[];
+  etapasPNames:Array<any>=[];
   focus2;
   date = new Date();
   pagination = 3;
@@ -43,8 +44,7 @@ export class AdminpageComponent implements OnInit {
   presupuesto2: any ={Total:0};
   pres:Array<any>;
   num:number;
-
-  
+  paqueteMat: Array<any>=[];
   etapas:Array<any>=[];
   obras:Array<any>=[];
   proyectos:Array<any>=[];
@@ -417,9 +417,26 @@ get_presupuesto(){
 
 agregar_gastos(){
   this.compra.foto= this.image;
-  this.compra.proveedor= (<HTMLInputElement>document.getElementById("proveedor")).value;
+  this.compra.semana= (<HTMLInputElement>document.getElementById("semana")).valueAsNumber;
+  this.compra.monto= (<HTMLInputElement>document.getElementById("monto")).value;
+  this.compra.presupuesto= (<HTMLInputElement>document.getElementById("monto")).value;
   this.compra.numero_factura=(<HTMLInputElement>document.getElementById("numero_factura")).value;
-  this.compra.materiales= this.paquete; 
+  this.compra.proveedor= (<HTMLInputElement>document.getElementById("proveedor")).value;
+  var id_obra = (<HTMLInputElement>document.getElementById("id_obra")).value;
+  var id_etapa = (<HTMLInputElement>document.getElementById("id_etapa")).value;
+  this.compra.material= this.paqueteMat;
+
+  for(var i = 0; i < this.obras.length; i++){
+    if(this.obras[i]["nombre_obra"] == id_obra ){
+      this.compra.id_obra= this.obras[i]["id"];
+    }
+  }
+  for(var i = 0; i < this.etapas.length; i++){
+    if(this.etapas[i]["nombre"] == id_etapa ){
+      this.compra.id_etapa= this.etapas[i]["id"];
+    }
+  }
+  this.compra.id_etapa= 1;
   console.log(this.compra);
   this.data.addCompra(this.compra).subscribe(
     res => { 
@@ -445,6 +462,44 @@ readThis(inputValue: any): void {
  
   }
   myReader.readAsDataURL(file);
+}
+
+agregarOnmaterial(nombre:any){
+  for (var indice = 0; indice < this.materiales.length; indice++){
+    if(this.materiales[indice].nombre == nombre){
+      var id = this.materiales[indice]["codigo"];
+      this.materiales.splice(indice, 1);
+      this.paqueteMat.push(id); 
+      
+    }
+  }
+  console.log(this.paqueteMat);
+}
+
+getEtapasProyecto(){
+
+  var nombreP = (<HTMLInputElement>document.getElementById("id_obra")).value;
+      
+  var idP;
+
+  for(var i = 0; i<this.proyectos.length; i++){
+    if(this.proyectos[i]["nombre_obra"] == nombreP){
+      idP = this.proyectos[i]["id"];
+    }
+  }
+  this.data.etapaProyecto(idP).subscribe(datos => {console.log(datos); this.etapasP = datos});
+  console.log('LAs estapas'+this.etapasP);
+  this.etapasPNames = [];
+  for(var i = 0; i < this.etapasP.length; i++){
+    var id = this.etapasP[i]["id_etapa"];
+
+    for(var p = 0; p < this.etapas.length; p++){
+      if(this.etapas[p]["id"] == id){
+        this.etapasPNames.push(this.etapas[p]["nombre"]);
+      }
+    }
+  }
+  
 }
 
 }

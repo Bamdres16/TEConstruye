@@ -37,7 +37,7 @@ addEmpleado(cliente:void){
   return this._http.post<any>(this.ID+'/Empleados',cliente)
 }
 addCompra(cliente:void){
-  return this._http.post<any>(this.ID+'/Empleados',cliente)
+  return this._http.post<any>(this.ID+'/Gastos',cliente)
 }
 addObra(cliente:void){
   return this._http.post<any>(this.ID+'/Obras',cliente)
