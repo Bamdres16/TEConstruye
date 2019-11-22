@@ -45,7 +45,7 @@ export class AdminpageComponent implements OnInit {
   num:number;
 
   
-
+  etapas:Array<any>=[];
   obras:Array<any>=[];
   proyectos:Array<any>=[];
   presupuestoEtapas:Array<any>=[];
@@ -343,7 +343,9 @@ get_presupuesto(){
     }
     
   }
-
+  getEtapas(){
+    this.data.getEtapa().subscribe(datos => {console.log(datos); this.etapas = datos});   
+  }
   cambiarValor(event:any){
     this.editField = event.target.textContent;
   }
