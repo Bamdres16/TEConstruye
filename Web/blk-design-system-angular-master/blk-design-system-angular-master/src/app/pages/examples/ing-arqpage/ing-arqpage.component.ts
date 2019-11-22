@@ -8,6 +8,7 @@ import {Router, ActivatedRoute} from '@angular/router';
   styleUrls: ['./ing-arqpage.component.scss']
 }) 
 export class IngArqpageComponent implements OnInit {
+  //Se definen arrays y objetos a utilizar en las funciones 
   obra: any ={};
   pubProyecto: any ={};
   obras:Array<any>;
@@ -49,11 +50,13 @@ export class IngArqpageComponent implements OnInit {
   pagination = 3;
   pagination1 = 1;
   tipo: any;
-  constructor(private data:PeticionesService, private ruta:ActivatedRoute, ) {
 
+  //Constructor de la función, se hace una instancia de los servicios y rutas 
+  constructor(private data:PeticionesService, private ruta:ActivatedRoute, ) {
     this.ruta.queryParams.subscribe(params =>{
+       //Se cargan los parámetros de la vista anterior
       this.tipo= params['tipo'];
-      console.log("EL TIPO ES" + this.tipo);
+      //Se hacen los get para cargar las vistas
       this.getEtapas();
       this.getProyectos();
       this.getMateriales();
@@ -69,6 +72,159 @@ export class IngArqpageComponent implements OnInit {
    );
   }
 
+  //FUNCIONES PARA LA APARIENCIA DE LA PÁGINA 
+
+  
+  scrollToDownload(element: any) {
+    element.scrollIntoView({ behavior: "smooth" });
+  }
+
+  
+
+changeListener($event) : void {
+  this.readThis($event.target);
+}
+
+readThis(inputValue: any): void {
+  var file:File = inputValue.files[0];
+  var myReader:FileReader = new FileReader();
+
+  myReader.onloadend = (e) => {
+    this.image = myReader.result;
+ 
+  }
+  myReader.readAsDataURL(file);
+}
+
+
+ 
+  //FUNCIONES DE INICIALIZACIÓN DE ANGULAR
+  ngOnInit() {
+    var body = document.getElementsByTagName("body")[0];
+    body.classList.add("index-page");
+    this.getEtapas();
+    this.getProyectos();
+    this.getMateriales();
+
+    var slider = document.getElementById("sliderRegular");
+
+    noUiSlider.create(slider, {
+      start: 40,
+      connect: false,
+      range: {
+        min: 0,
+        max: 100
+      }
+    });
+
+    var slider2 = document.getElementById("sliderDouble");
+
+    noUiSlider.create(slider2, {
+      start: [20, 60],
+      connect: true,
+      range: {
+        min: 0,
+        max: 100
+      }
+    });
+  }
+  ngOnDestroy() {
+    var body = document.getElementsByTagName("body")[0];
+    body.classList.remove("index-page");
+  }
+
+
+  
+  
+  //FUNCIONES DE GET
+  getEtapas(){
+    this.data.getEtapa().subscribe(datos => {console.log(datos); this.etapas = datos});   
+  }
+
+  getProyectos(){
+    this.data.getProyecto().subscribe(datos => {console.log(datos); this.proyectos = datos});
+   
+  }
+  getProvincias(){
+    this.data.getProvincias().subscribe(datos => { this.provincias= datos});
+    console.log(this.provincias);
+ 
+  }
+  getCantones(provincia:string){
+    console.log('Solictando this.provincias.............');
+    this.data.getCantones(provincia).subscribe(datos => { this.cantones = datos});
+    console.log(this.cantones);
+  
+  }
+  getDistritos(provincia:string, canton:string){
+    this.data.getDistritos(provincia,canton).subscribe(datos => { this.distritos= datos}); 
+    console.log(this.distritos);
+  }
+  getClientes(){
+    this.data.getClientes().subscribe(datos => { this.clientes= datos}); 
+    console.log(this.clientes);
+  }
+  getIngenieros(){
+    this.data.getIngenieros().subscribe(datos => { this.ingenieros= datos}); 
+    console.log(this.ingenieros);
+  }
+  getArquitectos(){
+    this.data.getArquitectos().subscribe(datos => { this.arquitectos= datos}); 
+    console.log(this.arquitectos);
+  }
+
+  getEtapasProyecto(){
+
+    var nombreP = (<HTMLInputElement>document.getElementById("proyecto_nombreGastos")).value;
+        
+    var idP;
+
+    for(var i = 0; i<this.proyectos.length; i++){
+      if(this.proyectos[i]["nombre_obra"] == nombreP){
+        idP = this.proyectos[i]["id"];
+      }
+    }
+    this.data.etapaProyecto(idP).subscribe(datos => {console.log(datos); this.etapasP = datos});
+    console.log('LAs estapas'+this.etapasP);
+    this.etapasPNames = [];
+    for(var i = 0; i < this.etapasP.length; i++){
+      var id = this.etapasP[i]["id_etapa"];
+
+      for(var p = 0; p < this.etapas.length; p++){
+        if(this.etapas[p]["id"] == id){
+          this.etapasPNames.push(this.etapas[p]["nombre"]);
+        }
+      }
+    }
+    
+  }
+
+  getMateriales(){
+    this.data.getMateriales().subscribe(datos => {console.log(datos); this.materiales = datos});
+    console.log(this.materiales);
+  }
+
+  get_materiales(){
+
+    this.data.getMateriales().subscribe(datos => this.materiales= datos);
+    console.log( this.materiales);
+  
+  }
+  
+  get_obras(){
+   
+    this.data.getObras().subscribe(datos => this.obras= datos);
+  
+  }
+  get_empleados(){
+   this.data.getEmpleados().subscribe(datos => this.empleados= datos);
+  console.log( this.empleados);
+  }
+
+  
+ 
+
+  //FUNCIONES DE POST
   add_etapa(){
     this.etapa.nombre = (<HTMLInputElement>document.getElementById("etapa_nombre")).value;
     this.etapa.descripcion = (<HTMLInputElement>document.getElementById("etapa_descripcion")).value;
@@ -112,85 +268,6 @@ export class IngArqpageComponent implements OnInit {
          }
       );
       console.log(this.pubProyecto);
-  }
-
-
-  
-
-  scrollToDownload(element: any) {
-    element.scrollIntoView({ behavior: "smooth" });
-  }
-
- 
-
-  ngOnInit() {
-    var body = document.getElementsByTagName("body")[0];
-    body.classList.add("index-page");
-    this.getEtapas();
-    this.getProyectos();
-    this.getMateriales();
-
-    var slider = document.getElementById("sliderRegular");
-
-    noUiSlider.create(slider, {
-      start: 40,
-      connect: false,
-      range: {
-        min: 0,
-        max: 100
-      }
-    });
-
-    var slider2 = document.getElementById("sliderDouble");
-
-    noUiSlider.create(slider2, {
-      start: [20, 60],
-      connect: true,
-      range: {
-        min: 0,
-        max: 100
-      }
-    });
-  }
-  ngOnDestroy() {
-    var body = document.getElementsByTagName("body")[0];
-    body.classList.remove("index-page");
-  }
-
-  getEtapas(){
-    this.data.getEtapa().subscribe(datos => {console.log(datos); this.etapas = datos});   
-  }
-
-  getProyectos(){
-    this.data.getProyecto().subscribe(datos => {console.log(datos); this.proyectos = datos});
-   
-  }
-  getProvincias(){
-    this.data.getProvincias().subscribe(datos => { this.provincias= datos});
-    console.log(this.provincias);
- 
-  }
-  getCantones(provincia:string){
-    console.log('Solictando this.provincias.............');
-    this.data.getCantones(provincia).subscribe(datos => { this.cantones = datos});
-    console.log(this.cantones);
-  
-  }
-  getDistritos(provincia:string, canton:string){
-    this.data.getDistritos(provincia,canton).subscribe(datos => { this.distritos= datos}); 
-    console.log(this.distritos);
-  }
-  getClientes(){
-    this.data.getClientes().subscribe(datos => { this.clientes= datos}); 
-    console.log(this.clientes);
-  }
-  getIngenieros(){
-    this.data.getIngenieros().subscribe(datos => { this.ingenieros= datos}); 
-    console.log(this.ingenieros);
-  }
-  getArquitectos(){
-    this.data.getArquitectos().subscribe(datos => { this.arquitectos= datos}); 
-    console.log(this.arquitectos);
   }
 
   etapaObraJSON(){
@@ -238,36 +315,7 @@ export class IngArqpageComponent implements OnInit {
 
   }
 
-  getEtapasProyecto(){
-
-    var nombreP = (<HTMLInputElement>document.getElementById("proyecto_nombreGastos")).value;
-        
-    var idP;
-
-    for(var i = 0; i<this.proyectos.length; i++){
-      if(this.proyectos[i]["nombre_obra"] == nombreP){
-        idP = this.proyectos[i]["id"];
-      }
-    }
-    this.data.etapaProyecto(idP).subscribe(datos => {console.log(datos); this.etapasP = datos});
-    console.log('LAs estapas'+this.etapasP);
-    this.etapasPNames = [];
-    for(var i = 0; i < this.etapasP.length; i++){
-      var id = this.etapasP[i]["id_etapa"];
-
-      for(var p = 0; p < this.etapas.length; p++){
-        if(this.etapas[p]["id"] == id){
-          this.etapasPNames.push(this.etapas[p]["nombre"]);
-        }
-      }
-    }
-    
-  }
-
-  getMateriales(){
-    this.data.getMateriales().subscribe(datos => {console.log(datos); this.materiales = datos});
-    console.log(this.materiales);
-  }
+  
 
   addMatEtapa(){
     var nombreP = (<HTMLInputElement>document.getElementById("proyecto_nombreGastos")).value;
@@ -376,40 +424,6 @@ addNuevaObra(){
      }
   );
   window.location.reload();
-}
-
-
-
-changeListener($event) : void {
-  this.readThis($event.target);
-}
-
-readThis(inputValue: any): void {
-  var file:File = inputValue.files[0];
-  var myReader:FileReader = new FileReader();
-
-  myReader.onloadend = (e) => {
-    this.image = myReader.result;
- 
-  }
-  myReader.readAsDataURL(file);
-}
-
-get_materiales(){
-
-  this.data.getMateriales().subscribe(datos => this.materiales= datos);
-  console.log( this.materiales);
-
-}
-
-get_obras(){
- 
-  this.data.getObras().subscribe(datos => this.obras= datos);
-
-}
-get_empleados(){
- this.data.getEmpleados().subscribe(datos => this.empleados= datos);
-console.log( this.empleados);
 }
 
 }
