@@ -9,6 +9,7 @@ import {Router, ActivatedRoute} from '@angular/router';
 })
 export class IndexComponent implements OnInit, OnDestroy {
   isCollapsed = true;
+  
   usuario: any ={};
   ingeniero: any ={};
   arquitecto: any ={};
@@ -19,6 +20,13 @@ export class IndexComponent implements OnInit, OnDestroy {
   date = new Date();
   pagination = 3;
   pagination1 = 1;
+  inmuebles: Array<any> = [
+
+    {Tipo: 'Lote', cedulaAdmin:123},
+    {Tipo: "Casa", cedulaAdmin:123},
+    {Tipo: "Apartamento", cedulaAdmin:123},
+   
+  ];
   constructor(private data:PeticionesService, private router:Router) {
 
   }

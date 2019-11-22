@@ -4,6 +4,7 @@ import { PeticionesService } from 'src/app/peticiones.service';
 import * as jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import { listLazyRoutes } from '@angular/compiler/src/aot/lazy_routes';
+import {Router, ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-adminpage',
@@ -15,7 +16,20 @@ export class AdminpageComponent implements OnInit {
   isCollapsed = true;
   fases:Array<any>=['Trabajo preliminar','Cimientos', 'Paredes', 'Concreto reforzdo', 'Techos', 'Cielos', 'Repello','Entrepisos', 'Pisos', 'Enchapes'];
   focus;
+  editField: string;
+  campo: string;
+  materiales: Array<any>;
+  public valorBusqueda:string;
+  inmuebles: Array<any> = [
+
+    {Tipo: 'Lote', cedulaAdmin:123},
+    {Tipo: "Casa", cedulaAdmin:123},
+    {Tipo: "Apartamento", cedulaAdmin:123},
+   
+  ];
+  inmuebleNuevo:Array<any>= [{Tipo:'Default', cedulaAdmin: 0}];
   focus1;
+
   focus2;
   date = new Date();
   pagination = 3;
@@ -37,6 +51,10 @@ export class AdminpageComponent implements OnInit {
   presupuestoEtapas:Array<any>=[];
   presupuestoEtapas2:Array<any>=[];
   planillas:Array<any>=[];
+  obj: any ={};
+  compra: any ={};
+  paquete: Array<any>=[]; 
+  image: string | ArrayBuffer;
  
   get_obras(){
  
@@ -45,10 +63,8 @@ export class AdminpageComponent implements OnInit {
 
 }
 get_empleados(){
- 
-  this.data.getEmpleados().subscribe(datos => this.empleados= datos);
+   this.data.getEmpleados().subscribe(datos => this.empleados= datos);
   console.log( this.empleados);
-
 }
 
 get_presupuesto(){
@@ -304,4 +320,117 @@ get_presupuesto(){
     var body = document.getElementsByTagName("body")[0];
     body.classList.remove("index-page");
   }
+
+
+  eliminar(Tipo1:any){
+    
+    for (var indice = 0; indice < this.inmuebles.length; indice++){
+      if(this.inmuebles[indice].Tipo == Tipo1){
+        this.inmuebles.splice(indice, 1);
+      }
+    }
+    
+  }
+
+  cambiarValor(event:any){
+    this.editField = event.target.textContent;
+  }
+
+  actualizarLista( Tipo1:any, propiedad: any, event: any){
+
+    const editField = event.target.textContent;
+    console.log(editField);
+
+    for (var indice = 0; indice < this.inmuebles.length; indice++){
+      if(this.inmuebles[indice].Tipo == Tipo1){
+        this.inmuebles[indice][propiedad] = editField;
+        
+      }
+      this.editField=null;
+    }
+      
+  }
+
+ 
+
+  imprimirLista(){
+    for (var indice = 0; indice < this.inmuebles.length; indice++){
+      if(this.inmuebles[indice].Tipo == "Lote"){
+        
+        console.log(this.inmuebles[indice]);
+      }
+      console.log(this.inmuebles[indice]);
+    }
+  }
+
+
+  buscar(tipo1:any,id1:any){
+    this.valorBusqueda = (<HTMLInputElement>document.getElementById(tipo1)).value;
+    const elemento = (<HTMLInputElement>document.getElementById(id1));
+
+    console.log(this.valorBusqueda);
+    if(elemento==null){
+      (<HTMLInputElement>document.getElementById(tipo1)).scrollIntoView({behavior: 'smooth'});
+    }
+    else{
+      (<HTMLInputElement>document.getElementById(id1)).scrollIntoView({behavior: 'smooth'});
+    }
+    return this.valorBusqueda;
+
+  }
+  
+
+  get_materiales(){
+ 
+    this.data.getMateriales().subscribe(datos => this.materiales= datos);
+    console.log( this.materiales);
+  
+  }
+
+  agregar(Tipo1:any){
+    var cant = (<HTMLInputElement>document.getElementById('inp1')).value;
+
+  for (var indice = 0; indice < this.inmuebles.length; indice++){
+    if(this.inmuebles[indice].Tipo == Tipo1){
+      this.inmuebles.splice(indice, 1);
+      this.obj.nombre = this.inmuebles[indice].Tipo;
+      this.obj.cantidad= cant;
+      this.paquete.push(this.obj);
+      this.obj={};
+    }
+  }
+}
+
+agregar_gastos(){
+  this.compra.foto= this.image;
+  this.compra.proveedor= (<HTMLInputElement>document.getElementById("proveedor")).value;
+  this.compra.numero_factura=(<HTMLInputElement>document.getElementById("numero_factura")).value;
+  this.compra.materiales= this.paquete; 
+  console.log(this.compra);
+  this.data.addCompra(this.compra).subscribe(
+    res => { 
+      this.etapa= res;
+     },
+     error => {
+       console.error(error);
+       alert(error.error);
+     }
+  );
+}
+
+changeListener($event) : void {
+  this.readThis($event.target);
+}
+
+readThis(inputValue: any): void {
+  var file:File = inputValue.files[0];
+  var myReader:FileReader = new FileReader();
+
+  myReader.onloadend = (e) => {
+    this.image = myReader.result;
+ 
+  }
+  myReader.readAsDataURL(file);
+}
+
 }

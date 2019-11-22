@@ -95,41 +95,32 @@
                           value=""
                         />
                       </div>
-                    </div>
-                   
-                    <!--Caja de texto habitaciones-->
-                    <div class="col-sm-8 col-lg-3">
-                            <div class="input-group">
-                              <input
-                                class="form-control"
-                                placeholder="Habitaciones"
-                                type="number"
-                              />
-                              <div class="input-group-append">
-                                <span class="input-group-text">
-                                  <i class="tim-icons icon-coins"> </i>
-                                </span>
-                              </div>
+                         <!--Caja de texto habitaciones-->
+                      <div class="input-group">
+                          <input
+                            class="form-control"
+                            placeholder="Habitaciones"
+                            type="number"
+                          />
+                          <div class="input-group-append">
+                            <span class="input-group-text">
+                            </span>
+                          </div>
+                        </div>
+                          <!--Caja de texto baños-->
+                        <div class="input-group">
+                            <input
+                              class="form-control"
+                              placeholder="Baños"
+                              type="number"
+                            />
+                            <div class="input-group-append">
+                              <span class="input-group-text">
+                              </span>
                             </div>
                           </div>
-                    <!--Caja de texto baños-->
-                    <div class="col-sm-8 col-lg-3">
-                            <div class="input-group">
-                              <input
-                                class="form-control"
-                                placeholder="Baños"
-                                type="number"
-                              />
-                              <div class="input-group-append">
-                                <span class="input-group-text">
-                                  <i class="tim-icons icon-coins"> </i>
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                    <!--Caja de texto pisos-->
-                    <div class="col-sm-8 col-lg-3">
-                            <div class="input-group">
+                           <!--Caja de texto pisos-->
+                          <div class="input-group">
                               <input
                                 class="form-control"
                                 placeholder="Plantas"
@@ -137,53 +128,154 @@
                               />
                               <div class="input-group-append">
                                 <span class="input-group-text">
-                                  <i class="tim-icons icon-coins"> </i>
                                 </span>
                               </div>
                             </div>
-                          </div>
-                    <!--Caja de texto m construccion-->
-                    <div class="col-sm-8 col-lg-3">
+
+                            <!--Caja de texto m construccion-->
                             <div class="input-group">
-                              <input
-                                class="form-control"
-                                placeholder="Metros const."
-                                type="number"
-                              />
-                              <div class="input-group-append">
-                                <span class="input-group-text">
-                                  <i class="tim-icons icon-coins"> </i>
-                                </span>
+                                <input
+                                  class="form-control"
+                                  placeholder="Metros const."
+                                  type="number"
+                                />
+                                <div class="input-group-append">
+                                  <span class="input-group-text">
+                                  </span>
+                                </div>
                               </div>
+
+                               <!--Caja de texto m lote-->
+
+                               <div class="input-group">
+                                  <input
+                                    class="form-control"
+                                    placeholder="Metros lote"
+                                    type="number"
+                                  />
+                                  <div class="input-group-append">
+                                    <span class="input-group-text">
+                                    </span>
+                                  </div>
+                                </div>
+                    </div>
+                    <!--Dropdown ubicacion Provincia-->
+                     <div class="col-sm-6 col-lg-3">
+                        
+                            <div
+                            class="input-group " 
+                          >
+                             <div class="" >
+                              <label style="width: 5cm;" for="inputState">Provincia</label>
+                              <select id="emp1" class="  dropdown-item text-muted"
+                              ng-click = "getEmpleados()">
+                              <option  *ngFor="let empleado of empleados"  > {{empleado.cedula}}</option></select>
+                                 
+                            </div>
+
+                            <!--Dropdown cantón-->
+ 
+                            <div
+                            class="input-group " 
+                          >
+                             <div class="" >
+                              <label style="width: 5cm;" for="inputState">Cantón</label>
+                              <select id="emp1" class="  dropdown-item text-muted"
+                              ng-click = "getEmpleados()">
+                              <option  *ngFor="let empleado of empleados"  > {{empleado.cedula}}</option></select>
+                                 
                             </div>
                           </div>
-                    <!--Caja de texto m lote-->
-                    <div class="col-sm-8 col-lg-3">
-                            <div class="input-group">
-                              <input
-                                class="form-control"
-                                placeholder="Metros lote"
-                                type="number"
-                              />
-                              <div class="input-group-append">
-                                <span class="input-group-text">
-                                  <i class="tim-icons icon-coins"> </i>
-                                </span>
-                              </div>
+                          </div>
+                      
+                      <!--Dropdown distrito-->
+                            <div
+                            class="input-group " 
+                          >
+                             <div class="" >
+                              <label style="width: 5cm;" for="inputState">Cantón</label>
+                              <select id="emp1" class="  dropdown-item text-muted"
+                              ng-click = "getEmpleados()">
+                              <option  *ngFor="let empleado of empleados"  > {{empleado.cedula}}</option></select>
+                                 
                             </div>
                           </div>
-                    <!--Dropdown ubicacion-->
-                    <!--Dropdown ingenieros-->
-                    <!--Dropdown arquitectos-->
-                    <!--Dropdown cliente-->
+                     
+                     
+                     </div>
+                     <!--Dropdown cliente-->
+                     <div class="col-sm-6 col-lg-3">
+                        <div class="col-sm-6 col-lg-3">
+                            <div
+                            class="input-group " 
+                          >
+                             <div class="" >
+                              <label style="width: 5cm;" for="inputState">Cliente</label>
+                              <select id="emp1" class="  dropdown-item text-muted"
+                              ng-click = "getEmpleados()">
+                              <option  *ngFor="let empleado of empleados"  > {{empleado.cedula}}</option></select>
+                                 
+                            </div>
+                          </div>
+                       </div>
+                     </div>
+
+                    <!--Tabla ingenieros-->
+                    <div class="mt-4">
+                        <p class="mb-2">Ingenieros a cargo:</p>
+                    <table class="">
+                        <thead>
+                          <tr>
+                            <th scope="col" class="mr-2"></th>
+                            <th scope="col" class="mr-4"></th>
+                            <th scope="col"></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor = "let inmueble of inmuebles;index as i"  >
+                            <td >{{inmueble.cedulaAdmin}}</td>
+                            <td ><span class=" ml-4 md-4"></span><input id="inp1"placeholder="cant" type="number" ></td>
+                            <td ><span class="table-remove ml-4 md-4">
+                                <button type="button" style="color:chocolate" class="btn btn-rounded btn-sm my-0 " (click) = "agregar(inmueble.Tipo)">✓</button>
+                            </span></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <!--Tabla arquitectos-->
+                    <div class="mt-4">
+                        <p class="mb-2">Arquitectos a cargo</p>
+                    <table class="">
+                        <thead>
+                          <tr>
+                            <th scope="col" class="mr-2"></th>
+                            <th scope="col" class="mr-4"></th>
+                            <th scope="col"></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor = "let inmueble of inmuebles;index as i"  >
+                            <td >{{inmueble.cedulaAdmin}}</td>
+                            <td ><span class=" ml-4 md-4"></span><input id="inp1"placeholder="cant" type="number" ></td>
+                            <td ><span class="table-remove ml-4 md-4">
+                    
+                                <button type="button" style="color:chocolate" class="btn btn-rounded btn-sm my-0 " (click) = "agregar(inmueble.Tipo)">✓</button>
+                                
+                            </span></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                   
                  
                     <!--Termina caja de texto precio unitario-->
-                    <!--Botón de guardar material-->
-                    <div class="col-sm-6 col-lg-3">
-                    <button class="btn btn-primary btn-sm mr-1  mb-3" (click) = "getEtapas()">Agregar</button>
+                   
                   </div>
-                    <!--Termina botón de guardar material-->
-                  </div>
+                   <!--Botón de guardar material-->
+                   <div class="col-sm-6 col-lg-3">
+                      <button class="btn btn-primary btn-sm mr-1 mt-4  mb-3" (click) = "getEtapas()">Agregar</button>
+                    </div>
+                      <!--Termina botón de guardar material-->
         
                 <!----Fin formulario mini -->
                   
