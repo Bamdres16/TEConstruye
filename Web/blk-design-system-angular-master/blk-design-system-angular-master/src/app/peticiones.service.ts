@@ -93,4 +93,12 @@ loginArquitecto(arquitecto:void){
   addMatEtapa(matEtapa:any){
     return this._http.put<any>("http://teconstruyeapi.azurewebsites.net/api/Proyecto/asignarmaterial", matEtapa,httpOptions);
   }
+
+  getPresupuestoEtapas(){
+    return this._http.get<void[]>('http://teconstruyeapi.azurewebsites.net/api/Proyecto/Presupuesto');
+  }
+
+  getPlanillas(){
+    return this._http.get<void[]>("http://teconstruyeapi.azurewebsites.net/api/Reporte/Planilla");
+  }
 }
