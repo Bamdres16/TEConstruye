@@ -397,3 +397,9 @@ Si algun elemento de la lista no se puede añadir genera un código 409 Conflict
 #### Para obtener el reporte de la planilla
 - GET http://teconstruyeapi.azurewebsites.net/api/Reporte/Planilla
 
+#### Para obtener el estado
+- GET http://teconstruyeapi.azurewebsites.net/api/Reporte/Estado
+
+#### Para obtener todos los gastos realizados
+- GET http://teconstruyeapi.azurewebsites.net/api/Reporte/Gastos
+

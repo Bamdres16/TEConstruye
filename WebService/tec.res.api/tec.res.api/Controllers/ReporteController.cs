@@ -13,9 +13,13 @@ namespace tec.res.api.Controllers
 {
     public class ReporteController : ApiController
     {
-       
+        // Se inicializa la base
         TEConstruyeEntities db = new TEConstruyeEntities();
+
+        // Connection string para hacer peticiones en crudo ya que EF6.npgsql no permite ejecutar funciones
         readonly string ConnectionString = "Server=dbteconstruyeb.postgres.database.azure.com;Database=TEConstruye;Port=5432;User Id=su@dbteconstruyeb;Password=T3construye;Ssl Mode=Require;";
+
+        //Se obtiene el reporte de Planilla
         [Route("api/Reporte/Planilla")]
         [HttpGet]
         public object getPlanilla ()
@@ -36,7 +40,7 @@ namespace tec.res.api.Controllers
             return reporte1;
             
         }
-
+        // Con este método podemos obtener el reporte de gastos
         [Route("api/Reporte/Gastos")]
         [HttpGet]
         public object getGastos()
@@ -65,6 +69,8 @@ namespace tec.res.api.Controllers
             public string presupuesto { get; set; }
             public string nombre_etapa { get; set; }
         }
+
+        // Se obtiene el reporte de Estado
         [Route("api/Reporte/Estado")]
         [HttpGet]
         public object getEstado()
