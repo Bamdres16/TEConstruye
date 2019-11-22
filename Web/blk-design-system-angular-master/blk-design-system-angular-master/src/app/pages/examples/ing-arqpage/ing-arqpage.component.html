@@ -462,6 +462,7 @@
                           <select class="dropdown-item text-muted"
                           id = "proyecto_nombreGastos"
                           (click) = "getEtapasProyecto()"
+                          (change) = "getEtapasProyecto()"
                           >
                           <option  *ngFor="let proyecto of proyectos"  > {{proyecto.nombre_obra}}</option></select>
                              
