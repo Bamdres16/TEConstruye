@@ -27,6 +27,8 @@ export class IngArqpageComponent implements OnInit {
     {Tipo: "Apartamento", cedulaAdmin:123},
    
   ];
+
+  
   image: string | ArrayBuffer;
 
   focus2;
@@ -40,9 +42,7 @@ export class IngArqpageComponent implements OnInit {
     this.ruta.queryParams.subscribe(params =>{
       this.tipo= params['tipo'];
       console.log("EL TIPO ES" + this.tipo);
-      this.getEtapas();
-      this.getProyectos();
-      this.getMateriales();
+
       
       }
       
@@ -80,6 +80,9 @@ export class IngArqpageComponent implements OnInit {
   ngOnInit() {
     var body = document.getElementsByTagName("body")[0];
     body.classList.add("index-page");
+    this.getEtapas();
+    this.getProyectos();
+    this.getMateriales();
 
     var slider = document.getElementById("sliderRegular");
 
@@ -109,15 +112,12 @@ export class IngArqpageComponent implements OnInit {
   }
 
   getEtapas(){
-    this.data.getEtapa().subscribe(datos => {console.log(datos); this.etapas = datos});
-    console.log(this.etapas);
-    
+    this.data.getEtapa().subscribe(datos => {console.log(datos); this.etapas = datos});   
   }
 
   getProyectos(){
     this.data.getProyecto().subscribe(datos => {console.log(datos); this.proyectos = datos});
-    console.log(this.etapas);
-    
+   
   }
 
   etapaObraJSON(){
