@@ -307,6 +307,31 @@ Entrada:
 
 Si algun elemento de la lista no se puede añadir genera un código 409 Conflict, y genera el mensaje "El ingeniero id_ingeniero ya tiene horas asignadas en esa semana para el proyecto actual"
 
+## Trabaja_en
+
+### Metodos implementados
+
+#### Para asignar arquitectos a un proyecto
+
+- POST http://teconstruyeapi.azurewebsites.net/api/trabaja_en
+
+```json
+[
+	{
+		"id_arquitecto": 1,
+    	"id_obra": 2,
+    	"horas_laboradas": 1.1
+	},
+	{
+		"id_arquitecto": 2,
+    	"id_obra": 2,
+    	"horas_laboradas": 1.1
+	}
+]
+```
+Si algun elemento de la lista no se puede añadir genera un código 409 Conflict, y genera el mensaje "El arquitecto id_arquitecto ya tiene horas asignadas en el proyecto actual"
+
+
 ## Métodos extra
 
 ### Metodos

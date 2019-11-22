@@ -13,44 +13,44 @@ using tec.res.api.Models;
 
 namespace tec.res.api.Controllers
 {
-    public class disenaController : ApiController
+    public class trabaja_enController : ApiController
     {
         private TEConstruyeEntities db = new TEConstruyeEntities();
 
-        // GET: api/disena
-        public IQueryable<diseña> Getdiseña()
+        // GET: api/trabaja_en
+        public IQueryable<trabaja_en> Gettrabaja_en()
         {
-            return db.diseña;
+            return db.trabaja_en;
         }
 
-        // GET: api/disena/5
-        [ResponseType(typeof(diseña))]
-        public async Task<IHttpActionResult> Getdiseña(int id)
+        // GET: api/trabaja_en/5
+        [ResponseType(typeof(trabaja_en))]
+        public async Task<IHttpActionResult> Gettrabaja_en(int id)
         {
-            diseña diseña = await db.diseña.FindAsync(id);
-            if (diseña == null)
+            trabaja_en trabaja_en = await db.trabaja_en.FindAsync(id);
+            if (trabaja_en == null)
             {
                 return NotFound();
             }
 
-            return Ok(diseña);
+            return Ok(trabaja_en);
         }
 
-        // PUT: api/disena/5
+        // PUT: api/trabaja_en/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> Putdiseña(int id, diseña diseña)
+        public async Task<IHttpActionResult> Puttrabaja_en(int id, trabaja_en trabaja_en)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != diseña.id_ingeniero)
+            if (id != trabaja_en.id_arquitecto)
             {
                 return BadRequest();
             }
 
-            db.Entry(diseña).State = EntityState.Modified;
+            db.Entry(trabaja_en).State = EntityState.Modified;
 
             try
             {
@@ -58,7 +58,7 @@ namespace tec.res.api.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!diseñaExists(id))
+                if (!trabaja_enExists(id))
                 {
                     return NotFound();
                 }
@@ -71,25 +71,23 @@ namespace tec.res.api.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        
-        // POST: api/diseña
-        [ResponseType(typeof(diseña))]
-        public async Task<IHttpActionResult> Postdiseña(List<diseña> diseña)
+        // POST: api/trabaja_en
+        [ResponseType(typeof(trabaja_en))]
+        public async Task<IHttpActionResult> Posttrabaja_en(List<trabaja_en> trabaja_en)
         {
-           
-            foreach (diseña ingenieros in diseña)
+            foreach (trabaja_en arquitecto in trabaja_en)
             {
-                db.diseña.Add(ingenieros);
+                db.trabaja_en.Add(arquitecto);
                 try
                 {
                     await db.SaveChangesAsync();
-                    
+
                 }
                 catch (DbUpdateException)
                 {
-                    if (diseñaExists(ingenieros.id_ingeniero))
+                    if (trabaja_enExists(arquitecto.id_arquitecto))
                     {
-                        return Content(HttpStatusCode.Conflict, "El ingeniero " + ingenieros.id_ingeniero + " ya tiene horas asignadas en esa semana para el proyecto actual");
+                        return Content(HttpStatusCode.Conflict, "El arquitecto " + arquitecto.id_arquitecto + " ya tiene horas asignadas en el proyecto actual");
                     }
                     else
                     {
@@ -97,27 +95,24 @@ namespace tec.res.api.Controllers
                     }
                 }
                 return Ok();
-
-
-
             }
             return Conflict();
         }
 
-        // DELETE: api/disena/5
-        [ResponseType(typeof(diseña))]
-        public async Task<IHttpActionResult> Deletediseña(int id)
+        // DELETE: api/trabaja_en/5
+        [ResponseType(typeof(trabaja_en))]
+        public async Task<IHttpActionResult> Deletetrabaja_en(int id)
         {
-            diseña diseña = await db.diseña.FindAsync(id);
-            if (diseña == null)
+            trabaja_en trabaja_en = await db.trabaja_en.FindAsync(id);
+            if (trabaja_en == null)
             {
                 return NotFound();
             }
 
-            db.diseña.Remove(diseña);
+            db.trabaja_en.Remove(trabaja_en);
             await db.SaveChangesAsync();
 
-            return Ok(diseña);
+            return Ok(trabaja_en);
         }
 
         protected override void Dispose(bool disposing)
@@ -129,9 +124,9 @@ namespace tec.res.api.Controllers
             base.Dispose(disposing);
         }
 
-        private bool diseñaExists(int id)
+        private bool trabaja_enExists(int id)
         {
-            return db.diseña.Count(e => e.id_ingeniero == id) > 0;
+            return db.trabaja_en.Count(e => e.id_arquitecto == id) > 0;
         }
     }
 }
