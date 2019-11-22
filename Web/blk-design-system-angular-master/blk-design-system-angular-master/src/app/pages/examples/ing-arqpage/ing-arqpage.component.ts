@@ -8,18 +8,29 @@ import {Router, ActivatedRoute} from '@angular/router';
   styleUrls: ['./ing-arqpage.component.scss']
 }) 
 export class IngArqpageComponent implements OnInit {
-
+  obra: any ={};
+  pubProyecto: any ={};
+  obras:Array<any>;
+  empleados:Array<any>;
+  provincias:Array<any>=[];
+  cantones:Array<any>=[];
+  distritos:Array<any>=[];
   etapas:Array<any>=[];
   etapasP:Array<any>=[];
   materiales:Array<any>=[];
   etapasPNames:Array<any>=[];
   proyectos:Array<any>=[];
+  ubicacion:Array<any>=[];
   isCollapsed = true;
   focus;
   focus1;
-  obj: any ={};
+  obj: Array<any>=[];
   compra: any ={};
-  paquete: Array<any>=[];
+  paqueteArq: Array<any>=[];
+  paqueteIng: Array<any>=[];
+  clientes: Array<any>=[];
+  ingenieros:Array<any>=[];
+  arquitectos:Array<any>=[];
   inmuebles: Array<any> = [
 
     {Tipo: 'Lote', cedulaAdmin:123},
@@ -37,37 +48,70 @@ export class IngArqpageComponent implements OnInit {
   pagination1 = 1;
   tipo: any;
   constructor(private data:PeticionesService, private ruta:ActivatedRoute, ) {
+
     this.ruta.queryParams.subscribe(params =>{
       this.tipo= params['tipo'];
       console.log("EL TIPO ES" + this.tipo);
       this.getEtapas();
       this.getProyectos();
       this.getMateriales();
-      
+      this.getProvincias();
+      this.getClientes();
+      this.getIngenieros();
+      this.getArquitectos();
+      this.get_empleados();
+      this.get_obras()
+
       }
-      
-      
+ 
    );
   }
 
   add_etapa(){
     this.etapa.nombre = (<HTMLInputElement>document.getElementById("etapa_nombre")).value;
     this.etapa.descripcion = (<HTMLInputElement>document.getElementById("etapa_descripcion")).value;
-    (<HTMLInputElement>document.getElementById("etapa_descripcion")).value = "";
-    (<HTMLInputElement>document.getElementById("etapa_nombre")).value = "";
     console.log(this.etapa);
       this.data.addEtapa(this.etapa).subscribe(
         res => {
+          
           this.etapa= res;
-          window.location.reload()
          },
          error => {
            console.error(error);
            alert(error.error);
          }
       );
-         
+  
   }
+
+  AsignarHoras(){
+    var proyecto = (<HTMLInputElement>document.getElementById("proy1")).value;
+    var empleado = (<HTMLInputElement>document.getElementById("emp1")).value;
+    this.pubProyecto.horas_laboradas=(<HTMLInputElement>document.getElementById("horas3")).valueAsNumber;
+    this.pubProyecto.semana=(<HTMLInputElement>document.getElementById("semanas3")).valueAsNumber;
+    for(var i = 0; i<this.obras.length; i++){
+      if(this.obras[i]["nombre_obra"] == proyecto){
+       this.pubProyecto.id_obra = this.obras[i]["id"]*1;
+      }
+    }
+    for(var i = 0; i<this.empleados.length; i++){
+     if(this.empleados[i]["cedula"] == empleado){
+       this.pubProyecto.id_empleado = this.empleados[i]["id"]*1;
+     }
+   }
+   
+      this.data.AsignarHoras(this.pubProyecto).subscribe(
+        res => { 
+          this.pubProyecto= res;
+         },
+         error => {
+           console.error(error);
+           alert(error.error);
+         }
+      );
+      console.log(this.pubProyecto);
+  }
+
 
   
 
@@ -118,6 +162,33 @@ export class IngArqpageComponent implements OnInit {
     this.data.getProyecto().subscribe(datos => {console.log(datos); this.proyectos = datos});
     console.log(this.etapas);
     
+  }
+  getProvincias(){
+    this.data.getProvincias().subscribe(datos => { this.provincias= datos});
+    console.log(this.provincias);
+ 
+  }
+  getCantones(provincia:string){
+    console.log('Solictando this.provincias.............');
+    this.data.getCantones(provincia).subscribe(datos => { this.cantones = datos});
+    console.log(this.cantones);
+  
+  }
+  getDistritos(provincia:string, canton:string){
+    this.data.getDistritos(provincia,canton).subscribe(datos => { this.distritos= datos}); 
+    console.log(this.distritos);
+  }
+  getClientes(){
+    this.data.getClientes().subscribe(datos => { this.clientes= datos}); 
+    console.log(this.clientes);
+  }
+  getIngenieros(){
+    this.data.getIngenieros().subscribe(datos => { this.ingenieros= datos}); 
+    console.log(this.ingenieros);
+  }
+  getArquitectos(){
+    this.data.getArquitectos().subscribe(datos => { this.arquitectos= datos}); 
+    console.log(this.arquitectos);
   }
 
   etapaObraJSON(){
@@ -177,7 +248,7 @@ export class IngArqpageComponent implements OnInit {
       }
     }
     this.data.etapaProyecto(idP).subscribe(datos => {console.log(datos); this.etapasP = datos});
-
+    console.log('LAs estapas'+this.etapasP);
     this.etapasPNames = [];
     for(var i = 0; i < this.etapasP.length; i++){
       var id = this.etapasP[i]["id_etapa"];
@@ -188,6 +259,7 @@ export class IngArqpageComponent implements OnInit {
         }
       }
     }
+    
   }
 
   getMateriales(){
@@ -245,27 +317,66 @@ export class IngArqpageComponent implements OnInit {
   }
 
 
-  agregar(Tipo1:any){
-    var cant = (<HTMLInputElement>document.getElementById('inp1')).value;
-
-  for (var indice = 0; indice < this.inmuebles.length; indice++){
-    if(this.inmuebles[indice].Tipo == Tipo1){
-      this.inmuebles.splice(indice, 1);
-      this.obj.nombre = this.inmuebles[indice].Tipo;
-      this.obj.cantidad= cant;
-      this.paquete.push(this.obj);
-      this.obj={};
+  agregarIng(codigo_ingeniero:any){
+  for (var indice = 0; indice < this.ingenieros.length; indice++){
+    if(this.ingenieros[indice].codigo_ingeniero == codigo_ingeniero){
+      var id = this.ingenieros[indice]["id"];
+      this.ingenieros.splice(indice, 1);
+      this.paqueteIng.push(id); 
     }
   }
+  console.log(this.paqueteIng);
 }
 
-agregar_gastos(){
-  this.compra.foto= this.image;
-  this.compra.proveedor= (<HTMLInputElement>document.getElementById("proveedor")).value;
-  this.compra.numero_factura=(<HTMLInputElement>document.getElementById("numero_factura")).value;
-  this.compra.materiales= this.paquete; 
-  console.log(this.compra);
+agregarArq(codigo_arquitecto:any){
+  for (var indice = 0; indice < this.arquitectos.length; indice++){
+    if(this.arquitectos[indice].codigo_arquitecto == codigo_arquitecto){
+      var id = this.arquitectos[indice]["id"];
+      this.arquitectos.splice(indice, 1);
+      this.paqueteArq.push(id); 
+    }
+  }
+  console.log(this.paqueteArq);
 }
+addNuevaObra(){
+
+  this.obra.nombre_obra= (<HTMLInputElement>document.getElementById("nombre_obra")).value;
+  this.obra.cantidad_habitaciones = (<HTMLInputElement>document.getElementById("habitaciones_obra")).valueAsNumber;
+  this.obra.cantidad_banos = (<HTMLInputElement>document.getElementById("banos_obra")).valueAsNumber;
+  this.obra.cantidad_pisos= (<HTMLInputElement>document.getElementById("plantas_obra")).valueAsNumber;
+  this.obra.area_construccion=(<HTMLInputElement>document.getElementById("cons_obra")).valueAsNumber;
+  this.obra.area_lote=(<HTMLInputElement>document.getElementById("lote_obra")).valueAsNumber;
+  var propietario=(<HTMLInputElement>document.getElementById("cliente_obra")).value;
+  var ubicacion=(<HTMLInputElement>document.getElementById("ubicacion_obra")).value;
+  this.obra.ingenieros = this.paqueteIng;
+  this.obra.arquitectos = this.paqueteArq;
+  for(var i = 0; i < this.clientes.length; i++){
+    if(this.clientes[i]["cedula"] == propietario ){
+      this.obra.ubicacion= this.clientes[i]["id"];
+    }
+  }
+  for(var i = 0; i < this.distritos.length; i++){
+    if(this.distritos[i]["distrito"] == ubicacion ){
+      this.obra.propietario= this.clientes[i]["id"];
+    }
+  }
+  console.log(this.obra);
+  this.data.addObra(this.obra).subscribe(
+    res => {
+      this.trash= res;
+     },
+     error => {
+       console.error(error);
+       if(error.status != 500){
+        alert(error.error);
+       }
+       
+     }
+  );
+  window.location.reload();
+}
+
+
 
 changeListener($event) : void {
   this.readThis($event.target);
@@ -287,6 +398,16 @@ get_materiales(){
   this.data.getMateriales().subscribe(datos => this.materiales= datos);
   console.log( this.materiales);
 
+}
+
+get_obras(){
+ 
+  this.data.getObras().subscribe(datos => this.obras= datos);
+
+}
+get_empleados(){
+ this.data.getEmpleados().subscribe(datos => this.empleados= datos);
+console.log( this.empleados);
 }
 
 }

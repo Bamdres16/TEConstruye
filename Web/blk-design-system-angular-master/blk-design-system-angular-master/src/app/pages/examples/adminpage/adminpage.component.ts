@@ -38,14 +38,24 @@ export class AdminpageComponent implements OnInit {
   obras:Array<any>;
   empleados:Array<any>;
   presupuesto: any ={};
-  presupuesto2: any ={};
+  presupuesto2: any ={Total:0};
   pres:Array<any>;
   num:number;
   obj: any ={};
   compra: any ={};
   paquete: Array<any>=[]; 
   image: string | ArrayBuffer;
+  obj2:any ={
+    "id_empleado": 1,
+    "id_obra": 2,
+    "horas_laboradas": 1.1,
+    "semana": 1
+  };
  
+
+  constructor(private data:PeticionesService) {
+    this.get_materiales();
+  }
   get_obras(){
  
     this.data.getObras().subscribe(datos => this.obras= datos);
@@ -64,8 +74,12 @@ get_presupuesto(){
     }
   }
   this.data.getPresupuesto(this.presupuesto).subscribe(datos => this.presupuesto2= datos);
-  console.log( this.presupuesto2.Total);
-  document.getElementById("label1").innerHTML=this.presupuesto2.Total;
+  console.log( this.presupuesto2);
+  if(this.presupuesto2.Total != 'undefined'){
+    document.getElementById("label1").innerHTML='$ '+this.presupuesto2.Total;
+
+  }
+  
  
 
 }
@@ -102,7 +116,7 @@ get_presupuesto(){
       );
   
   }
-  add_empProy(){
+  AsignarHoras(){
     var proyecto = (<HTMLInputElement>document.getElementById("proy1")).value;
     var empleado = (<HTMLInputElement>document.getElementById("emp1")).value;
     this.pubProyecto.horas_laboradas=(<HTMLInputElement>document.getElementById("horas3")).valueAsNumber;
@@ -118,9 +132,9 @@ get_presupuesto(){
      }
    }
    
-      this.data.addPemp(this.pubProyecto).subscribe(
+      this.data.AsignarHoras(this.pubProyecto).subscribe(
         res => { 
-          this.etapa= res;
+          this.pubProyecto= res;
          },
          error => {
            console.error(error);
@@ -142,9 +156,6 @@ get_presupuesto(){
            alert(error.error);
          }
       );
-  
-  }
-  constructor(private data:PeticionesService) {
   
   }
   scrollToDownload(element: any) {
@@ -250,13 +261,13 @@ get_presupuesto(){
   
   }
 
-  agregar(Tipo1:any){
+  agregar(nombre:any){
     var cant = (<HTMLInputElement>document.getElementById('inp1')).value;
 
-  for (var indice = 0; indice < this.inmuebles.length; indice++){
-    if(this.inmuebles[indice].Tipo == Tipo1){
-      this.inmuebles.splice(indice, 1);
-      this.obj.nombre = this.inmuebles[indice].Tipo;
+  for (var indice = 0; indice < this.materiales.length; indice++){
+    if(this.materiales[indice].nombre == nombre){
+      this.materiales.splice(indice, 1);
+      this.obj.nombre = this.materiales[indice].nombre;
       this.obj.cantidad= cant;
       this.paquete.push(this.obj);
       this.obj={};

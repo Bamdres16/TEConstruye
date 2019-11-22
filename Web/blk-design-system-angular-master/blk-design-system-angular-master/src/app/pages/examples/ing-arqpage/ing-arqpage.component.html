@@ -10,7 +10,6 @@
         class="navbar-brand"
         placement="bottom"
         [routerLink]="['/inicio']"
-        target="_blank"
         tooltip="Ir al inicio de TEConstruye"
       >
         <span> TEConstruye • </span>
@@ -90,6 +89,7 @@
                         <input
                           class="form-control"
                           placeholder="Nombre"
+                          id="nombre_obra"
                           type="text"
                           value=""
                         />
@@ -100,6 +100,7 @@
                             class="form-control"
                             placeholder="Habitaciones"
                             type="number"
+                            id="habitaciones_obra"
                           />
                           <div class="input-group-append">
                             <span class="input-group-text">
@@ -112,6 +113,7 @@
                               class="form-control"
                               placeholder="Baños"
                               type="number"
+                              id="banos_obra"
                             />
                             <div class="input-group-append">
                               <span class="input-group-text">
@@ -124,6 +126,7 @@
                                 class="form-control"
                                 placeholder="Plantas"
                                 type="number"
+                                id="plantas_obra"
                               />
                               <div class="input-group-append">
                                 <span class="input-group-text">
@@ -137,6 +140,7 @@
                                   class="form-control"
                                   placeholder="Metros const."
                                   type="number"
+                                  id="cons_obra"
                                 />
                                 <div class="input-group-append">
                                   <span class="input-group-text">
@@ -151,24 +155,37 @@
                                     class="form-control"
                                     placeholder="Metros lote"
                                     type="number"
+                                    id="lote_obra"
                                   />
                                   <div class="input-group-append">
                                     <span class="input-group-text">
                                     </span>
                                   </div>
                                 </div>
+
+                                <div class="" >
+                                    <label style="width: 5cm;" for="inputState">Cliente</label>
+                                    <select id="cliente_obra"
+                                            class="  dropdown-item text-muted"
+                                  
+                                    >
+                                    <option  *ngFor="let cliente of clientes"  > {{cliente.cedula}}</option></select>
+                                       
+                                  </div>
                     </div>
                     <!--Dropdown ubicacion Provincia-->
-                     <div class="col-sm-6 col-lg-3">
+                     <div class="col-sm-3 col-lg-3">
                         
                             <div
                             class="input-group " 
                           >
                              <div class="" >
                               <label style="width: 5cm;" for="inputState">Provincia</label>
-                              <select id="emp1" class="  dropdown-item text-muted"
-                              ng-click = "getEmpleados()">
-                              <option  *ngFor="let empleado of empleados"  > {{empleado.cedula}}</option></select>
+                              <select id="emp13" 
+                                      class="  dropdown-item text-muted"
+                                      [(ngModel)]="ubicacion.provincia"
+                                      (change)="getCantones(ubicacion.provincia);getDistritos();">
+                              <option  *ngFor="let provincia of provincias"  > {{provincia.provincia}}</option></select>
                                  
                             </div>
 
@@ -179,9 +196,12 @@
                           >
                              <div class="" >
                               <label style="width: 5cm;" for="inputState">Cantón</label>
-                              <select id="emp1" class="  dropdown-item text-muted"
-                              ng-click = "getEmpleados()">
-                              <option  *ngFor="let empleado of empleados"  > {{empleado.cedula}}</option></select>
+                              <select id="emp12"
+                                      class="  dropdown-item text-muted"
+                                      [(ngModel)]="ubicacion.canton"
+                                      (change)="getDistritos(ubicacion.provincia,ubicacion.canton );"
+                              >
+                              <option  *ngFor="let canton of cantones"  > {{canton.canton}}</option></select>
                                  
                             </div>
                           </div>
@@ -192,34 +212,20 @@
                             class="input-group " 
                           >
                              <div class="" >
-                              <label style="width: 5cm;" for="inputState">Cantón</label>
-                              <select id="emp1" class="  dropdown-item text-muted"
-                              ng-click = "getEmpleados()">
-                              <option  *ngFor="let empleado of empleados"  > {{empleado.cedula}}</option></select>
+                              <label style="width: 5cm;" for="inputState">Distrito</label>
+                              <select id="ubicacion_obra" class="  dropdown-item text-muted"
+                             >
+                              <option  *ngFor="let distrito of distritos"  > {{distrito.distrito}}</option></select>
                                  
                             </div>
                           </div>
                      
                      
                      </div>
-                     <!--Dropdown cliente-->
-                     <div class="col-sm-6 col-lg-3">
-                        <div class="col-sm-6 col-lg-3">
-                            <div
-                            class="input-group " 
-                          >
-                             <div class="" >
-                              <label style="width: 5cm;" for="inputState">Cliente</label>
-                              <select id="emp1" class="  dropdown-item text-muted"
-                              ng-click = "getEmpleados()">
-                              <option  *ngFor="let empleado of empleados"  > {{empleado.cedula}}</option></select>
-                                 
-                            </div>
-                          </div>
-                       </div>
-                     </div>
+                    
 
                     <!--Tabla ingenieros-->
+                    <div class="col-sm-6 col-lg-3">
                     <div class="mt-4">
                         <p class="mb-2">Ingenieros a cargo:</p>
                     <table class="">
@@ -231,17 +237,18 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr *ngFor = "let inmueble of inmuebles;index as i"  >
-                            <td >{{inmueble.cedulaAdmin}}</td>
-                            <td ><span class=" ml-4 md-4"></span><input id="inp1"placeholder="cant" type="number" ></td>
+                          <tr *ngFor = "let ingeniero of ingenieros;index as i"  >
+                            <td >{{ingeniero.codigo_ingeniero}}</td>
                             <td ><span class="table-remove ml-4 md-4">
-                                <button type="button" style="color:chocolate" class="btn btn-rounded btn-sm my-0 " (click) = "agregar(inmueble.Tipo)">✓</button>
+                                <button type="button" style="color:crimson" class="btn btn-rounded btn-sm my-0 " (click) = "agregarIng(ingeniero.codigo_ingeniero)">✓</button>
                             </span></td>
                           </tr>
                         </tbody>
                       </table>
                     </div>
+                  </div>
                     <!--Tabla arquitectos-->
+                    <div class="col-sm-6 col-lg-3">
                     <div class="mt-4">
                         <p class="mb-2">Arquitectos a cargo</p>
                     <table class="">
@@ -253,18 +260,19 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr *ngFor = "let inmueble of inmuebles;index as i"  >
-                            <td >{{inmueble.cedulaAdmin}}</td>
-                            <td ><span class=" ml-4 md-4"></span><input id="inp1"placeholder="cant" type="number" ></td>
-                            <td ><span class="table-remove ml-4 md-4">
-                    
-                                <button type="button" style="color:chocolate" class="btn btn-rounded btn-sm my-0 " (click) = "agregar(inmueble.Tipo)">✓</button>
+                          <tr *ngFor = "let arquitecto of arquitectos ;index as i"  >
+                            <td >{{arquitecto.codigo_arquitecto}}</td>                          
+                            <td >
+                                <button type="button" style="color: crimson" class="btn btn-rounded btn-sm my-0 " (click) = "agregarArq(arquitecto.codigo_arquitecto)">✓</button>
                                 
-                            </span></td>
+                            </td>
                           </tr>
                         </tbody>
                       </table>
                     </div>
+                    </div>
+
+                    
                    
                  
                     <!--Termina caja de texto precio unitario-->
@@ -272,7 +280,7 @@
                   </div>
                    <!--Botón de guardar material-->
                    <div class="col-sm-6 col-lg-3">
-                      <button class="btn btn-primary btn-sm mr-1 mt-4  mb-3" (click) = "getEtapas()">Agregar</button>
+                      <button class="btn btn-primary btn-sm mr-1 mt-4  mb-3" (click) = "addNuevaObra()">Agregar</button>
                     </div>
                       <!--Termina botón de guardar material-->
         
@@ -319,32 +327,11 @@
                           </div>
                         </div>
                       </div>                    
-                      <!--Fases default--
-                      <div
-                      class="input-group"
-                      [ngClass]="{ 'input-group-focus': focus1 === true }"
-                    >
                       
-                       <div class="dropdown nav-item" dropdown>
-                        <a
-                          class="dropdown-toggle nav-link dropdown-toggle"
-                          data-toggle="dropdown"
-                          dropdownToggle
-                          href="javascript:void(0)"
-                        >
-                        <i class="tim-icons icon-badge"> </i> Fases
-                        </a>
-                        <div class="dropdown-menu dropdown-with-icons" *dropdownMenu>
-                          <a class="dropdown-item"
-                          *ngFor="let fase of fases, index as i" > {{fases[i]}}</a>            
-                        </div>
-                      </div>
-                    </div>
-                  -->
         
-                       <!--Botón de guardar material-->
+                       <!--Botón de guardar atapa-->
                        <div class="col-sm-6 col-lg-3">
-                       <button class="btn btn-primary btn-sm mr-1 mb-3" (onclick) = "addE+tapa()">Agregar</button>
+                       <button class="btn btn-primary btn-sm mr-1 mb-3" (click) = "add_etapa()">Agregar</button>
                       </div>
                       </div>
                  
@@ -372,72 +359,90 @@
                   <div class="card">
                     <div class="card-header">
                       <tabset class="nav-tabs-danger">
-                        <tab>
-                          <ng-template tabHeading>
-                            <i class="tim-icons icon-settings"> </i> Horas
-                          </ng-template>
-                          
-      
-              <!--Formulario mini para asignar horas-->
-              <div class="row">
-                
-               <!--Dropdown empleados-->
-               <div class="col-sm-6 col-lg-3">
-                    <div
-                    class="input-group"
-                    [ngClass]="{ 'input-group-focus': focus1 === true }"
-                  >
+
+                        <!--Asignar Horas-->
+                          <tab>
+                              <ng-template tabHeading>
+                                <i class="tim-icons icon-settings"> </i> Horas
+                              </ng-template>
+                              
+          
+                  <!--Formulario mini para asignar horas-->
+                  <div class="row">
                     
-                     <div class="dropdown nav-item" dropdown>
-                      <a
-                        class="dropdown-toggle nav-link dropdown-toggle"
-                        data-toggle="dropdown"
-                        dropdownToggle
-                        href="javascript:void(0)"
-                      >
-                      <i class="tim-icons icon-single-02"> </i> Empleado
-                      </a>
-                      <div class="dropdown-menu dropdown-with-icons" *dropdownMenu>
-                        <a class="dropdown-item"
-                        *ngFor="let fase of fases, index as i" > {{fases[i]}}</a>            
-                      </div>
+                   <!--Dropdown empleados-->
+                   <div class="col-sm-6 col-lg-3">
+                      <div class="col-sm-6 col-lg-3">
+                          <div
+                          class="input-group " 
+                        >
+                           <div class="" >
+                            <label style="width: 5cm;" for="inputState">Empleado</label>
+                            <select id="emp1" class="  dropdown-item text-muted"
+                            ng-click = "getEmpleados()">
+                            <option  *ngFor="let empleado of empleados"  > {{empleado.cedula}}</option></select>
+                               
+                          </div>
+                        </div>
+                     </div>
+                   </div>
+          
+                        <!--Dropdown proyecto-->
+    
+                        <div class="col-sm-6 col-lg-3">
+                            <div
+                            class="input-group " 
+                          >
+                             <div >
+                              <label style="width: 5cm;" for="inputState">Proyecto</label>
+                              <select id="proy1" class="  dropdown-item text-muted"
+                              (change) = "getEtapas()">
+                              <option  *ngFor="let obra of obras"  > {{obra.nombre_obra}}</option></select>
+                                 
+                            </div>
+                          </div>
+                       </div>
+                        <!--input horas-->
+                        <div class="col-sm-8 col-lg-3">
+                            <div class="input-group">
+                              <input
+                                class="form-control"
+                                placeholder="Horas"
+                                id="horas3"
+                                type="number"
+                              />
+              
+                              <div class="input-group-append">
+                                <span class="input-group-text">
+                                  <i class="tim-icons icon-coins"> </i>
+                                </span>
+                              </div>
+                            </div>
+                          </div>     
+                          <div class="col-sm-8 col-lg-3">
+                              <div class="input-group">
+                                <input
+                                  class="form-control"
+                                  placeholder="Semana"
+                                  id="semanas3"
+                                  type="number"
+                                />
+                
+                                <div class="input-group-append">
+                                  <span class="input-group-text">
+                                    <i class="tim-icons icon-coins"> </i>
+                                  </span>
+                                </div>
+                              </div>
+                            </div>            
+                      <!--Botón de asignar empleado-->
+                      <div class="col-sm-6 col-lg-3">
+                      <button (click)="AsignarHoras()" class="btn btn-primary btn-sm mr-1  mb-3">Asignar</button>
                     </div>
                   </div>
-               </div>
-      
-                    <!--Dropdown proyecto-->
-                    <div class="col-sm-6 col-lg-3">
-                    <div
-                    class="input-group"
-                    [ngClass]="{ 'input-group-focus': focus1 === true }"
-                  >
+                  <!----Fin formulario mini -->
                     
-                     <div class="dropdown nav-item" dropdown>
-                      <a
-                        class="dropdown-toggle nav-link dropdown-toggle"
-                        data-toggle="dropdown"
-                        dropdownToggle
-                        href="javascript:void(0)"
-                      >
-                      <i class="tim-icons icon-single-copy-04"> </i> Proyecto
-                      </a>
-                      <div class="dropdown-menu dropdown-with-icons" *dropdownMenu>
-                        <a class="dropdown-item"
-                        *ngFor="let fase of fases, index as i" > {{fases[i]}}</a>            
-                      </div>
-                    </div>
-                  </div>
-                </div>
-               
-                  <!--Botón de asignar empleado-->
-                  
-                  <div class="col-sm-6 col-lg-3">
-                  <button class="btn btn-primary btn-sm mr-1  mb-3">Asignar</button>
-                </div>
-              </div>
-              <!----Fin formulario mini -->
-                
-                        </tab>
+                            </tab>
                         <tab>
                           <ng-template tabHeading>
                             <i class="tim-icons icon-components"> </i> Materiales
@@ -455,7 +460,7 @@
                             <label style="width: 5cm;" for="inputState">Proyecto</label>
                           <select class="dropdown-item text-muted"
                           id = "proyecto_nombreGastos"
-                          (click) = "getEtapasProyecto()"
+                          (change) = "getEtapasProyecto()"
                           >
                           <option  *ngFor="let proyecto of proyectos"  > {{proyecto.nombre_obra}}</option></select>
                              
@@ -471,10 +476,8 @@
                               <label style="width: 5cm;" for="inputState">Etapa</label>
                             <select class="dropdown-item text-muted"
                             id = "etapa_anadirMat"
-                            
                             >
-                            <option  *ngFor="let etapa of etapasPNames"> {{etapa}}</option></select>
-                               
+                            <option  *ngFor="let etapa of etapasPNames"> {{etapa}}</option></select>    
                           </div>
                         </div>
                      </div> 

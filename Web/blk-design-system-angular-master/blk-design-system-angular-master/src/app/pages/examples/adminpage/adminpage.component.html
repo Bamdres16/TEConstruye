@@ -315,7 +315,7 @@
                         </div>            
                   <!--Botón de asignar empleado-->
                   <div class="col-sm-6 col-lg-3">
-                  <button (click)="add_empProy()" class="btn btn-primary btn-sm mr-1  mb-3">Asignar</button>
+                  <button (click)="AsignarHoras()" class="btn btn-primary btn-sm mr-1  mb-3">Asignar</button>
                 </div>
               </div>
               <!----Fin formulario mini -->
@@ -388,12 +388,12 @@
                                         </tr>
                                       </thead>
                                       <tbody>
-                                        <tr *ngFor = "let inmueble of inmuebles;index as i"  >
-                                          <td >{{inmueble.cedulaAdmin}}</td>
+                                        <tr *ngFor = "let material of materiales;index as i"  >
+                                          <td >{{material.nombre}}</td>
                                           <td ><span class=" ml-4 md-4"></span><input id="inp1"placeholder="cant" type="number" ></td>
                                           <td ><span class="table-remove ml-4 md-4">
                                   
-                                              <button type="button" style="color:chocolate" class="btn btn-rounded btn-sm my-0 " (click) = "agregar(inmueble.Tipo)">✓</button>
+                                              <button type="button" style="color:chocolate" class="btn btn-rounded btn-sm my-0 " (click) = "agregar(material)">✓</button>
                                               
                                           </span></td>
                                         </tr>
@@ -492,10 +492,11 @@
                       </div>
                     </div>
                  </div>
+                 <div id="label1" class="alert alert-dark" role="alert">
+              $ 0
+            </div> 
            </div>
-
-           <label id="label1" for="">0</label>
-               
+                         
                   <!--Botón de asignar empleado-->
                   <div class="col-sm-6 col-lg-3">
                   <button (click)="get_presupuesto()"class="btn btn-primary btn-sm mr-1  mb-3">Generar</button>

@@ -39,6 +39,9 @@ addEmpleado(cliente:void){
 addCompra(cliente:void){
   return this._http.post<any>(this.ID+'/Empleados',cliente)
 }
+addObra(cliente:void){
+  return this._http.post<any>(this.ID+'/Obras',cliente)
+}
  addEtapa(etapa:void){
   return this._http.post<any>(this.ID+'/Etapas',etapa)
   }
@@ -49,12 +52,11 @@ addCompra(cliente:void){
   addPProyecto(obj:void){
       return this._http.post<any>(this.ID+'/Material',obj)
       }
-  addPemp(obj:void){
-      return this._http.post<any>(this.ID+'/Proyecto/asignarhoras',obj)
+  addPemp(obj:any){
+      return this._http.post<any>('http://teconstruyeapi.azurewebsites.net/api/Proyecto/asignarhoras',obj)
       }
-     
-  
 
+     
 loginIngeniero(ingeniero:void){
   return this._http.post<any>('http://teconstruyeapi.azurewebsites.net/api/Ingenieros/login',ingeniero)
 }
@@ -84,7 +86,7 @@ loginArquitecto(arquitecto:void){
   }
 
   etapaProyecto(idP:any){
-    return this._http.get<void[]>('http://teconstruyeapi.azurewebsites.net/api/Proyecto/etapas/' + idP);
+    return this._http.get<void[]>(this.ID+'/Proyecto/etapas/'+ idP);
     
   }
 
@@ -92,8 +94,38 @@ loginArquitecto(arquitecto:void){
     return this._http.get<void[]>('http://teconstruyeapi.azurewebsites.net/api/Material');
   }
 
+  getProvincias(){
+    return this._http.get<void[]>(this.ID + '/Ubicacion');
+  }
+
+  getCantones(provincia:string){
+    return this._http.get<void[]>(this.ID + '/Ubicacion?Provincia='+provincia);
+  }
+  getDistritos(provincia:string, canton:string){
+    return this._http.get<void[]>(this.ID + '/Ubicacion?Provincia='+provincia+'&Canton='+canton);
+  }
+  getClientes(){
+    return this._http.get<void[]>(this.ID + '/Clientes');
+  }
+  getIngenieros(){
+    return this._http.get<void[]>(this.ID + '/Ingenieros');
+  }
+  getArquitectos(){
+    return this._http.get<void[]>(this.ID + '/Arquitectos');
+  }
+
+
+
 
   addMatEtapa(matEtapa:any){
     return this._http.put<any>("http://teconstruyeapi.azurewebsites.net/api/Proyecto/asignarmaterial", matEtapa,httpOptions);
+  }
+
+  AsignarHoras(usuarios:any){
+    return this._http.put<any>(this.ID+'/Proyecto/asignarhoras', usuarios, httpOptions)
+  }
+
+  AsignarMateriales(usuarios:any){
+    return this._http.put<any>(this.ID+'/Proyecto/asignarmaterial', usuarios, httpOptions)
   }
 }
